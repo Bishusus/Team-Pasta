@@ -53,7 +53,10 @@ async function getJson(path) {
   try {
     return await response.json();
   } catch (cause) {
-    throw new ApiError("FastAPI returned an invalid JSON response.", { path, cause });
+    throw new ApiError("FastAPI returned an invalid JSON response.", {
+      path,
+      cause,
+    });
   }
 }
 
@@ -67,9 +70,18 @@ export async function fetchAllStudents() {
 
 /** Fetches one student and its backend-calculated risk details. */
 export async function fetchStudentById(studentId) {
-  if (!studentId) throw new ApiError("A student_id is required.", { path: "/students/{student_id}" });
-  const data = await getJson(`/students/${encodeURIComponent(studentId)}`);
-  return data && typeof data === "object" ? normalizeStudent(data) : null;
+  if (!studentId)
+    throw new ApiError("A student_id is required.", {
+      path: "/students/{student_id}",
+    });
+  const encodedId = encodeURIComponent(studentId);
+  const [studentData, riskData] = await Promise.all([
+    getJson(`/students/${encodedId}`),
+    getJson(`/risk/${encodedId}`),
+  ]);
+  return studentData && typeof studentData === "object"
+    ? normalizeStudent({ ...studentData, ...riskData })
+    : null;
 }
 
 /** Fetches all backend-calculated risk results from GET /risk. */
