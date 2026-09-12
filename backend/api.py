@@ -25,6 +25,17 @@ def _student_response(student: Student) -> dict:
 	}
 
 
+def _risk_response(student: Student) -> dict:
+	"""
+	Run the SQLAlchemy Student object straight through calculate_risk().
+	risk_engine.py reads it via getattr (see _get_field), so no
+	dict conversion is needed here and no scoring logic lives in
+	this file — this is just plumbing the ORM object to the engine
+	and the engine's result back out as JSON.
+	"""
+	return calculate_risk(student)
+
+
 @router.get("/students")
 def get_students(db: Session = Depends(get_db)) -> list[dict]:
 	students = db.scalars(select(Student).order_by(Student.student_id)).all()

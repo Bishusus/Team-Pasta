@@ -37,4 +37,13 @@ body {
   table {
     font-size: 13px;
   }
+
+  .dashboard-page {
+    padding: 24px 18px 32px !important;
+  }
+
+  .dashboard-primary-grid,
+  .dashboard-secondary-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { fonts, colors } from "../theme";
 
-// Reused for Students, Risk Analysis, and Exam Seating until each
+// Reused for future sections such as Exam Seating until each
 // gets its own real page. Delete this once all pages are built.
 export default function PlaceholderPage({ title }) {
   return (
