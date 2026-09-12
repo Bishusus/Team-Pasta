@@ -129,6 +129,20 @@ class Classroom(Base):
 	)
 
 
+class ClassroomBooking(Base):
+	__tablename__ = "classroom_bookings"
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	classroom_id: Mapped[int] = mapped_column(ForeignKey("classrooms.id"), index=True)
+	day: Mapped[str] = mapped_column(String(20), index=True)
+	start_time: Mapped[str] = mapped_column(String(5))
+	end_time: Mapped[str] = mapped_column(String(5))
+	booked_by: Mapped[str] = mapped_column(String(200))
+	purpose: Mapped[str] = mapped_column(String(300))
+
+	classroom: Mapped[Classroom] = relationship()
+
+
 
 class ExamSchedule(Base):
 	__tablename__ = "generated_exam_schedules"

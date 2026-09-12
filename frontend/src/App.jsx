@@ -5,6 +5,7 @@ import StudentDetailPage from "./pages/StudentDetailPage";
 import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
+import BookingPage from "./pages/BookingPage";
 import { fetchHealth, fetchRiskResults } from "./services/api";
 
 export default function App() {
@@ -106,6 +107,8 @@ export default function App() {
           />
         ) : activeTab === "timetable" ? (
           <TimetablePage />
+        ) : activeTab === "booking" ? (
+          <BookingPage />
         ) : (
           <ExamSeatingPage />
         )}

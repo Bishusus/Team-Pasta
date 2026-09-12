@@ -60,6 +60,21 @@ async function getJson(path) {
   }
 }
 
+async function sendJson(path, options, errorMessage) {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, options);
+  } catch (cause) {
+    throw new ApiError("Unable to reach the FastAPI server.", { path, cause });
+  }
+  if (!response.ok) {
+    let detail = response.statusText;
+    try { detail = (await response.json()).detail || detail; } catch { /* Keep the status message. */ }
+    throw new ApiError(`${errorMessage} (${response.status}): ${detail}`, { status: response.status, path });
+  }
+  return response.json();
+}
+
 /**
  * Fetches all student records from GET /students.
  */
@@ -129,6 +144,21 @@ export async function fetchClassroomById(classroomId) {
       path: "/classrooms/{classroom_id}",
     });
   return getJson(`/classrooms/${encodeURIComponent(classroomId)}`);
+}
+
+export async function fetchBookingAvailability({ day, startTime, endTime }) {
+  const params = new URLSearchParams({ day, start_time: startTime, end_time: endTime });
+  const data = await getJson(`/bookings/availability?${params.toString()}`);
+  return Array.isArray(data) ? data : [];
+}
+
+export async function fetchBookings(day) {
+  const data = await getJson(`/bookings${day ? `?day=${encodeURIComponent(day)}` : ""}`);
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createBooking(booking) {
+  return sendJson("/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(booking) }, "Booking failed");
 }
 
 /** Fetches the generated exam schedule. */
