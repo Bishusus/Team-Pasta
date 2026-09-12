@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from .models import Student
@@ -81,15 +81,23 @@ def load_students_from_csv(
     if error:
         raise ValueError(error)
 
+    existing_students = db.scalars(select(Student)).all()
+    students_by_id = {student.student_id: student for student in existing_students}
+    student_ids = set()
     loaded = 0
     for record in students:
-        student = db.scalar(select(Student).where(Student.student_id == record["student_id"]))
+        student_ids.add(record["student_id"])
+        student = students_by_id.get(record["student_id"])
         values = {**record, "exam_date": pd.to_datetime(record["exam_date"]).date()}
         if student is None:
-            db.add(Student(**values))
+            student = Student(**values)
+            db.add(student)
+            students_by_id[student.student_id] = student
         else:
             for column, value in values.items():
                 setattr(student, column, value)
         loaded += 1
+
+    db.execute(delete(Student).where(Student.student_id.not_in(student_ids)))
     db.commit()
     return loaded

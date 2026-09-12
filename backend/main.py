@@ -4,7 +4,7 @@ import os
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from sqlalchemy import text
+from sqlalchemy import delete, text
 from sqlalchemy.exc import SQLAlchemyError
 
 from .api import router
@@ -12,6 +12,7 @@ from .classroom_loader import load_classrooms_from_csv
 from .csv_loader import load_students_from_csv
 from .database import SessionLocal, engine, init_db
 from .exam_engine import generate_exam_schedule
+from .models import ExamSeatAssignment, SeatAssignment
 from .timetable_loader import load_timetable_from_csv
 
 
@@ -19,6 +20,9 @@ from .timetable_loader import load_timetable_from_csv
 async def lifespan(_: FastAPI):
 	init_db()
 	with SessionLocal() as db:
+		db.execute(delete(ExamSeatAssignment))
+		db.execute(delete(SeatAssignment))
+		db.commit()
 		load_students_from_csv(db)
 		load_timetable_from_csv(db)
 		load_classrooms_from_csv(db)
