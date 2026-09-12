@@ -164,20 +164,14 @@ def generate_exam_schedule(db: Session) -> int:
 		rooms.append(room)
 	db.flush()
 
-	by_module: dict[str, list[Student]] = defaultdict(list)
+	by_date_module: dict[date, dict[str, list[Student]]] = defaultdict(lambda: defaultdict(list))
 	for student in students:
-		by_module[student.module_name].append(student)
-	module_names = sorted(
-		by_module,
-		key=lambda module: (min(student.exam_date for student in by_module[module]), module),
-	)
-	pairs = [module_names[index:index + 2] for index in range(0, len(module_names), 2)]
+		by_date_module[student.exam_date][student.module_name].append(student)
 	sessions_by_date: dict[date, list[list[str]]] = defaultdict(list)
-	for pair in pairs:
-		exam_date = max(
-			max(student.exam_date for student in by_module[module]) for module in pair
-		)
-		sessions_by_date[exam_date].append(pair)
+	for exam_date, modules in by_date_module.items():
+		module_names = sorted(modules)
+		for index in range(0, len(module_names), 2):
+			sessions_by_date[exam_date].append(module_names[index:index + 2])
 
 	generated = 0
 	busy_by_slot: dict[tuple[date, str], set[str]] = defaultdict(set)
@@ -185,7 +179,7 @@ def generate_exam_schedule(db: Session) -> int:
 	for exam_date in sorted(sessions_by_date):
 		for offset, pair in enumerate(sessions_by_date[exam_date]):
 			start = datetime.combine(exam_date, DAY_START) + timedelta(minutes=offset * (EXAM_DURATION_MINUTES + BREAK_MINUTES))
-			module_students = [(module, by_module[module]) for module in pair]
+			module_students = [(module, by_date_module[exam_date][module]) for module in pair]
 			combined_name = " + ".join(pair)
 			busy_invigilators = busy_by_slot[(exam_date, start.strftime("%H:%M"))]
 			exam = ExamSchedule(

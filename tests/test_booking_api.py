@@ -62,3 +62,40 @@ def test_booking_availability_and_conflicts(tmp_path):
 	finally:
 		app.dependency_overrides.clear()
 		engine.dispose()
+
+
+def test_same_room_number_in_different_blocks_remains_distinct(tmp_path):
+	engine = create_engine(f"sqlite:///{tmp_path / 'duplicate-room.db'}")
+	Base.metadata.create_all(engine)
+	Session = sessionmaker(bind=engine)
+	with Session() as db:
+		db.add_all([
+			Classroom(block_name="Block A", room_number="A101", capacity=30),
+			Classroom(block_name="Block B", room_number="A101", capacity=30),
+		])
+		db.commit()
+		rooms = db.query(Classroom).order_by(Classroom.block_name).all()
+
+	def override_db():
+		with Session() as db:
+			yield db
+
+	app.dependency_overrides[get_db] = override_db
+	try:
+		client = TestClient(app)
+		booking = client.post("/bookings", json={
+			"classroom_id": rooms[0].id,
+			"day": "MON",
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"booked_by": "Team A",
+			"purpose": "Workshop",
+		})
+		assert booking.status_code == 201
+		availability = client.get("/bookings/availability?day=MON&start_time=09:30&end_time=09:45")
+		by_id = {item["id"]: item for item in availability.json()}
+		assert by_id[rooms[0].id]["available"] is False
+		assert by_id[rooms[1].id]["available"] is True
+	finally:
+		app.dependency_overrides.clear()
+		engine.dispose()
