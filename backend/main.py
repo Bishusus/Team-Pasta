@@ -1,7 +1,11 @@
 from contextlib import asynccontextmanager
+import os
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
 
 from .api import router
 from .csv_loader import load_students_from_csv
@@ -17,7 +21,29 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title="Academic Intelligence API", lifespan=lifespan)
+frontend_origins = [
+	origin.strip()
+	for origin in os.getenv(
+		"FRONTEND_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+	).split(",")
+	if origin.strip()
+]
+app.add_middleware(
+	CORSMiddleware,
+	allow_origins=frontend_origins,
+	allow_credentials=False,
+	allow_methods=["GET"],
+	allow_headers=["*"],
+)
 app.include_router(router)
+
+
+@app.exception_handler(SQLAlchemyError)
+async def database_error_handler(_: Request, __: SQLAlchemyError) -> JSONResponse:
+	return JSONResponse(
+		status_code=503,
+		content={"detail": "Database operation failed"},
+	)
 
 
 @app.get("/health")
