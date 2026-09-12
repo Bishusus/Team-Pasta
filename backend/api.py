@@ -3,7 +3,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .models import Student, TimetableEntry
+from .models import Classroom, Student, TimetableEntry
 from .risk_engine import calculate_risk
 
 
@@ -130,3 +130,41 @@ def get_timetable_entry(
 	if entry is None:
 		raise HTTPException(status_code=404, detail="Timetable entry not found")
 	return _timetable_response(entry)
+
+
+def _classroom_response(classroom: Classroom) -> dict:
+	return {
+		"id": classroom.id,
+		"block_name": classroom.block_name,
+		"room_number": classroom.room_number,
+		"capacity": classroom.capacity,
+	}
+
+
+@router.get("/classrooms")
+def get_classrooms(
+	block_name: str | None = None,
+	room_number: str | None = None,
+	db: Session = Depends(get_db),
+) -> list[dict]:
+	query = select(Classroom).order_by(
+		Classroom.block_name,
+		Classroom.room_number,
+	)
+	if block_name:
+		query = query.where(Classroom.block_name == block_name.strip())
+	if room_number:
+		query = query.where(Classroom.room_number == room_number.strip())
+	classrooms = db.scalars(query).all()
+	return [_classroom_response(c) for c in classrooms]
+
+
+@router.get("/classrooms/{classroom_id}")
+def get_classroom(
+	classroom_id: int, db: Session = Depends(get_db)
+) -> dict:
+	classroom = db.get(Classroom, classroom_id)
+	if classroom is None:
+		raise HTTPException(status_code=404, detail="Classroom not found")
+	return _classroom_response(classroom)
+

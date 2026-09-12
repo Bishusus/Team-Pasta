@@ -8,6 +8,7 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
 from .api import router
+from .classroom_loader import load_classrooms_from_csv
 from .csv_loader import load_students_from_csv
 from .database import SessionLocal, engine, init_db
 from .timetable_loader import load_timetable_from_csv
@@ -19,6 +20,7 @@ async def lifespan(_: FastAPI):
 	with SessionLocal() as db:
 		load_students_from_csv(db)
 		load_timetable_from_csv(db)
+		load_classrooms_from_csv(db)
 	yield
 
 

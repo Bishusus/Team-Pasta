@@ -102,3 +102,16 @@ class TimetableEntry(Base):
 	lecturer: Mapped[str] = mapped_column(String(200))
 	room: Mapped[str] = mapped_column(String(100))
 	duration_hours: Mapped[float] = mapped_column(Float)
+
+
+class Classroom(Base):
+	__tablename__ = "classrooms"
+	__table_args__ = (
+		UniqueConstraint("block_name", "room_number", name="uq_classroom_block_room"),
+	)
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	block_name: Mapped[str] = mapped_column(String(100))
+	room_number: Mapped[str] = mapped_column(String(50), index=True)
+	capacity: Mapped[int] = mapped_column(Integer)
+
