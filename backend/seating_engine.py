@@ -30,62 +30,70 @@ def get_all_lecturers(db: Session) -> list[str]:
 	return [entry.strip() for entry in entries if entry and entry.strip()]
 
 
-def find_candidate_invigilators(module_name: str, db: Session) -> list[str]:
-	entries = db.scalars(select(TimetableEntry)).all()
+def get_module_lecturers(module_name: str, db: Session) -> set[str]:
+	"""
+	Returns the set of lecturers who teach module_name in TimetableEntry.
+	These subject lecturers MUST NOT be assigned to invigilate their own module's exam.
+	"""
 	norm_target = _normalize_title(module_name)
+	if not norm_target:
+		return set()
 
-	matches: list[tuple[int, str]] = []
-	seen: set[str] = set()
-
+	entries = db.scalars(select(TimetableEntry)).all()
+	subject_lecturers: set[str] = set()
 	for entry in entries:
-		lecturer = entry.lecturer.strip() if entry.lecturer else ""
-		if not lecturer or lecturer in seen:
+		if not entry.lecturer:
 			continue
-
 		norm_title = _normalize_title(entry.module_title)
 		norm_code = _normalize_title(entry.module_code)
+		if (
+			norm_target in norm_title
+			or norm_title in norm_target
+			or norm_target in norm_code
+			or norm_code in norm_target
+		):
+			subject_lecturers.add(entry.lecturer.strip())
 
-		score = 0
-		if norm_target and (norm_target in norm_title or norm_title in norm_target):
-			score = 100
-		elif norm_target and (norm_target in norm_code or norm_code in norm_target):
-			score = 80
-		
-		if score > 0:
-			matches.append((score, lecturer))
-			seen.add(lecturer)
-
-	matches.sort(key=lambda item: item[0], reverse=True)
-	return [lecturer for _, lecturer in matches]
+	return subject_lecturers
 
 
-def assign_invigilator(
-	module_name: str,
+def assign_neutral_invigilator(
+	module_names: list[str],
 	exam_date: str,
 	start_time: str,
 	db: Session,
 	busy_invigilators: set[tuple[str, str, str]],
-	match_subject_teacher: bool = True,
 ) -> str:
+	"""
+	Assigns an invigilator for an exam hall.
+	Guarantees:
+	1. The invigilator DOES NOT teach any of the modules being examined in this hall.
+	2. The invigilator is NOT already assigned to another hall at (exam_date, start_time).
+	"""
 	all_lecturers = get_all_lecturers(db)
-	candidates = (
-		find_candidate_invigilators(module_name, db) if match_subject_teacher else []
-	)
 
-	# 1. Try candidates by title match score if not busy
-	for lecturer in candidates:
-		if (exam_date, start_time, lecturer) not in busy_invigilators:
+	# Exclude all teachers associated with the modules taking the exam in this room
+	forbidden_lecturers: set[str] = set()
+	for mod in module_names:
+		forbidden_lecturers.update(get_module_lecturers(mod, db))
+
+	# 1. Try any lecturer in timetable pool who is NOT a subject lecturer and NOT busy
+	for lecturer in all_lecturers:
+		if (
+			lecturer not in forbidden_lecturers
+			and (exam_date, start_time, lecturer) not in busy_invigilators
+		):
 			busy_invigilators.add((exam_date, start_time, lecturer))
 			return lecturer
 
-	# 2. Fallback to any available lecturer in timetable pool
+	# 2. Fallback: try any lecturer not busy (if pool is too small to enforce neutral rule completely)
 	for lecturer in all_lecturers:
 		if (exam_date, start_time, lecturer) not in busy_invigilators:
 			busy_invigilators.add((exam_date, start_time, lecturer))
 			return lecturer
 
-	# 3. Ultimate fallback if all pool invigilators are assigned
-	fallback_name = "Unassigned Staff"
+	# 3. Ultimate fallback
+	fallback_name = "External Invigilator"
 	busy_invigilators.add((exam_date, start_time, fallback_name))
 	return fallback_name
 
@@ -95,12 +103,13 @@ def generate_seating_plan(
 	start_time: str = "09:00 AM",
 	exam_duration_hours: float = 2.0,
 	break_minutes: int = 30,
-	match_subject_teacher: bool = True,
 ) -> list[dict]:
 	"""
 	Generates exam schedules and seat assignments for all registered students.
-	Ensures invigilator collision tracking, multi-module interleaving, single-module empty-seat buffers,
-	and room spillover handling.
+	Features:
+	- Neutral cross-invigilation (subject teachers excluded).
+	- Multi-module room sharing with interleaved seat placement (Odd Cols: Mod A, Even Cols: Mod B).
+	- Single-module empty seat spacing when room is unshared.
 	"""
 	# Clear existing seating plan data
 	db.execute(delete(SeatAssignment))
@@ -136,59 +145,138 @@ def generate_seating_plan(
 
 	for exam_date, modules_map in date_module_students.items():
 		current_start = datetime.strptime(start_time, "%I:%M %p")
-		
-		# Process modules scheduled on this date
-		for module_name, module_students in modules_map.items():
+
+		# Create queue of modules with remaining students
+		active_modules = [
+			(mod_name, list(stu_list))
+			for mod_name, stu_list in modules_map.items()
+		]
+
+		classroom_idx = 0
+
+		while active_modules:
 			time_slot_str = current_start.strftime("%I:%M %p")
-			
-			# Determine classrooms needed for this module's cohort
-			remaining_students = list(module_students)
-			
-			for classroom in classrooms:
-				if not remaining_students:
-					break
 
-				rows, cols = calculate_room_grid(classroom.capacity)
-				invigilator = assign_invigilator(
-					module_name=module_name,
-					exam_date=exam_date,
-					start_time=time_slot_str,
-					db=db,
-					busy_invigilators=busy_invigilators,
-					match_subject_teacher=match_subject_teacher,
-				)
+			# Pair modules for room sharing if at least 2 modules remain
+			if len(active_modules) >= 2:
+				shared_modules = [active_modules[0], active_modules[1]]
+			else:
+				shared_modules = [active_modules[0]]
 
-				exam = Exam(
-					name=f"{module_name} Exam",
-					exam_date=exam_date,
-					start_time=time_slot_str,
-					invigilator=invigilator,
-					classroom_id=classroom.id,
-				)
-				db.add(exam)
-				db.flush()
+			classroom = classrooms[classroom_idx % len(classrooms)]
+			rows, cols = calculate_room_grid(classroom.capacity)
 
-				room_assignments = []
-				
-				# Place students in seats using single-module spacing (alternate seats)
-				seat_idx = 0
+			exam_module_names = [m_name for m_name, _ in shared_modules]
+			invigilator = assign_neutral_invigilator(
+				module_names=exam_module_names,
+				exam_date=exam_date,
+				start_time=time_slot_str,
+				db=db,
+				busy_invigilators=busy_invigilators,
+			)
+
+			exam_title = (
+				f"{shared_modules[0][0]} & {shared_modules[1][0]} Exam"
+				if len(shared_modules) > 1
+				else f"{shared_modules[0][0]} Exam"
+			)
+
+			exam = Exam(
+				name=exam_title,
+				exam_date=exam_date,
+				start_time=time_slot_str,
+				invigilator=invigilator,
+				classroom_id=classroom.id,
+			)
+			db.add(exam)
+			db.flush()
+
+			room_assignments = []
+			assigned_seats = 0
+
+			# Interleaved seating logic
+			if len(shared_modules) > 1:
+				# Shared Room: Mod 1 in Odd Cols (1, 3, 5...), Mod 2 in Even Cols (2, 4, 6...)
+				(_, m1_stus) = shared_modules[0]
+				(_, m2_stus) = shared_modules[1]
+
 				for r in range(1, rows + 1):
 					for c in range(1, cols + 1):
-						if not remaining_students:
+						if assigned_seats >= classroom.capacity:
 							break
-						# Single-module spacing: alternate seats to avoid adjacent placement
+
+						# Odd column -> Module 1
+						if c % 2 != 0:
+							if m1_stus:
+								student = m1_stus.pop(0)
+								seat_num = f"R{r}-C{c}"
+								db.add(
+									SeatAssignment(
+										exam_id=exam.id,
+										student_id=student.id,
+										classroom_id=classroom.id,
+										row=r,
+										column=c,
+										seat_number=seat_num,
+									)
+								)
+								room_assignments.append(
+									{
+										"seat_number": seat_num,
+										"row": r,
+										"column": c,
+										"student_id": student.student_id,
+										"full_name": student.full_name,
+										"module_name": student.module_name,
+									}
+								)
+								assigned_seats += 1
+						# Even column -> Module 2
+						else:
+							if m2_stus:
+								student = m2_stus.pop(0)
+								seat_num = f"R{r}-C{c}"
+								db.add(
+									SeatAssignment(
+										exam_id=exam.id,
+										student_id=student.id,
+										classroom_id=classroom.id,
+										row=r,
+										column=c,
+										seat_number=seat_num,
+									)
+								)
+								room_assignments.append(
+									{
+										"seat_number": seat_num,
+										"row": r,
+										"column": c,
+										"student_id": student.student_id,
+										"full_name": student.full_name,
+										"module_name": student.module_name,
+									}
+								)
+								assigned_seats += 1
+			else:
+				# Single Room: Alternate seats (checkerboard) to prevent same-module adjacency
+				(_, m1_stus) = shared_modules[0]
+				for r in range(1, rows + 1):
+					for c in range(1, cols + 1):
+						if not m1_stus or assigned_seats >= classroom.capacity:
+							break
 						if (r + c) % 2 == 0:
-							student = remaining_students.pop(0)
+							student = m1_stus.pop(0)
 							seat_num = f"R{r}-C{c}"
-							assignment = SeatAssignment(
-								exam_id=exam.id,
-								student_id=student.id,
-								classroom_id=classroom.id,
-								row=r,
-								column=c,
-								seat_number=seat_num,
+							db.add(
+								SeatAssignment(
+									exam_id=exam.id,
+									student_id=student.id,
+									classroom_id=classroom.id,
+									row=r,
+									column=c,
+									seat_number=seat_num,
+								)
 							)
-							db.add(assignment)
 							room_assignments.append(
 								{
 									"seat_number": seat_num,
@@ -199,32 +287,38 @@ def generate_seating_plan(
 									"module_name": student.module_name,
 								}
 							)
-							seat_idx += 1
-						if seat_idx >= classroom.capacity:
-							break
-					if not remaining_students or seat_idx >= classroom.capacity:
-						break
+							assigned_seats += 1
 
-				generated_results.append(
-					{
-						"exam_id": exam.id,
-						"exam_name": exam.name,
-						"exam_date": exam.exam_date,
-						"start_time": exam.start_time,
-						"invigilator": exam.invigilator,
-						"classroom_id": classroom.id,
-						"block_name": classroom.block_name,
-						"room_number": classroom.room_number,
-						"capacity": classroom.capacity,
-						"rows": rows,
-						"cols": cols,
-						"assigned_count": len(room_assignments),
-						"assignments": room_assignments,
-					}
+			generated_results.append(
+				{
+					"exam_id": exam.id,
+					"exam_name": exam.name,
+					"exam_date": exam.exam_date,
+					"start_time": exam.start_time,
+					"invigilator": exam.invigilator,
+					"classroom_id": classroom.id,
+					"block_name": classroom.block_name,
+					"room_number": classroom.room_number,
+					"capacity": classroom.capacity,
+					"rows": rows,
+					"cols": cols,
+					"assigned_count": len(room_assignments),
+					"assignments": room_assignments,
+				}
+			)
+
+			# Remove exhausted modules from active_modules queue
+			new_active = []
+			for m_name, m_stus in active_modules:
+				if m_stus:
+					new_active.append((m_name, m_stus))
+			active_modules = new_active
+
+			classroom_idx += 1
+			if classroom_idx % len(classrooms) == 0:
+				current_start += timedelta(
+					hours=exam_duration_hours, minutes=break_minutes
 				)
-
-			# Advance start time for next exam on same day (2h duration + break)
-			current_start += timedelta(hours=exam_duration_hours, minutes=break_minutes)
 
 	db.commit()
 	return generated_results
