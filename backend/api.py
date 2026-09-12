@@ -3,11 +3,24 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .models import Classroom, Student, TimetableEntry
+from .exam_engine import generate_exam_schedule
+from .models import Classroom, ExamRoom, ExamSchedule, ExamSeatAssignment, Student, TimetableEntry
 from .risk_engine import calculate_risk
 
 
 router = APIRouter()
+
+
+def _exam_response(exam: ExamSchedule) -> dict:
+	return {
+		"id": exam.id,
+		"module_name": exam.module_name,
+		"exam_date": exam.exam_date.isoformat(),
+		"start_time": exam.start_time,
+		"duration_minutes": exam.duration_minutes,
+		"invigilator": exam.invigilator,
+		"student_count": exam.student_count,
+	}
 
 
 def _timetable_response(entry: TimetableEntry) -> dict:
@@ -167,4 +180,54 @@ def get_classroom(
 	if classroom is None:
 		raise HTTPException(status_code=404, detail="Classroom not found")
 	return _classroom_response(classroom)
+
+
+@router.post("/exam-schedule/generate")
+def generate_schedule(db: Session = Depends(get_db)) -> dict:
+	return {"generated_exams": generate_exam_schedule(db)}
+
+
+@router.get("/exam-schedule")
+def get_exam_schedule(db: Session = Depends(get_db)) -> list[dict]:
+	exams = db.scalars(select(ExamSchedule).order_by(ExamSchedule.exam_date, ExamSchedule.start_time)).all()
+	return [_exam_response(exam) for exam in exams]
+
+
+@router.get("/exam-schedule/{exam_id}/layout")
+def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
+	exam = db.get(ExamSchedule, exam_id)
+	if exam is None:
+		raise HTTPException(status_code=404, detail="Generated exam not found")
+	assignments = db.scalars(
+		select(ExamSeatAssignment)
+		.where(ExamSeatAssignment.exam_id == exam_id)
+		.order_by(ExamSeatAssignment.room_id, ExamSeatAssignment.row, ExamSeatAssignment.column)
+	).all()
+	room_ids = sorted({assignment.room_id for assignment in assignments})
+	rooms = [db.get(ExamRoom, room_id) for room_id in room_ids]
+	return {
+		"exam": _exam_response(exam),
+		"rooms": [
+			{
+				"id": room.id,
+				"name": room.name,
+				"rows": room.rows,
+				"columns": room.columns,
+				"capacity": room.capacity,
+				"assignments": [
+					{
+						"row": assignment.row,
+						"column": assignment.column,
+						"seat_number": assignment.seat_number,
+						"module_name": assignment.module_name,
+						"student_id": assignment.student.student_id,
+						"student_name": assignment.student.full_name,
+					}
+					for assignment in assignments
+					if assignment.room_id == room.id
+				],
+			}
+			for room in rooms
+		],
+	}
 

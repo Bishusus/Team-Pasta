@@ -28,6 +28,19 @@ def _time_slot_key(time_slot: str) -> str:
 	)
 
 
+def _entry_key(values: dict) -> tuple[str, ...]:
+	return (
+		values["day"],
+		values["group_name"],
+		values["section_cohort"],
+		values["class_type"],
+		values["module_code"],
+		values["module_title"],
+		values["lecturer"],
+		values["room"],
+	)
+
+
 def load_timetable_from_csv(
 	db: Session, csv_path: str | Path = "data/timetable.csv"
 ) -> int:
@@ -55,6 +68,21 @@ def load_timetable_from_csv(
 	df["Duration (Hrs)"] = pd.to_numeric(df["Duration (Hrs)"], errors="coerce")
 	df = df.dropna(subset=REQUIRED_COLUMNS)
 
+	existing_entries = db.scalars(select(TimetableEntry)).all()
+	entries_by_key: dict[tuple[str, ...], list[TimetableEntry]] = {}
+	for existing_entry in existing_entries:
+		key = _entry_key({
+			"day": existing_entry.day,
+			"group_name": existing_entry.group_name,
+			"section_cohort": existing_entry.section_cohort,
+			"class_type": existing_entry.class_type,
+			"module_code": existing_entry.module_code,
+			"module_title": existing_entry.module_title,
+			"lecturer": existing_entry.lecturer,
+			"room": existing_entry.room,
+		})
+		entries_by_key.setdefault(key, []).append(existing_entry)
+
 	loaded = 0
 	for record in df.to_dict(orient="records"):
 		values = {
@@ -69,18 +97,7 @@ def load_timetable_from_csv(
 			"room": record["Room"],
 			"duration_hours": float(record["Duration (Hrs)"]),
 		}
-		entries = db.scalars(
-			select(TimetableEntry).where(
-				TimetableEntry.day == values["day"],
-				TimetableEntry.group_name == values["group_name"],
-				TimetableEntry.section_cohort == values["section_cohort"],
-				TimetableEntry.class_type == values["class_type"],
-				TimetableEntry.module_code == values["module_code"],
-				TimetableEntry.module_title == values["module_title"],
-				TimetableEntry.lecturer == values["lecturer"],
-				TimetableEntry.room == values["room"],
-			)
-		).all()
+		entries = entries_by_key.setdefault(_entry_key(values), [])
 		matching_entries = [
 			entry
 			for entry in entries
@@ -91,11 +108,14 @@ def load_timetable_from_csv(
 			matching_entries[0] if matching_entries else None,
 		)
 		if entry is None:
-			db.add(TimetableEntry(**values))
+			entry = TimetableEntry(**values)
+			db.add(entry)
+			entries.append(entry)
 		else:
 			for duplicate in matching_entries:
 				if duplicate is not entry:
 					db.delete(duplicate)
+			entries[:] = [entry]
 			entry.time_slot = values["time_slot"]
 			entry.duration_hours = values["duration_hours"]
 		loaded += 1

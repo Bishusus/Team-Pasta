@@ -131,6 +131,35 @@ export async function fetchClassroomById(classroomId) {
   return getJson(`/classrooms/${encodeURIComponent(classroomId)}`);
 }
 
+/** Fetches the generated exam schedule. */
+export async function fetchExamSchedule() {
+  const data = await getJson("/exam-schedule");
+  return Array.isArray(data) ? data : [];
+}
+
+/** Rebuilds exams and seat assignments from current database records. */
+export async function generateExamSchedule() {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/exam-schedule/generate`, { method: "POST" });
+  } catch (cause) {
+    throw new ApiError("Unable to reach the FastAPI server.", { path: "/exam-schedule/generate", cause });
+  }
+  if (!response.ok) {
+    throw new ApiError(`Request failed (${response.status}): ${response.statusText}`, {
+      status: response.status,
+      path: "/exam-schedule/generate",
+    });
+  }
+  return response.json();
+}
+
+/** Fetches the room-by-room layout for one generated exam. */
+export async function fetchExamLayout(examId) {
+  if (!examId) throw new ApiError("An examId is required.", { path: "/exam-schedule/{exam_id}/layout" });
+  return getJson(`/exam-schedule/${encodeURIComponent(examId)}/layout`);
+}
+
 // Compatibility alias for existing dashboard consumers of the risk table.
 export const fetchStudents = fetchRiskResults;
 

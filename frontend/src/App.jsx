@@ -4,7 +4,7 @@ import DashboardPage from "./pages/DashboardPage";
 import StudentDetailPage from "./pages/StudentDetailPage";
 import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import ExamSeatingPage from "./pages/ExamSeatingPage";
 import { fetchAllStudents, fetchHealth, fetchRiskResults, fetchRiskSummary } from "./services/api";
 
 export default function App() {
@@ -118,7 +118,7 @@ export default function App() {
         ) : activeTab === "timetable" ? (
           <TimetablePage />
         ) : (
-          <PlaceholderPage title="Exam Seating" />
+          <ExamSeatingPage />
         )}
       </main>
     </div>

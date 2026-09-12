@@ -115,3 +115,59 @@ class Classroom(Base):
 	room_number: Mapped[str] = mapped_column(String(50), index=True)
 	capacity: Mapped[int] = mapped_column(Integer)
 
+
+class ExamSchedule(Base):
+	__tablename__ = "generated_exam_schedules"
+	__table_args__ = (
+		UniqueConstraint("module_name", "exam_date", name="uq_generated_exam_module_date"),
+	)
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	module_name: Mapped[str] = mapped_column(String(200))
+	exam_date: Mapped[date] = mapped_column(Date, index=True)
+	start_time: Mapped[str] = mapped_column(String(20))
+	duration_minutes: Mapped[int] = mapped_column(Integer)
+	invigilator: Mapped[str] = mapped_column("lecturer", String(200))
+	student_count: Mapped[int] = mapped_column(Integer)
+
+	seat_assignments: Mapped[list["ExamSeatAssignment"]] = relationship(
+		back_populates="exam", cascade="all, delete-orphan"
+	)
+
+
+class ExamRoom(Base):
+	__tablename__ = "generated_exam_rooms"
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	name: Mapped[str] = mapped_column(String(100), unique=True)
+	rows: Mapped[int] = mapped_column(Integer)
+	columns: Mapped[int] = mapped_column(Integer)
+	capacity: Mapped[int] = mapped_column(Integer)
+
+	seat_assignments: Mapped[list["ExamSeatAssignment"]] = relationship(
+		back_populates="room"
+	)
+
+
+class ExamSeatAssignment(Base):
+	__tablename__ = "generated_exam_seat_assignments"
+	__table_args__ = (
+		UniqueConstraint("exam_id", "student_id", name="uq_generated_exam_student"),
+		UniqueConstraint(
+			"exam_id", "room_id", "row", "column", name="uq_generated_exam_seat"
+		),
+	)
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	exam_id: Mapped[int] = mapped_column(ForeignKey("generated_exam_schedules.id"), index=True)
+	student_id: Mapped[int] = mapped_column(ForeignKey("students.id"), index=True)
+	room_id: Mapped[int] = mapped_column(ForeignKey("generated_exam_rooms.id"), index=True)
+	row: Mapped[int] = mapped_column(Integer)
+	column: Mapped[int] = mapped_column(Integer)
+	seat_number: Mapped[str] = mapped_column(String(30))
+	module_name: Mapped[str] = mapped_column(String(200))
+
+	exam: Mapped[ExamSchedule] = relationship(back_populates="seat_assignments")
+	student: Mapped[Student] = relationship()
+	room: Mapped[ExamRoom] = relationship(back_populates="seat_assignments")
+
