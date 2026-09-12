@@ -7,6 +7,7 @@ export const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard" },
   { key: "risk", label: "Risk Analysis" },
   { key: "timetable", label: "Timetable" },
+  { key: "booking", label: "Classroom Booking" },
   { key: "seating", label: "Exam Seating" },
 ];
 

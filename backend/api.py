@@ -1,15 +1,71 @@
+from datetime import datetime
+import re
+
 from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
 from .database import get_db
 from .exam_engine import generate_exam_schedule
-from .models import Classroom, Exam, ExamRoom, ExamSchedule, ExamSeatAssignment, SeatAssignment, Student, TimetableEntry
+from .models import Classroom, ClassroomBooking, Exam, ExamRoom, ExamSchedule, ExamSeatAssignment, SeatAssignment, Student, TimetableEntry
 from .risk_engine import calculate_risk
 from .seating_engine import calculate_room_grid, generate_seating_plan
 
 
 router = APIRouter()
+
+
+class BookingCreate(BaseModel):
+	classroom_id: int
+	day: str
+	start_time: str
+	end_time: str
+	booked_by: str
+	purpose: str
+
+
+def _booking_time(value: str):
+	for pattern in ("%H:%M", "%I:%M %p"):
+		try:
+			return datetime.strptime(value.strip().upper(), pattern).time()
+		except ValueError:
+			continue
+	raise HTTPException(status_code=400, detail=f"Invalid time: {value}")
+
+
+def _room_key(value: str) -> str:
+	compact = re.sub(r"[^A-Z0-9]", "", value.upper())
+	match = re.fullmatch(r"([A-Z]+)0*(\d+)", compact)
+	return f"{match.group(1)}{int(match.group(2))}" if match else compact
+
+
+def _interval_overlaps(start, end, other_start, other_end) -> bool:
+	return start < other_end and end > other_start
+
+
+def _validate_booking_window(day: str, start_time: str, end_time: str):
+	clean_day = day.strip().upper()
+	if clean_day not in {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"}:
+		raise HTTPException(status_code=400, detail="Day must be a valid weekday abbreviation.")
+	start = _booking_time(start_time)
+	end = _booking_time(end_time)
+	if start >= end:
+		raise HTTPException(status_code=400, detail="End time must be after start time.")
+	return clean_day, start, end
+
+
+def _booking_response(booking: ClassroomBooking, classroom: Classroom) -> dict:
+	return {
+		"id": booking.id,
+		"classroom_id": classroom.id,
+		"room": f"{classroom.block_name} {classroom.room_number}",
+		"day": booking.day,
+		"start_time": booking.start_time,
+		"end_time": booking.end_time,
+		"booked_by": booking.booked_by,
+		"purpose": booking.purpose,
+	}
 
 
 def _exam_response(exam: ExamSchedule) -> dict:
@@ -182,6 +238,60 @@ def get_classroom(
 	if classroom is None:
 		raise HTTPException(status_code=404, detail="Classroom not found")
 	return _classroom_response(classroom)
+
+
+@router.get("/bookings/availability")
+def get_booking_availability(day: str, start_time: str, end_time: str, db: Session = Depends(get_db)) -> list[dict]:
+	clean_day, start, end = _validate_booking_window(day, start_time, end_time)
+	classrooms = db.scalars(select(Classroom).order_by(Classroom.block_name, Classroom.room_number)).all()
+	timetable = db.scalars(select(TimetableEntry).where(TimetableEntry.day == clean_day)).all()
+	bookings = db.scalars(select(ClassroomBooking).where(ClassroomBooking.day == clean_day)).all()
+	occupied_rooms = set()
+	for entry in timetable:
+		parts = entry.time_slot.split(" - ", 1)
+		if len(parts) == 2 and _interval_overlaps(start, end, _booking_time(parts[0]), _booking_time(parts[1])):
+			occupied_rooms.add(_room_key(entry.room))
+	for booking in bookings:
+		if _interval_overlaps(start, end, _booking_time(booking.start_time), _booking_time(booking.end_time)):
+			classroom = db.get(Classroom, booking.classroom_id)
+			if classroom:
+				occupied_rooms.add(_room_key(classroom.room_number))
+	return [{**_classroom_response(classroom), "available": _room_key(classroom.room_number) not in occupied_rooms} for classroom in classrooms]
+
+
+@router.get("/bookings")
+def get_bookings(day: str | None = None, db: Session = Depends(get_db)) -> list[dict]:
+	query = select(ClassroomBooking).order_by(ClassroomBooking.day, ClassroomBooking.start_time)
+	if day:
+		query = query.where(ClassroomBooking.day == day.strip().upper())
+	bookings = db.scalars(query).all()
+	return [_booking_response(booking, db.get(Classroom, booking.classroom_id)) for booking in bookings]
+
+
+@router.post("/bookings", status_code=201)
+def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dict:
+	day, start, end = _validate_booking_window(payload.day, payload.start_time, payload.end_time)
+	classroom = db.get(Classroom, payload.classroom_id)
+	if classroom is None:
+		raise HTTPException(status_code=404, detail="Classroom not found")
+	if not payload.booked_by.strip() or not payload.purpose.strip():
+		raise HTTPException(status_code=400, detail="Booker name and purpose are required.")
+	availability = get_booking_availability(day, payload.start_time, payload.end_time, db)
+	selected = next(item for item in availability if item["id"] == classroom.id)
+	if not selected["available"]:
+		raise HTTPException(status_code=409, detail="Classroom is occupied during the selected time.")
+	booking = ClassroomBooking(
+		classroom_id=classroom.id,
+		day=day,
+		start_time=start.strftime("%H:%M"),
+		end_time=end.strftime("%H:%M"),
+		booked_by=payload.booked_by.strip(),
+		purpose=payload.purpose.strip(),
+	)
+	db.add(booking)
+	db.commit()
+	db.refresh(booking)
+	return _booking_response(booking, classroom)
 
 
 @router.post("/exam-schedule/generate")
