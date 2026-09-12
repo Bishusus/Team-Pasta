@@ -33,7 +33,12 @@ class Exam(Base):
 	name: Mapped[str] = mapped_column(String(200))
 	exam_date: Mapped[str | None] = mapped_column(String(30), nullable=True)
 	start_time: Mapped[str | None] = mapped_column(String(30), nullable=True)
+	invigilator: Mapped[str | None] = mapped_column(String(200), nullable=True)
+	classroom_id: Mapped[int | None] = mapped_column(
+		ForeignKey("classrooms.id"), nullable=True, index=True
+	)
 
+	classroom: Mapped["Classroom | None"] = relationship(back_populates="exams")
 	seat_assignments: Mapped[list["SeatAssignment"]] = relationship(
 		back_populates="exam", cascade="all, delete-orphan"
 	)
@@ -56,22 +61,25 @@ class SeatAssignment(Base):
 	__tablename__ = "seat_assignments"
 	__table_args__ = (
 		UniqueConstraint("exam_id", "student_id", name="uq_exam_student"),
-		UniqueConstraint(
-			"exam_id", "room_id", "row", "column", name="uq_exam_seat"
-		),
 	)
 
 	id: Mapped[int] = mapped_column(Integer, primary_key=True)
 	exam_id: Mapped[int] = mapped_column(ForeignKey("exams.id"), index=True)
 	student_id: Mapped[int] = mapped_column(ForeignKey("students.id"), index=True)
-	room_id: Mapped[int] = mapped_column(ForeignKey("rooms.id"), index=True)
+	room_id: Mapped[int | None] = mapped_column(
+		ForeignKey("rooms.id"), nullable=True, index=True
+	)
+	classroom_id: Mapped[int | None] = mapped_column(
+		ForeignKey("classrooms.id"), nullable=True, index=True
+	)
 	row: Mapped[int] = mapped_column(Integer)
 	column: Mapped[int] = mapped_column(Integer)
 	seat_number: Mapped[str] = mapped_column(String(30))
 
 	exam: Mapped[Exam] = relationship(back_populates="seat_assignments")
 	student: Mapped[Student] = relationship(back_populates="seat_assignments")
-	room: Mapped[Room] = relationship(back_populates="seat_assignments")
+	room: Mapped[Room | None] = relationship(back_populates="seat_assignments")
+	classroom: Mapped["Classroom | None"] = relationship(back_populates="seat_assignments")
 
 
 class TimetableEntry(Base):
@@ -114,6 +122,12 @@ class Classroom(Base):
 	block_name: Mapped[str] = mapped_column(String(100))
 	room_number: Mapped[str] = mapped_column(String(50), index=True)
 	capacity: Mapped[int] = mapped_column(Integer)
+
+	exams: Mapped[list[Exam]] = relationship(back_populates="classroom")
+	seat_assignments: Mapped[list[SeatAssignment]] = relationship(
+		back_populates="classroom"
+	)
+
 
 
 class ExamSchedule(Base):
