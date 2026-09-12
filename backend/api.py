@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from .database import get_db
 from .exam_engine import generate_exam_schedule
@@ -16,6 +16,7 @@ def _exam_response(exam: ExamSchedule) -> dict:
 	return {
 		"id": exam.id,
 		"module_name": exam.module_name,
+		"modules": exam.module_name.split(" + "),
 		"exam_date": exam.exam_date.isoformat(),
 		"start_time": exam.start_time,
 		"duration_minutes": exam.duration_minutes,
@@ -201,11 +202,11 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 		raise HTTPException(status_code=404, detail="Generated exam not found")
 	assignments = db.scalars(
 		select(ExamSeatAssignment)
+		.options(joinedload(ExamSeatAssignment.student), joinedload(ExamSeatAssignment.room))
 		.where(ExamSeatAssignment.exam_id == exam_id)
 		.order_by(ExamSeatAssignment.room_id, ExamSeatAssignment.row, ExamSeatAssignment.column)
 	).all()
-	room_ids = sorted({assignment.room_id for assignment in assignments})
-	rooms = [db.get(ExamRoom, room_id) for room_id in room_ids]
+	rooms_by_id = {assignment.room.id: assignment.room for assignment in assignments}
 	return {
 		"exam": _exam_response(exam),
 		"rooms": [
@@ -228,7 +229,7 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 					if assignment.room_id == room.id
 				],
 			}
-			for room in rooms
+			for room in rooms_by_id.values()
 		],
 	}
 

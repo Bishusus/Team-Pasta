@@ -46,7 +46,7 @@ def test_exam_engine_generates_schedule_and_non_adjacent_seats(tmp_path):
 		exam = db.scalar(select(ExamSchedule))
 		assignments = db.scalars(select(ExamSeatAssignment)).all()
 
-		assert exam.invigilator == "Dr. Test Lecturer"
+		assert exam.invigilator == "External Invigilator"
 		assert len(assignments) == 5
 		for assignment in assignments:
 			left = db.scalar(select(ExamSeatAssignment).where(
@@ -59,5 +59,59 @@ def test_exam_engine_generates_schedule_and_non_adjacent_seats(tmp_path):
 
 		assert generate_exam_schedule(db) == 1
 		assert len(db.scalars(select(ExamSchedule)).all()) == 1
+
+	engine.dispose()
+
+
+def test_exam_engine_pairs_modules_in_one_session(tmp_path):
+	engine = create_engine(f"sqlite:///{tmp_path / 'paired-exam.db'}")
+	Base.metadata.create_all(engine)
+	Session = sessionmaker(bind=engine)
+
+	with Session() as db:
+		db.add(Classroom(block_name="London Block", room_number="LT01", capacity=20))
+		for module, lecturer in [
+			("Algorithms", "Algorithms Lecturer"),
+			("Databases", "Databases Lecturer"),
+		]:
+			db.add(TimetableEntry(
+				day="SUN",
+				time_slot="07:00 AM - 09:00 AM",
+				group_name="AI",
+				section_cohort="AI1",
+				class_type="Lecture",
+				module_code=module[:3].upper(),
+				module_title=module,
+				lecturer=lecturer,
+				room="LT 1",
+				duration_hours=2.0,
+			))
+		for index, module in enumerate(["Algorithms"] * 3 + ["Databases"] * 3):
+			db.add(Student(
+				student_id=f"STU-{index}",
+				full_name=f"Student {index}",
+				programme="Computing",
+				semester="Year 2",
+				module_name=module,
+				exam_date=date(2026, 3, 12),
+				attendance_percentage=80,
+				exam_1_score=70,
+				exam_2_score=70,
+				final_exam_score=70,
+			))
+		db.commit()
+
+		assert generate_exam_schedule(db) == 1
+		exam = db.scalar(select(ExamSchedule))
+		assignments = db.scalars(select(ExamSeatAssignment).order_by(ExamSeatAssignment.column)).all()
+
+		assert exam.module_name == "Algorithms + Databases"
+		assert exam.student_count == 6
+		assert exam.invigilator == "External Invigilator"
+		assert {assignment.module_name for assignment in assignments} == {"Algorithms", "Databases"}
+		assert len({assignment.room_id for assignment in assignments}) == 1
+		for assignment in assignments:
+			left = next((seat for seat in assignments if seat.row == assignment.row and seat.column == assignment.column - 1), None)
+			assert left is None or left.module_name != assignment.module_name
 
 	engine.dispose()
