@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
 
+from .api import router
 from .database import engine, init_db
 
 
@@ -13,6 +14,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title="Academic Intelligence API", lifespan=lifespan)
+app.include_router(router)
 
 
 @app.get("/health")
