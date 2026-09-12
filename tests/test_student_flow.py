@@ -57,6 +57,49 @@ def test_csv_loader_rejects_missing_student_id(tmp_path: Path, database):
             load_students_from_csv(db, csv_path)
 
 
+def test_csv_loading_removes_students_missing_from_source(database, tmp_path: Path):
+    csv_path = tmp_path / "students.csv"
+    csv_path.write_text(
+        "student_id,full_name,programme,semester,module_name,exam_date,"
+        "attendance_percentage,exam_1_score,exam_2_score,final_exam_score\n"
+        "S001,Ada,Computing,Semester 1,Algorithms,2026-03-12,90,80,85,88\n",
+        encoding="utf-8",
+    )
+
+    with database() as db:
+        db.add_all([
+            Student(
+                student_id="S001",
+                full_name="Old Ada",
+                programme="Computing",
+                semester="Semester 1",
+                module_name="Algorithms",
+                exam_date=date(2026, 3, 12),
+                attendance_percentage=70,
+                exam_1_score=60,
+                exam_2_score=65,
+                final_exam_score=68,
+            ),
+            Student(
+                student_id="STALE",
+                full_name="Stale Student",
+                programme="Computing",
+                semester="Semester 1",
+                module_name="Algorithms",
+                exam_date=date(2026, 3, 12),
+                attendance_percentage=70,
+                exam_1_score=60,
+                exam_2_score=65,
+                final_exam_score=68,
+            ),
+        ])
+        db.commit()
+        assert load_students_from_csv(db, csv_path) == 1
+        students = db.scalars(select(Student).order_by(Student.student_id)).all()
+
+    assert [student.student_id for student in students] == ["S001"]
+
+
 def test_student_endpoints(database):
     def override_db():
         with database() as db:
