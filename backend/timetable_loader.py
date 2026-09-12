@@ -21,6 +21,13 @@ REQUIRED_COLUMNS = [
 ]
 
 
+def _time_slot_key(time_slot: str) -> str:
+	return " ".join(
+		part.removesuffix(" AM").removesuffix(" PM")
+		for part in time_slot.upper().split(" - ")
+	)
+
+
 def load_timetable_from_csv(
 	db: Session, csv_path: str | Path = "data/timetable.csv"
 ) -> int:
@@ -62,10 +69,9 @@ def load_timetable_from_csv(
 			"room": record["Room"],
 			"duration_hours": float(record["Duration (Hrs)"]),
 		}
-		entry = db.scalar(
+		entries = db.scalars(
 			select(TimetableEntry).where(
 				TimetableEntry.day == values["day"],
-				TimetableEntry.time_slot == values["time_slot"],
 				TimetableEntry.group_name == values["group_name"],
 				TimetableEntry.section_cohort == values["section_cohort"],
 				TimetableEntry.class_type == values["class_type"],
@@ -74,10 +80,23 @@ def load_timetable_from_csv(
 				TimetableEntry.lecturer == values["lecturer"],
 				TimetableEntry.room == values["room"],
 			)
+		).all()
+		matching_entries = [
+			entry
+			for entry in entries
+			if _time_slot_key(entry.time_slot) == _time_slot_key(values["time_slot"])
+		]
+		entry = next(
+			(entry for entry in matching_entries if entry.time_slot == values["time_slot"]),
+			matching_entries[0] if matching_entries else None,
 		)
 		if entry is None:
 			db.add(TimetableEntry(**values))
 		else:
+			for duplicate in matching_entries:
+				if duplicate is not entry:
+					db.delete(duplicate)
+			entry.time_slot = values["time_slot"]
 			entry.duration_hours = values["duration_hours"]
 		loaded += 1
 
