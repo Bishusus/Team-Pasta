@@ -112,5 +112,25 @@ export async function fetchTimetable(filters = {}) {
   return Array.isArray(data) ? data : [];
 }
 
+/** Fetches classroom records from GET /classrooms. */
+export async function fetchClassrooms(filters = {}) {
+  const params = new URLSearchParams();
+  if (filters.blockName) params.set("block_name", filters.blockName);
+  if (filters.roomNumber) params.set("room_number", filters.roomNumber);
+  const query = params.toString();
+  const data = await getJson(`/classrooms${query ? `?${query}` : ""}`);
+  return Array.isArray(data) ? data : [];
+}
+
+/** Fetches classroom record by ID from GET /classrooms/{classroom_id}. */
+export async function fetchClassroomById(classroomId) {
+  if (!classroomId)
+    throw new ApiError("A classroomId is required.", {
+      path: "/classrooms/{classroom_id}",
+    });
+  return getJson(`/classrooms/${encodeURIComponent(classroomId)}`);
+}
+
 // Compatibility alias for existing dashboard consumers of the risk table.
 export const fetchStudents = fetchRiskResults;
+
