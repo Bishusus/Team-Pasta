@@ -11,6 +11,7 @@ from .api import router
 from .classroom_loader import load_classrooms_from_csv
 from .csv_loader import load_students_from_csv
 from .database import SessionLocal, engine, init_db
+from .exam_engine import generate_exam_schedule
 from .timetable_loader import load_timetable_from_csv
 
 
@@ -21,6 +22,7 @@ async def lifespan(_: FastAPI):
 		load_students_from_csv(db)
 		load_timetable_from_csv(db)
 		load_classrooms_from_csv(db)
+		generate_exam_schedule(db)
 	yield
 
 
@@ -36,7 +38,7 @@ app.add_middleware(
 	CORSMiddleware,
 	allow_origins=frontend_origins,
 	allow_credentials=False,
-	allow_methods=["GET"],
+	allow_methods=["GET", "POST"],
 	allow_headers=["*"],
 )
 app.include_router(router)

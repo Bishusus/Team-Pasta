@@ -1,0 +1,63 @@
+from datetime import date
+
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import sessionmaker
+
+from backend.database import Base
+from backend.exam_engine import generate_exam_schedule
+from backend.models import Classroom, ExamSchedule, ExamSeatAssignment, Student, TimetableEntry
+
+
+def test_exam_engine_generates_schedule_and_non_adjacent_seats(tmp_path):
+	engine = create_engine(f"sqlite:///{tmp_path / 'exam.db'}")
+	Base.metadata.create_all(engine)
+	Session = sessionmaker(bind=engine)
+
+	with Session() as db:
+		db.add(Classroom(block_name="London Block", room_number="LT01", capacity=20))
+		db.add(TimetableEntry(
+			day="SUN",
+			time_slot="07:00 AM - 09:00 AM",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			module_code="CS1",
+			module_title="Data Structures and Algorithms",
+			lecturer="Dr. Test Lecturer",
+			room="LT 1",
+			duration_hours=2.0,
+		))
+		for index in range(5):
+			db.add(Student(
+				student_id=f"STU-{index}",
+				full_name=f"Student {index}",
+				programme="Computing",
+				semester="Year 2",
+				module_name="Data Structures and Algorithms",
+				exam_date=date(2026, 3, 12),
+				attendance_percentage=80,
+				exam_1_score=70,
+				exam_2_score=70,
+				final_exam_score=70,
+			))
+		db.commit()
+
+		assert generate_exam_schedule(db) == 1
+		exam = db.scalar(select(ExamSchedule))
+		assignments = db.scalars(select(ExamSeatAssignment)).all()
+
+		assert exam.invigilator == "Dr. Test Lecturer"
+		assert len(assignments) == 5
+		for assignment in assignments:
+			left = db.scalar(select(ExamSeatAssignment).where(
+				ExamSeatAssignment.exam_id == assignment.exam_id,
+				ExamSeatAssignment.room_id == assignment.room_id,
+				ExamSeatAssignment.row == assignment.row,
+				ExamSeatAssignment.column == assignment.column - 1,
+			))
+			assert left is None or left.module_name != assignment.module_name
+
+		assert generate_exam_schedule(db) == 1
+		assert len(db.scalars(select(ExamSchedule)).all()) == 1
+
+	engine.dispose()

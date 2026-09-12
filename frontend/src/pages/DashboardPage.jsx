@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { colors, fonts } from "../theme";
 import SummaryCard from "../components/SummaryCard";
+import { fetchExamSchedule } from "../services/api";
 
 const riskLevels = [
   { key: "HIGH", label: "High risk", tone: "high" },
@@ -41,6 +42,13 @@ export default function DashboardPage({
   onNavigate,
   onSelectStudent,
 }) {
+  const [examSchedule, setExamSchedule] = useState([]);
+  const [examScheduleError, setExamScheduleError] = useState(null);
+
+  useEffect(() => {
+    fetchExamSchedule().then(setExamSchedule).catch((reason) => setExamScheduleError(reason.message));
+  }, []);
+
   const counts = {
     total: summary?.total_students ?? 0,
     high: summary?.high_risk ?? 0,
@@ -95,7 +103,7 @@ export default function DashboardPage({
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 22 }}>
         <SummaryCard label="Total students" value={summaryLoading ? "-" : counts.total} tone="neutral" />
         <SummaryCard label="High-risk students" value={summaryLoading ? "-" : counts.high} tone="high" />
-        <SummaryCard label="Upcoming exams" value={upcomingExams.length} tone="medium" />
+        <SummaryCard label="Upcoming exams" value={examSchedule.length || upcomingExams.length} tone="medium" />
         <SummaryCard label="Academic records" value={healthLoading ? "-" : health?.database === "connected" ? "Connected" : "Unavailable"} tone="low" />
       </div>
 
@@ -119,7 +127,7 @@ export default function DashboardPage({
             <div><h2 style={{ fontSize: 17, color: colors.ink, margin: 0 }}>Upcoming Academic Schedule</h2><p style={{ fontSize: 13, color: colors.textMuted, margin: "4px 0 0" }}>Timetable and exam schedules recorded in the academic system.</p></div>
             <button onClick={() => onNavigate("timetable")} style={actionButton}>Timetable →</button>
           </div>
-          {upcomingExams.length ? upcomingExams.map((exam) => <div key={`${exam.module}-${exam.date}`} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.date)} · Scheduled</span></div>) : <div style={{ padding: "18px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>No upcoming exams available.</div>}
+          {examSchedule.length ? examSchedule.slice(0, 4).map((exam) => <div key={exam.id} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module_name}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.exam_date)} · {exam.start_time}</span></div>) : upcomingExams.length ? upcomingExams.map((exam) => <div key={`${exam.module}-${exam.date}`} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.date)} · Scheduled</span></div>) : <div style={{ padding: "18px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>{examScheduleError || "No upcoming exams available."}</div>}
         </section>
       </div>
 
@@ -133,7 +141,7 @@ export default function DashboardPage({
         <section style={panelStyle}>
           <h2 style={{ fontSize: 17, color: colors.ink, margin: "0 0 4px" }}>Exam Seating Overview</h2>
           <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 14px" }}>A focused workspace for future room and seat allocation.</p>
-          <div style={{ padding: "13px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>Ready for upcoming exam allocation.</div>
+          <div style={{ padding: "13px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>{examSchedule.length ? `${examSchedule.reduce((sum, exam) => sum + exam.student_count, 0)} students assigned across ${examSchedule.length} exams.` : "Generating exam allocation..."}</div>
           <button onClick={() => onNavigate("seating")} style={actionButton}>Open Exam Seating →</button>
         </section>
       </div>
