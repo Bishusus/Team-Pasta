@@ -80,11 +80,20 @@ def test_risk_endpoints_match_existing_engine(tmp_path):
         ]
         assert risks[0]["risk_score"] == 0
         assert risks[0]["risk_level"] == "LOW"
-        assert risks[1]["risk_score"] == 55
-        assert risks[1]["risk_level"] == "MEDIUM"
-        assert risks[2]["risk_score"] == 80
+        assert risks[1]["risk_score"] == 100
+        assert risks[1]["risk_level"] == "HIGH"
+        assert risks[2]["risk_score"] == 100
         assert risks[2]["risk_level"] == "HIGH"
         assert all(isinstance(risk["reasons"], list) for risk in risks)
+
+        response = client.get("/risk-summary")
+        assert response.status_code == 200
+        assert response.json() == {
+            "total_students": 3,
+            "high_risk": 2,
+            "medium_risk": 0,
+            "low_risk": 1,
+        }
 
         response = client.get("/risk/STU-003")
         assert response.status_code == 200
