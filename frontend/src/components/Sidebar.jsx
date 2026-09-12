@@ -1,11 +1,10 @@
 import React from "react";
 import { colors, fonts } from "../theme";
 
-// The four sections of the app. To add a new page, add an entry here
+// The primary sections of the app. To add a new page, add an entry here
 // and a matching case in App.jsx.
 export const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard" },
-  { key: "students", label: "Students" },
   { key: "risk", label: "Risk Analysis" },
   { key: "seating", label: "Exam Seating" },
 ];
@@ -25,10 +24,11 @@ export default function Sidebar({ active, onSelect }) {
     >
       <div style={{ padding: "0 10px 22px", borderBottom: "1px solid #26304F", marginBottom: 14 }}>
         <div style={{ fontFamily: fonts.display, fontSize: 18, color: "#FFFFFF", lineHeight: 1.25 }}>
-          RTE Academic
+          RTE ISLINGTON
           <br />
-          Intelligence
+          COLLEGE
         </div>
+        <div style={{ color: "#8F9AB8", fontSize: 11, letterSpacing: 1, textTransform: "uppercase", marginTop: 10 }}>Academic Intelligence</div>
       </div>
 
       <nav style={{ display: "flex", flexDirection: "column", gap: 2 }}>
