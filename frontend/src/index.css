@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+  background: #f5f6fa;
+  color: #20243a;
+}
+
+/* Responsive: below 900px the sidebar collapses to icon-free horizontal
+   nav at the top instead of taking 220px off the side. Simple and easy
+   to extend — this is the one thing that isn't inline styles because
+   media queries can't be written as inline React style props. */
+@media (max-width: 900px) {
+  aside {
+    width: 100% !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding: 12px !important;
+  }
+  aside nav {
+    flex-direction: row !important;
+  }
+  aside > div:first-child {
+    display: none;
+  }
+  #root > div {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 600px) {
+  table {
+    font-size: 13px;
+  }
+}
