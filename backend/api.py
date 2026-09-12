@@ -3,11 +3,27 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .models import Student
+from .models import Student, TimetableEntry
 from .risk_engine import calculate_risk
 
 
 router = APIRouter()
+
+
+def _timetable_response(entry: TimetableEntry) -> dict:
+	return {
+		"id": entry.id,
+		"day": entry.day,
+		"time_slot": entry.time_slot,
+		"group": entry.group_name,
+		"section_cohort": entry.section_cohort,
+		"class_type": entry.class_type,
+		"module_code": entry.module_code,
+		"module_title": entry.module_title,
+		"lecturer": entry.lecturer,
+		"room": entry.room,
+		"duration_hours": entry.duration_hours,
+	}
 
 
 def _student_response(student: Student) -> dict:
@@ -82,3 +98,35 @@ def get_student_risk(
 	if student is None:
 		raise HTTPException(status_code=404, detail="Student not found")
 	return _risk_response(student)
+
+
+@router.get("/timetable")
+def get_timetable(
+	day: str | None = None,
+	module_code: str | None = None,
+	room: str | None = None,
+	db: Session = Depends(get_db),
+) -> list[dict]:
+	query = select(TimetableEntry).order_by(
+		TimetableEntry.day,
+		TimetableEntry.time_slot,
+		TimetableEntry.room,
+	)
+	if day:
+		query = query.where(TimetableEntry.day == day.strip().upper())
+	if module_code:
+		query = query.where(TimetableEntry.module_code == module_code.strip())
+	if room:
+		query = query.where(TimetableEntry.room == room.strip())
+	entries = db.scalars(query).all()
+	return [_timetable_response(entry) for entry in entries]
+
+
+@router.get("/timetable/{entry_id}")
+def get_timetable_entry(
+	entry_id: int, db: Session = Depends(get_db)
+) -> dict:
+	entry = db.get(TimetableEntry, entry_id)
+	if entry is None:
+		raise HTTPException(status_code=404, detail="Timetable entry not found")
+	return _timetable_response(entry)

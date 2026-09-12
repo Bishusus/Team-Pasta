@@ -1,0 +1,515 @@
+Day,Time Slot,Group,Section / Cohort,Class Type,Module Code,Module Title,Lecturer / Teacher,Room,Duration (Hrs)
+SUN,07:00 AM - 08:30 AM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,LT 1,1.5
+SUN,07:00 AM - 09:00 AM,AI,AI3,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 1,2.0
+SUN,07:00 AM - 09:00 AM,Multimedia,Multimedia1,Workshop,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,SR 10,2.0
+SUN,07:00 AM - 09:00 AM,AI,AI5,Workshop,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,SR 2,2.0
+SUN,07:00 AM - 09:00 AM,AI,AI7,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,SR 3,2.0
+SUN,07:00 AM - 09:00 AM,BBA,BBA8,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 4,2.0
+SUN,07:00 AM - 09:00 AM,BBA,BBA9,Workshop,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,SR 5,2.0
+SUN,07:00 AM - 09:00 AM,Computing,Computing1,Workshop,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,SR 6,2.0
+SUN,07:00 AM - 09:00 AM,Computing,Computing2,Workshop,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,SR 7,2.0
+SUN,07:00 AM - 09:00 AM,Computing,Computing3,Workshop,CS5001NI,Computer Networks and Security,Ms. Srijana Gurung,SR 8,2.0
+SUN,07:00 AM - 09:00 AM,Computing,Computing5,Workshop,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,SR 9,2.0
+SUN,07:00 AM - 09:00 AM,Multimedia,Multimedia2,Workshop,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,TR 1,2.0
+SUN,07:00 AM - 09:00 AM,Multimedia,Multimedia3,Workshop,MM5002NI,Digital Video Post-Production,Ms. Anuja Maharjan,TR 2,2.0
+SUN,07:00 AM - 09:00 AM,Multimedia,Multimedia4,Workshop,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,TR 3,2.0
+SUN,07:00 AM - 09:00 AM,Multimedia,Multimedia5,Workshop,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,TR 4,2.0
+SUN,07:00 AM - 08:00 AM,AI,AI1,Tutorial,CC5051NI,Databases,Mr. Pradeep Pokharel,TR 5,1.0
+SUN,07:00 AM - 08:00 AM,AI,AI6,Tutorial,CC5051NI,Databases,Ms. Sunita Gautam,TR 6,1.0
+SUN,07:00 AM - 08:00 AM,BBA,BBA6,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,TR 7,1.0
+SUN,08:00 AM - 09:00 AM,AI,AI10,Tutorial,CC5051NI,Databases,Ms. Sunita Gautam,TR 5,1.0
+SUN,08:00 AM - 09:00 AM,AI,AI2,Tutorial,CC5051NI,Databases,Mr. Pradeep Pokharel,TR 6,1.0
+SUN,08:00 AM - 09:00 AM,AI,AI4,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 7,1.0
+SUN,08:00 AM - 09:00 AM,AI,AI9,Tutorial,CC5051NI,Databases,Ms. Kiran Chand,TR 8,1.0
+SUN,09:00 AM - 11:00 AM,AI,AI1,Workshop,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,SR 1,2.0
+SUN,09:00 AM - 11:00 AM,AI,AI2,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 2,2.0
+SUN,09:00 AM - 11:00 AM,AI,AI4,Workshop,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,SR 3,2.0
+SUN,09:00 AM - 11:00 AM,BBA,BBA1,Workshop,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,SR 4,2.0
+SUN,09:00 AM - 11:00 AM,BBA,BBA3,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 5,2.0
+SUN,09:00 AM - 11:00 AM,BBA,BBA4,Workshop,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,SR 6,2.0
+SUN,09:00 AM - 11:00 AM,BBA,BBA6,Workshop,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,SR 7,2.0
+SUN,09:00 AM - 10:00 AM,AI,AI8,Tutorial,CC5051NI,Databases,Mr. Pradeep Pokharel,TR 1,1.0
+SUN,09:00 AM - 10:00 AM,Computing,Computing3,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 2,1.0
+SUN,09:00 AM - 10:00 AM,Computing,Computing4,Tutorial,CS5001NI,Computer Networks and Security,Ms. Srijana Gurung,TR 3,1.0
+SUN,09:00 AM - 10:00 AM,Multimedia,Multimedia2,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 4,1.0
+SUN,09:00 AM - 10:00 AM,Multimedia,Multimedia3,Tutorial,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,TR 5,1.0
+SUN,09:00 AM - 10:00 AM,Multimedia,Multimedia5,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,TR 6,1.0
+SUN,10:00 AM - 11:30 AM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CS5002NI,Software Engineering,Mr. Sanjeep Lama,LT 1,1.5
+SUN,10:00 AM - 11:30 AM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,LT 2,1.5
+SUN,10:00 AM - 11:30 AM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,LT 3,1.5
+SUN,10:00 AM - 11:00 AM,AI,AI3,Tutorial,CC5051NI,Databases,Ms. Kiran Chand,TR 1,1.0
+SUN,11:00 AM - 01:00 PM,BBA,BBA2,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 1,2.0
+SUN,11:00 AM - 01:00 PM,Computing,Computing4,Workshop,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,SR 2,2.0
+SUN,11:00 AM - 12:00 PM,BBA,BBA7,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 1,1.0
+SUN,11:30 AM - 01:00 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,LT 1,1.5
+SUN,12:00 PM - 01:00 PM,AI,AI7,Tutorial,CC5051NI,Databases,Mr. Pradeep Pokharel,TR 1,1.0
+SUN,12:00 PM - 01:00 PM,BBA,BBA1,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 2,1.0
+SUN,12:00 PM - 01:00 PM,BBA,BBA5,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 3,1.0
+SUN,12:00 PM - 01:00 PM,BBA,BBA8,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,TR 4,1.0
+SUN,12:00 PM - 01:00 PM,Multimedia,Multimedia1,Tutorial,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,TR 5,1.0
+SUN,12:00 PM - 01:00 PM,Multimedia,Multimedia2,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,TR 6,1.0
+SUN,12:00 PM - 01:00 PM,Multimedia,Multimedia4,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 7,1.0
+SUN,12:00 PM - 01:00 PM,Multimedia,Multimedia5,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 8,1.0
+SUN,01:00 PM - 02:30 PM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,MA5054NI,Further Calculus,Dr. Anup Karki,LT 1,1.5
+SUN,01:00 PM - 03:00 PM,BBA,BBA5,Workshop,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,SR 1,2.0
+SUN,01:00 PM - 03:00 PM,BBA,BBA7,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 2,2.0
+SUN,01:00 PM - 03:00 PM,Computing,Computing6,Workshop,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,SR 3,2.0
+SUN,01:00 PM - 03:00 PM,Computing,Computing8,Workshop,CS5001NI,Computer Networks and Security,Ms. Srijana Gurung,SR 4,2.0
+SUN,01:00 PM - 02:00 PM,BBA,BBA3,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 1,1.0
+SUN,01:00 PM - 02:00 PM,BBA,BBA9,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 2,1.0
+SUN,01:00 PM - 02:00 PM,Computing,Computing2,Tutorial,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,TR 3,1.0
+SUN,01:00 PM - 02:00 PM,Computing,Computing5,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 4,1.0
+SUN,02:00 PM - 03:00 PM,BBA,BBA4,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 1,1.0
+SUN,02:00 PM - 03:00 PM,Computing,Computing1,Tutorial,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,TR 2,1.0
+SUN,02:00 PM - 03:00 PM,Computing,Computing7,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 3,1.0
+SUN,02:30 PM - 04:00 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,MA5054NI,Further Calculus,Mr. Bikash Thapa,LT 1,1.5
+SUN,02:30 PM - 04:00 PM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5001NI,2D & 3D Animation Systems,Ms. Dikshya Shakya,LT 2,1.5
+SUN,03:00 PM - 05:00 PM,AI,AI10,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 1,2.0
+SUN,03:00 PM - 05:00 PM,AI,AI6,Workshop,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,SR 2,2.0
+SUN,03:00 PM - 05:00 PM,AI,AI8,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,SR 3,2.0
+SUN,03:00 PM - 05:00 PM,AI,AI9,Workshop,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,SR 4,2.0
+SUN,03:00 PM - 05:00 PM,Computing,Computing7,Workshop,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,SR 5,2.0
+SUN,03:00 PM - 04:00 PM,BBA,BBA2,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 1,1.0
+SUN,03:00 PM - 04:00 PM,Computing,Computing6,Tutorial,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,TR 2,1.0
+SUN,03:30 PM - 05:00 PM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,LT 3,1.5
+SUN,03:30 PM - 05:00 PM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,LT 4,1.5
+SUN,04:00 PM - 05:00 PM,AI,AI5,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 1,1.0
+SUN,04:00 PM - 05:00 PM,Computing,Computing8,Tutorial,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,TR 2,1.0
+SUN,04:00 PM - 05:00 PM,Multimedia,Multimedia1,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 3,1.0
+SUN,04:00 PM - 05:00 PM,Multimedia,Multimedia3,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,TR 4,1.0
+SUN,04:00 PM - 05:00 PM,Multimedia,Multimedia4,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 5,1.0
+MON,07:00 AM - 08:30 AM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,MA5054NI,Further Calculus,Ms. Reena Shrestha,LT 1,1.5
+MON,07:00 AM - 09:00 AM,AI,AI1,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,SR 1,2.0
+MON,07:00 AM - 09:00 AM,Multimedia,Multimedia3,Workshop,MM5005NI,Interactive Web Media Development,Ms. Sabina Dangol,SR 10,2.0
+MON,07:00 AM - 09:00 AM,AI,AI2,Workshop,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,SR 2,2.0
+MON,07:00 AM - 09:00 AM,AI,AI3,Workshop,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,SR 3,2.0
+MON,07:00 AM - 09:00 AM,AI,AI4,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 4,2.0
+MON,07:00 AM - 09:00 AM,AI,AI5,Workshop,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,SR 5,2.0
+MON,07:00 AM - 09:00 AM,Computing,Computing6,Workshop,CS5001NI,Computer Networks and Security,Ms. Srijana Gurung,SR 6,2.0
+MON,07:00 AM - 09:00 AM,Computing,Computing8,Workshop,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,SR 7,2.0
+MON,07:00 AM - 09:00 AM,Multimedia,Multimedia1,Workshop,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,SR 8,2.0
+MON,07:00 AM - 09:00 AM,Multimedia,Multimedia2,Workshop,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,SR 9,2.0
+MON,07:00 AM - 09:00 AM,Multimedia,Multimedia4,Workshop,MM5002NI,Digital Video Post-Production,Ms. Anuja Maharjan,TR 1,2.0
+MON,07:00 AM - 09:00 AM,Multimedia,Multimedia5,Workshop,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 2,2.0
+MON,07:00 AM - 08:00 AM,BBA,BBA2,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 3,1.0
+MON,07:00 AM - 08:00 AM,BBA,BBA3,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 4,1.0
+MON,07:00 AM - 08:00 AM,BBA,BBA7,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,TR 5,1.0
+MON,07:00 AM - 08:00 AM,Computing,Computing5,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 6,1.0
+MON,08:00 AM - 09:00 AM,Computing,Computing7,Tutorial,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,TR 3,1.0
+MON,08:30 AM - 10:00 AM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,LT 1,1.5
+MON,08:30 AM - 10:00 AM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,LT 2,1.5
+MON,08:30 AM - 10:00 AM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,LT 3,1.5
+MON,09:00 AM - 11:00 AM,AI,AI6,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,SR 1,2.0
+MON,09:00 AM - 11:00 AM,AI,AI7,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 2,2.0
+MON,09:00 AM - 11:00 AM,Computing,Computing5,Workshop,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,SR 3,2.0
+MON,09:00 AM - 10:00 AM,AI,AI9,Tutorial,CC5051NI,Databases,Ms. Sunita Gautam,TR 1,1.0
+MON,10:00 AM - 11:30 AM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CS5002NI,Software Engineering,Mr. Sanjeep Lama,LT 1,1.5
+MON,10:00 AM - 11:30 AM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,LT 2,1.5
+MON,10:00 AM - 11:00 AM,AI,AI10,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 1,1.0
+MON,10:00 AM - 11:00 AM,AI,AI8,Tutorial,CC5051NI,Databases,Ms. Kiran Chand,TR 2,1.0
+MON,10:00 AM - 11:00 AM,BBA,BBA6,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 3,1.0
+MON,10:00 AM - 11:00 AM,Computing,Computing8,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 4,1.0
+MON,11:00 AM - 01:00 PM,BBA,BBA1,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 1,2.0
+MON,11:00 AM - 01:00 PM,BBA,BBA4,Workshop,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,SR 2,2.0
+MON,11:00 AM - 01:00 PM,BBA,BBA6,Workshop,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,SR 3,2.0
+MON,11:00 AM - 01:00 PM,Computing,Computing3,Workshop,CS5001NI,Computer Networks and Security,Ms. Srijana Gurung,SR 4,2.0
+MON,11:00 AM - 01:00 PM,Computing,Computing7,Workshop,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,SR 5,2.0
+MON,11:00 AM - 12:00 PM,AI,AI6,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 1,1.0
+MON,11:00 AM - 12:00 PM,BBA,BBA5,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 2,1.0
+MON,11:00 AM - 12:00 PM,Computing,Computing1,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 3,1.0
+MON,11:00 AM - 12:00 PM,Computing,Computing4,Tutorial,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,TR 4,1.0
+MON,11:30 AM - 01:00 PM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,LT 1,1.5
+MON,12:00 PM - 01:00 PM,AI,AI2,Tutorial,CC5051NI,Databases,Ms. Kiran Chand,TR 1,1.0
+MON,12:00 PM - 01:00 PM,AI,AI3,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 2,1.0
+MON,12:00 PM - 01:00 PM,AI,AI7,Tutorial,CC5051NI,Databases,Ms. Sunita Gautam,TR 3,1.0
+MON,12:00 PM - 01:00 PM,BBA,BBA9,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 4,1.0
+MON,12:00 PM - 01:00 PM,Computing,Computing6,Tutorial,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,TR 5,1.0
+MON,01:00 PM - 02:30 PM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,LT 1,1.5
+MON,01:00 PM - 02:30 PM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,LT 2,1.5
+MON,01:00 PM - 03:00 PM,BBA,BBA3,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 1,2.0
+MON,01:00 PM - 03:00 PM,BBA,BBA7,Workshop,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,SR 2,2.0
+MON,01:00 PM - 03:00 PM,BBA,BBA8,Workshop,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,SR 3,2.0
+MON,01:00 PM - 03:00 PM,BBA,BBA9,Workshop,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,SR 4,2.0
+MON,01:00 PM - 03:00 PM,Computing,Computing1,Workshop,CS5001NI,Computer Networks and Security,Dr. Niraj Shrestha,SR 5,2.0
+MON,01:00 PM - 03:00 PM,Computing,Computing2,Workshop,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,SR 6,2.0
+MON,01:00 PM - 03:00 PM,Multimedia,Multimedia2,Workshop,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,SR 7,2.0
+MON,01:00 PM - 03:00 PM,Multimedia,Multimedia4,Workshop,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,SR 8,2.0
+MON,01:00 PM - 02:00 PM,AI,AI1,Tutorial,CC5051NI,Databases,Mr. Pradeep Pokharel,TR 1,1.0
+MON,01:00 PM - 02:00 PM,Multimedia,Multimedia1,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 2,1.0
+MON,01:00 PM - 02:00 PM,Multimedia,Multimedia3,Tutorial,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,TR 3,1.0
+MON,02:00 PM - 03:00 PM,Multimedia,Multimedia5,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 1,1.0
+MON,02:30 PM - 04:00 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,MA5054NI,Further Calculus,Mr. Bikash Thapa,LT 1,1.5
+MON,03:00 PM - 05:00 PM,AI,AI10,Workshop,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,SR 1,2.0
+MON,03:00 PM - 05:00 PM,AI,AI8,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,SR 2,2.0
+MON,03:00 PM - 05:00 PM,AI,AI9,Workshop,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,SR 3,2.0
+MON,03:00 PM - 05:00 PM,BBA,BBA2,Workshop,BB5001NI,Financial Accounting & Management,Ms. Binita Thapa,SR 4,2.0
+MON,03:00 PM - 05:00 PM,BBA,BBA5,Workshop,BB5001NI,Financial Accounting & Management,Mr. Suman Silwal,SR 5,2.0
+MON,03:00 PM - 05:00 PM,Computing,Computing4,Workshop,CS5001NI,Computer Networks and Security,Mr. Ramesh Karki,SR 6,2.0
+MON,03:00 PM - 05:00 PM,Multimedia,Multimedia1,Workshop,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,SR 7,2.0
+MON,03:00 PM - 05:00 PM,Multimedia,Multimedia3,Workshop,MM5002NI,Digital Video Post-Production,Ms. Anuja Maharjan,SR 8,2.0
+MON,03:00 PM - 05:00 PM,Multimedia,Multimedia5,Workshop,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,SR 9,2.0
+MON,03:00 PM - 04:00 PM,BBA,BBA8,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 1,1.0
+MON,03:00 PM - 04:00 PM,Computing,Computing3,Tutorial,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,TR 2,1.0
+MON,03:00 PM - 04:00 PM,Multimedia,Multimedia4,Tutorial,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,TR 3,1.0
+MON,04:00 PM - 05:00 PM,AI,AI4,Tutorial,CC5051NI,Databases,Ms. Kiran Chand,TR 1,1.0
+MON,04:00 PM - 05:00 PM,AI,AI5,Tutorial,CC5051NI,Databases,Ms. Astha Sharma,TR 2,1.0
+MON,04:00 PM - 05:00 PM,BBA,BBA1,Tutorial,BB5001NI,Financial Accounting & Management,Mr. Harihar Prasai,TR 3,1.0
+MON,04:00 PM - 05:00 PM,BBA,BBA4,Tutorial,BB5001NI,Financial Accounting & Management,Ms. Kalpana Karki,TR 4,1.0
+MON,04:00 PM - 05:00 PM,Computing,Computing2,Tutorial,CS5001NI,Computer Networks and Security,Mr. Dipesh Regmi,TR 5,1.0
+MON,04:00 PM - 05:00 PM,Multimedia,Multimedia2,Tutorial,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 6,1.0
+TUE,07:00 AM - 09:00 AM,AI,AI10,Workshop,CS5002NI,Software Engineering,Ms. Smriti Bista,SR 1,2.0
+TUE,07:00 AM - 09:00 AM,AI,AI7,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 2,2.0
+TUE,07:00 AM - 09:00 AM,AI,AI9,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 3,2.0
+TUE,07:00 AM - 09:00 AM,BBA,BBA2,Workshop,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,SR 4,2.0
+TUE,07:00 AM - 09:00 AM,Computing,Computing4,Workshop,CS5004NI,Web Application Development,Ms. Shristi Pant,SR 5,2.0
+TUE,07:00 AM - 09:00 AM,Multimedia,Multimedia2,Workshop,MM5005NI,Interactive Web Media Development,Ms. Sabina Dangol,SR 6,2.0
+TUE,07:00 AM - 09:00 AM,Multimedia,Multimedia3,Workshop,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,SR 7,2.0
+TUE,07:00 AM - 09:00 AM,Multimedia,Multimedia4,Workshop,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,SR 8,2.0
+TUE,07:00 AM - 09:00 AM,Multimedia,Multimedia5,Workshop,MM5002NI,Digital Video Post-Production,Ms. Anuja Maharjan,SR 9,2.0
+TUE,07:00 AM - 08:00 AM,AI,AI1,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 1,1.0
+TUE,07:00 AM - 08:00 AM,AI,AI3,Tutorial,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,TR 2,1.0
+TUE,07:00 AM - 08:00 AM,BBA,BBA4,Tutorial,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 3,1.0
+TUE,07:00 AM - 08:00 AM,BBA,BBA5,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 4,1.0
+TUE,07:00 AM - 08:00 AM,BBA,BBA6,Tutorial,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,TR 5,1.0
+TUE,07:00 AM - 08:00 AM,Computing,Computing6,Tutorial,CS5004NI,Web Application Development,Mr. Anil Mahato,TR 6,1.0
+TUE,08:00 AM - 09:00 AM,AI,AI8,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 1,1.0
+TUE,08:00 AM - 09:00 AM,BBA,BBA1,Tutorial,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 2,1.0
+TUE,08:00 AM - 09:00 AM,Computing,Computing2,Tutorial,CS5004NI,Web Application Development,Mr. Prakash Neupane,TR 3,1.0
+TUE,08:00 AM - 09:00 AM,Computing,Computing5,Tutorial,CS5004NI,Web Application Development,Ms. Babita Khadka,TR 4,1.0
+TUE,08:00 AM - 09:00 AM,Computing,Computing7,Tutorial,CS5004NI,Web Application Development,Mr. Anil Mahato,TR 5,1.0
+TUE,08:30 AM - 10:00 AM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CC5051NI,Databases,Ms. Kiran Chand,LT 1,1.5
+TUE,08:30 AM - 10:00 AM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,LT 2,1.5
+TUE,09:00 AM - 11:00 AM,BBA,BBA5,Workshop,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,SR 1,2.0
+TUE,09:00 AM - 11:00 AM,Computing,Computing3,Workshop,CS5004NI,Web Application Development,Mr. Prakash Neupane,SR 2,2.0
+TUE,09:00 AM - 11:00 AM,Computing,Computing5,Workshop,CS5004NI,Web Application Development,Ms. Babita Khadka,SR 3,2.0
+TUE,09:00 AM - 11:00 AM,Computing,Computing7,Workshop,CS5004NI,Web Application Development,Mr. Anil Mahato,SR 4,2.0
+TUE,09:00 AM - 11:00 AM,Multimedia,Multimedia1,Workshop,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,SR 5,2.0
+TUE,09:00 AM - 11:00 AM,Multimedia,Multimedia2,Workshop,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,SR 6,2.0
+TUE,09:00 AM - 11:00 AM,Multimedia,Multimedia4,Workshop,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,SR 7,2.0
+TUE,09:00 AM - 10:00 AM,AI,AI7,Tutorial,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,TR 1,1.0
+TUE,09:00 AM - 10:00 AM,Multimedia,Multimedia5,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Upendra Joshi,TR 2,1.0
+TUE,10:00 AM - 11:30 AM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CC5051NI,Databases,Mr. Pradeep Pokharel,LT 1,1.5
+TUE,10:00 AM - 11:00 AM,AI,AI4,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 1,1.0
+TUE,10:00 AM - 11:00 AM,BBA,BBA3,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 2,1.0
+TUE,11:00 AM - 01:00 PM,AI,AI1,Workshop,MA5054NI,Further Calculus,Dr. Anup Karki,SR 1,2.0
+TUE,11:00 AM - 01:00 PM,Multimedia,Multimedia1,Workshop,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,SR 10,2.0
+TUE,11:00 AM - 01:00 PM,AI,AI2,Workshop,MA5054NI,Further Calculus,Ms. Reena Shrestha,SR 2,2.0
+TUE,11:00 AM - 01:00 PM,AI,AI3,Workshop,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,SR 3,2.0
+TUE,11:00 AM - 01:00 PM,AI,AI4,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 4,2.0
+TUE,11:00 AM - 01:00 PM,AI,AI5,Workshop,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,SR 5,2.0
+TUE,11:00 AM - 01:00 PM,BBA,BBA3,Workshop,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,SR 6,2.0
+TUE,11:00 AM - 01:00 PM,BBA,BBA8,Workshop,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,SR 7,2.0
+TUE,11:00 AM - 01:00 PM,BBA,BBA9,Workshop,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,SR 8,2.0
+TUE,11:00 AM - 01:00 PM,Computing,Computing2,Workshop,CS5004NI,Web Application Development,Mr. Prakash Neupane,SR 9,2.0
+TUE,11:00 AM - 01:00 PM,Multimedia,Multimedia3,Workshop,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,TR 1,2.0
+TUE,11:00 AM - 01:00 PM,Multimedia,Multimedia5,Workshop,MM5005NI,Interactive Web Media Development,Ms. Sabina Dangol,TR 2,2.0
+TUE,11:30 AM - 01:00 PM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5004NI,Web Application Development,Ms. Babita Khadka,LT 1,1.5
+TUE,12:00 PM - 01:00 PM,AI,AI6,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 3,1.0
+TUE,12:00 PM - 01:00 PM,BBA,BBA2,Tutorial,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 4,1.0
+TUE,12:00 PM - 01:00 PM,Computing,Computing1,Tutorial,CS5004NI,Web Application Development,Mr. Anil Mahato,TR 5,1.0
+TUE,12:00 PM - 01:00 PM,Computing,Computing4,Tutorial,CS5004NI,Web Application Development,Ms. Shristi Pant,TR 6,1.0
+TUE,12:00 PM - 01:00 PM,Multimedia,Multimedia2,Tutorial,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,TR 7,1.0
+TUE,12:00 PM - 01:00 PM,Multimedia,Multimedia4,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,TR 8,1.0
+TUE,01:00 PM - 02:30 PM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,LT 1,1.5
+TUE,01:00 PM - 02:30 PM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,LT 2,1.5
+TUE,01:00 PM - 03:00 PM,AI,AI10,Workshop,MA5054NI,Further Calculus,Ms. Reena Shrestha,SR 1,2.0
+TUE,01:00 PM - 03:00 PM,AI,AI4,Workshop,MA5054NI,Further Calculus,Dr. Anup Karki,SR 2,2.0
+TUE,01:00 PM - 03:00 PM,AI,AI6,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 3,2.0
+TUE,01:00 PM - 03:00 PM,AI,AI8,Workshop,MA5054NI,Further Calculus,Mr. Bikash Thapa,SR 4,2.0
+TUE,01:00 PM - 03:00 PM,Computing,Computing1,Workshop,CS5004NI,Web Application Development,Ms. Babita Khadka,SR 5,2.0
+TUE,01:00 PM - 03:00 PM,Computing,Computing8,Workshop,CS5004NI,Web Application Development,Mr. Anil Mahato,SR 6,2.0
+TUE,01:00 PM - 02:00 PM,AI,AI9,Tutorial,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,TR 1,1.0
+TUE,01:00 PM - 02:00 PM,Computing,Computing3,Tutorial,CS5004NI,Web Application Development,Ms. Shristi Pant,TR 2,1.0
+TUE,02:00 PM - 03:00 PM,AI,AI2,Tutorial,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,TR 1,1.0
+TUE,02:00 PM - 03:00 PM,AI,AI5,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 2,1.0
+TUE,02:00 PM - 03:00 PM,BBA,BBA7,Tutorial,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 3,1.0
+TUE,02:00 PM - 03:00 PM,BBA,BBA8,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 4,1.0
+TUE,02:00 PM - 03:00 PM,BBA,BBA9,Tutorial,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,TR 5,1.0
+TUE,02:30 PM - 04:00 PM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,LT 1,1.5
+TUE,03:00 PM - 05:00 PM,AI,AI1,Workshop,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,SR 1,2.0
+TUE,03:00 PM - 05:00 PM,BBA,BBA4,Workshop,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,SR 10,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI2,Workshop,CS5002NI,Software Engineering,Mr. Rajiv Devkota,SR 2,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI3,Workshop,MA5054NI,Further Calculus,Dr. Anup Karki,SR 3,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI5,Workshop,MA5054NI,Further Calculus,Ms. Reena Shrestha,SR 4,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI6,Workshop,MA5054NI,Further Calculus,Mr. Bikash Thapa,SR 5,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI7,Workshop,CS5002NI,Software Engineering,Ms. Smriti Bista,SR 6,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI8,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 7,2.0
+TUE,03:00 PM - 05:00 PM,AI,AI9,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 8,2.0
+TUE,03:00 PM - 05:00 PM,BBA,BBA1,Workshop,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,SR 9,2.0
+TUE,03:00 PM - 05:00 PM,BBA,BBA6,Workshop,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 1,2.0
+TUE,03:00 PM - 05:00 PM,BBA,BBA7,Workshop,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 2,2.0
+TUE,03:00 PM - 05:00 PM,Computing,Computing6,Workshop,CS5004NI,Web Application Development,Mr. Prakash Neupane,TR 3,2.0
+TUE,03:00 PM - 04:00 PM,AI,AI10,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 4,1.0
+TUE,03:30 PM - 05:00 PM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5004NI,Web Application Development,Ms. Babita Khadka,LT 2,1.5
+TUE,04:00 PM - 05:00 PM,Computing,Computing8,Tutorial,CS5004NI,Web Application Development,Ms. Shristi Pant,TR 4,1.0
+TUE,04:00 PM - 05:00 PM,Multimedia,Multimedia1,Tutorial,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,TR 5,1.0
+TUE,04:00 PM - 05:00 PM,Multimedia,Multimedia3,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,TR 6,1.0
+WED,07:00 AM - 08:30 AM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CC5051NI,Databases,Ms. Astha Sharma,LT 1,1.5
+WED,07:00 AM - 08:30 AM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,LT 2,1.5
+WED,07:00 AM - 09:00 AM,AI,AI2,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 1,2.0
+WED,07:00 AM - 09:00 AM,AI,AI4,Workshop,CS5002NI,Software Engineering,Ms. Smriti Bista,SR 2,2.0
+WED,07:00 AM - 09:00 AM,BBA,BBA1,Workshop,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,SR 3,2.0
+WED,07:00 AM - 09:00 AM,BBA,BBA4,Workshop,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,SR 4,2.0
+WED,07:00 AM - 09:00 AM,Computing,Computing6,Workshop,CS5004NI,Web Application Development,Mr. Prakash Neupane,SR 5,2.0
+WED,07:00 AM - 08:00 AM,BBA,BBA8,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 1,1.0
+WED,08:00 AM - 09:00 AM,AI,AI1,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 1,1.0
+WED,08:00 AM - 09:00 AM,BBA,BBA3,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 2,1.0
+WED,08:00 AM - 09:00 AM,BBA,BBA7,Tutorial,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,TR 3,1.0
+WED,08:00 AM - 09:00 AM,Computing,Computing2,Tutorial,CS5004NI,Web Application Development,Mr. Anil Mahato,TR 4,1.0
+WED,08:00 AM - 09:00 AM,Computing,Computing7,Tutorial,CS5004NI,Web Application Development,Ms. Shristi Pant,TR 5,1.0
+WED,08:30 AM - 10:00 AM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,LT 1,1.5
+WED,09:00 AM - 11:00 AM,AI,AI1,Workshop,CS5002NI,Software Engineering,Ms. Smriti Bista,SR 1,2.0
+WED,09:00 AM - 11:00 AM,AI,AI10,Workshop,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,SR 2,2.0
+WED,09:00 AM - 11:00 AM,AI,AI2,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 3,2.0
+WED,09:00 AM - 11:00 AM,AI,AI3,Workshop,CS5002NI,Software Engineering,Mr. Rajiv Devkota,SR 4,2.0
+WED,09:00 AM - 11:00 AM,AI,AI4,Workshop,MA5054NI,Further Calculus,Mr. Bikash Thapa,SR 5,2.0
+WED,09:00 AM - 11:00 AM,AI,AI5,Workshop,CS5002NI,Software Engineering,Mr. Sanjeep Lama,SR 6,2.0
+WED,09:00 AM - 11:00 AM,Computing,Computing4,Workshop,CS5004NI,Web Application Development,Ms. Shristi Pant,SR 7,2.0
+WED,09:00 AM - 10:00 AM,BBA,BBA9,Tutorial,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,TR 1,1.0
+WED,09:00 AM - 10:00 AM,Computing,Computing1,Tutorial,CS5004NI,Web Application Development,Ms. Babita Khadka,TR 2,1.0
+WED,09:00 AM - 10:00 AM,Computing,Computing8,Tutorial,CS5004NI,Web Application Development,Mr. Prakash Neupane,TR 3,1.0
+WED,10:00 AM - 11:30 AM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,LT 1,1.5
+WED,10:00 AM - 11:00 AM,BBA,BBA6,Tutorial,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,TR 1,1.0
+WED,10:00 AM - 11:00 AM,Computing,Computing3,Tutorial,CS5004NI,Web Application Development,Ms. Babita Khadka,TR 2,1.0
+WED,10:00 AM - 11:00 AM,Multimedia,Multimedia4,Tutorial,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,TR 3,1.0
+WED,10:00 AM - 11:00 AM,Multimedia,Multimedia5,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 4,1.0
+WED,11:00 AM - 01:00 PM,AI,AI6,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 1,2.0
+WED,11:00 AM - 01:00 PM,AI,AI7,Workshop,CS5002NI,Software Engineering,Ms. Smriti Bista,SR 2,2.0
+WED,11:00 AM - 01:00 PM,AI,AI8,Workshop,MA5054NI,Further Calculus,Ms. Reena Shrestha,SR 3,2.0
+WED,11:00 AM - 01:00 PM,Computing,Computing1,Workshop,CS5004NI,Web Application Development,Ms. Shristi Pant,SR 4,2.0
+WED,11:00 AM - 01:00 PM,Computing,Computing2,Workshop,CS5004NI,Web Application Development,Ms. Babita Khadka,SR 5,2.0
+WED,11:00 AM - 01:00 PM,Computing,Computing3,Workshop,CS5004NI,Web Application Development,Mr. Anil Mahato,SR 6,2.0
+WED,11:00 AM - 01:00 PM,Computing,Computing5,Workshop,CS5004NI,Web Application Development,Mr. Prakash Neupane,SR 7,2.0
+WED,11:00 AM - 12:00 PM,AI,AI10,Tutorial,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,TR 1,1.0
+WED,11:00 AM - 12:00 PM,AI,AI9,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 2,1.0
+WED,11:00 AM - 12:00 PM,Multimedia,Multimedia1,Tutorial,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,TR 3,1.0
+WED,11:00 AM - 12:00 PM,Multimedia,Multimedia2,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,TR 4,1.0
+WED,11:00 AM - 12:00 PM,Multimedia,Multimedia3,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Upendra Joshi,TR 5,1.0
+WED,11:30 AM - 01:00 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CC5051NI,Databases,Ms. Kiran Chand,LT 1,1.5
+WED,11:30 AM - 01:00 PM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,LT 2,1.5
+WED,12:00 PM - 01:00 PM,BBA,BBA2,Tutorial,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,TR 1,1.0
+WED,12:00 PM - 01:00 PM,BBA,BBA4,Tutorial,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,TR 2,1.0
+WED,12:00 PM - 01:00 PM,BBA,BBA5,Tutorial,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,TR 3,1.0
+WED,12:00 PM - 01:00 PM,Multimedia,Multimedia3,Tutorial,MM5001NI,2D & 3D Animation Systems,Ms. Dikshya Shakya,TR 4,1.0
+WED,12:00 PM - 01:00 PM,Multimedia,Multimedia4,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 5,1.0
+WED,01:00 PM - 03:00 PM,AI,AI1,Workshop,MA5054NI,Further Calculus,Mr. Bikash Thapa,SR 1,2.0
+WED,01:00 PM - 03:00 PM,Computing,Computing8,Workshop,CS5004NI,Web Application Development,Mr. Anil Mahato,SR 10,2.0
+WED,01:00 PM - 03:00 PM,AI,AI10,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 2,2.0
+WED,01:00 PM - 03:00 PM,AI,AI6,Workshop,CS5002NI,Software Engineering,Mr. Rajiv Devkota,SR 3,2.0
+WED,01:00 PM - 03:00 PM,AI,AI9,Workshop,MA5054NI,Further Calculus,Ms. Reena Shrestha,SR 4,2.0
+WED,01:00 PM - 03:00 PM,BBA,BBA2,Workshop,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,SR 5,2.0
+WED,01:00 PM - 03:00 PM,BBA,BBA3,Workshop,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,SR 6,2.0
+WED,01:00 PM - 03:00 PM,BBA,BBA7,Workshop,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,SR 7,2.0
+WED,01:00 PM - 03:00 PM,BBA,BBA9,Workshop,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,SR 8,2.0
+WED,01:00 PM - 03:00 PM,Computing,Computing7,Workshop,CS5004NI,Web Application Development,Ms. Shristi Pant,SR 9,2.0
+WED,01:00 PM - 03:00 PM,Multimedia,Multimedia1,Workshop,MM5003NI,User Experience & Interface Design,Mr. Manish Tuladhar,TR 1,2.0
+WED,01:00 PM - 03:00 PM,Multimedia,Multimedia2,Workshop,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,TR 2,2.0
+WED,01:00 PM - 03:00 PM,Multimedia,Multimedia3,Workshop,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,TR 3,2.0
+WED,01:00 PM - 02:00 PM,AI,AI7,Tutorial,CS5003NI,Data Structure and Specialist Programming,Dr. Milan Sharma,TR 4,1.0
+WED,01:00 PM - 02:00 PM,Computing,Computing5,Tutorial,CS5004NI,Web Application Development,Mr. Prakash Neupane,TR 5,1.0
+WED,01:00 PM - 02:00 PM,Computing,Computing6,Tutorial,CS5004NI,Web Application Development,Ms. Babita Khadka,TR 6,1.0
+WED,01:00 PM - 02:00 PM,Multimedia,Multimedia5,Tutorial,MM5004NI,Graphic Design & Visual Identity,Mr. Upendra Joshi,TR 7,1.0
+WED,02:00 PM - 03:00 PM,AI,AI3,Tutorial,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,TR 4,1.0
+WED,02:00 PM - 03:00 PM,AI,AI5,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 5,1.0
+WED,02:00 PM - 03:00 PM,AI,AI8,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 6,1.0
+WED,02:30 PM - 04:00 PM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5004NI,Web Application Development,Mr. Prakash Neupane,LT 1,1.5
+WED,03:00 PM - 05:00 PM,AI,AI3,Workshop,MA5054NI,Further Calculus,Mr. Nadil Paudel,SR 1,2.0
+WED,03:00 PM - 05:00 PM,Multimedia,Multimedia5,Workshop,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,SR 10,2.0
+WED,03:00 PM - 05:00 PM,AI,AI5,Workshop,MA5054NI,Further Calculus,Mr. Bikash Thapa,SR 2,2.0
+WED,03:00 PM - 05:00 PM,AI,AI7,Workshop,MA5054NI,Further Calculus,Dr. Anup Karki,SR 3,2.0
+WED,03:00 PM - 05:00 PM,AI,AI8,Workshop,CS5002NI,Software Engineering,Mr. Rajiv Devkota,SR 4,2.0
+WED,03:00 PM - 05:00 PM,AI,AI9,Workshop,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,SR 5,2.0
+WED,03:00 PM - 05:00 PM,BBA,BBA5,Workshop,BB5002NI,Principles of Marketing,Ms. Nisha Rayamajhi,SR 6,2.0
+WED,03:00 PM - 05:00 PM,BBA,BBA6,Workshop,BB5002NI,Principles of Marketing,Mr. Roshan Pradhan,SR 7,2.0
+WED,03:00 PM - 05:00 PM,BBA,BBA8,Workshop,BB5002NI,Principles of Marketing,Ms. Prabha Adhikari,SR 8,2.0
+WED,03:00 PM - 05:00 PM,Multimedia,Multimedia4,Workshop,MM5003NI,User Experience & Interface Design,Ms. Rashmi Bajracharya,SR 9,2.0
+WED,03:00 PM - 04:00 PM,AI,AI6,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,TR 1,1.0
+WED,03:00 PM - 04:00 PM,Multimedia,Multimedia1,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 2,1.0
+WED,03:30 PM - 05:00 PM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5004NI,Web Application Development,Ms. Shristi Pant,LT 2,1.5
+WED,04:00 PM - 05:00 PM,AI,AI2,Tutorial,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,TR 1,1.0
+WED,04:00 PM - 05:00 PM,AI,AI4,Tutorial,CS5003NI,Data Structure and Specialist Programming,Mr. Rabin Adhikari,TR 2,1.0
+WED,04:00 PM - 05:00 PM,BBA,BBA1,Tutorial,BB5002NI,Principles of Marketing,Mr. Amrit Acharya,TR 3,1.0
+WED,04:00 PM - 05:00 PM,Computing,Computing4,Tutorial,CS5004NI,Web Application Development,Mr. Prakash Neupane,TR 4,1.0
+WED,04:00 PM - 05:00 PM,Multimedia,Multimedia2,Tutorial,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,TR 5,1.0
+THU,07:00 AM - 09:00 AM,AI,AI2,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 1,2.0
+THU,07:00 AM - 09:00 AM,Multimedia,Multimedia4,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,SR 10,2.0
+THU,07:00 AM - 09:00 AM,AI,AI4,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 2,2.0
+THU,07:00 AM - 09:00 AM,AI,AI9,Workshop,CC5051NI,Databases,Ms. Sunita Gautam,SR 3,2.0
+THU,07:00 AM - 09:00 AM,BBA,BBA3,Workshop,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,SR 4,2.0
+THU,07:00 AM - 09:00 AM,BBA,BBA5,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,SR 5,2.0
+THU,07:00 AM - 09:00 AM,Computing,Computing2,Workshop,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,SR 6,2.0
+THU,07:00 AM - 09:00 AM,Computing,Computing8,Workshop,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,SR 7,2.0
+THU,07:00 AM - 09:00 AM,Multimedia,Multimedia1,Workshop,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,SR 8,2.0
+THU,07:00 AM - 09:00 AM,Multimedia,Multimedia3,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,SR 9,2.0
+THU,07:00 AM - 08:00 AM,AI,AI3,Tutorial,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,TR 1,1.0
+THU,07:00 AM - 08:00 AM,AI,AI7,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 2,1.0
+THU,07:00 AM - 08:00 AM,AI,AI8,Tutorial,CS5002NI,Software Engineering,Mr. Rajiv Devkota,TR 3,1.0
+THU,07:00 AM - 08:00 AM,BBA,BBA4,Tutorial,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,TR 4,1.0
+THU,07:00 AM - 08:00 AM,BBA,BBA6,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 5,1.0
+THU,07:00 AM - 08:00 AM,Computing,Computing4,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,TR 6,1.0
+THU,07:00 AM - 08:00 AM,Computing,Computing6,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,TR 7,1.0
+THU,07:00 AM - 08:00 AM,Multimedia,Multimedia5,Tutorial,MM5002NI,Digital Video Post-Production,Ms. Anuja Maharjan,TR 8,1.0
+THU,08:00 AM - 09:00 AM,AI,AI6,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 1,1.0
+THU,08:00 AM - 09:00 AM,BBA,BBA1,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 2,1.0
+THU,08:00 AM - 09:00 AM,Computing,Computing3,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,TR 3,1.0
+THU,08:00 AM - 09:00 AM,Multimedia,Multimedia2,Tutorial,MM5005NI,Interactive Web Media Development,Ms. Sabina Dangol,TR 4,1.0
+THU,08:30 AM - 10:00 AM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,LT 1,1.5
+THU,09:00 AM - 11:00 AM,AI,AI1,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 1,2.0
+THU,09:00 AM - 11:00 AM,AI,AI5,Workshop,CC5051NI,Databases,Mr. Pradeep Pokharel,SR 2,2.0
+THU,09:00 AM - 11:00 AM,AI,AI7,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 3,2.0
+THU,09:00 AM - 11:00 AM,BBA,BBA2,Workshop,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,SR 4,2.0
+THU,09:00 AM - 11:00 AM,Computing,Computing4,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,SR 5,2.0
+THU,09:00 AM - 11:00 AM,Multimedia,Multimedia2,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,SR 6,2.0
+THU,09:00 AM - 11:00 AM,Multimedia,Multimedia3,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,SR 7,2.0
+THU,09:00 AM - 11:00 AM,Multimedia,Multimedia4,Workshop,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,SR 8,2.0
+THU,09:00 AM - 11:00 AM,Multimedia,Multimedia5,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Upendra Joshi,SR 9,2.0
+THU,09:00 AM - 10:00 AM,AI,AI10,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 1,1.0
+THU,09:00 AM - 10:00 AM,AI,AI8,Tutorial,MA5054NI,Further Calculus,Ms. Reena Shrestha,TR 2,1.0
+THU,09:00 AM - 10:00 AM,Computing,Computing1,Tutorial,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,TR 3,1.0
+THU,09:00 AM - 10:00 AM,Computing,Computing2,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 4,1.0
+THU,10:00 AM - 11:30 AM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,LT 1,1.5
+THU,10:00 AM - 11:00 AM,AI,AI2,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 1,1.0
+THU,10:00 AM - 11:00 AM,AI,AI3,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 2,1.0
+THU,10:00 AM - 11:00 AM,AI,AI9,Tutorial,CS5002NI,Software Engineering,Mr. Sanjeep Lama,TR 3,1.0
+THU,10:00 AM - 11:00 AM,BBA,BBA3,Tutorial,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,TR 4,1.0
+THU,10:00 AM - 11:00 AM,BBA,BBA5,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,TR 5,1.0
+THU,11:00 AM - 01:00 PM,AI,AI10,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 1,2.0
+THU,11:00 AM - 01:00 PM,Multimedia,Multimedia2,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,SR 10,2.0
+THU,11:00 AM - 01:00 PM,AI,AI3,Workshop,CC5051NI,Databases,Mr. Pradeep Pokharel,SR 2,2.0
+THU,11:00 AM - 01:00 PM,AI,AI6,Workshop,CC5051NI,Databases,Ms. Sunita Gautam,SR 3,2.0
+THU,11:00 AM - 01:00 PM,AI,AI8,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 4,2.0
+THU,11:00 AM - 01:00 PM,BBA,BBA1,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 5,2.0
+THU,11:00 AM - 01:00 PM,BBA,BBA4,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,SR 6,2.0
+THU,11:00 AM - 01:00 PM,Computing,Computing1,Workshop,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,SR 7,2.0
+THU,11:00 AM - 01:00 PM,Computing,Computing3,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,SR 8,2.0
+THU,11:00 AM - 01:00 PM,Multimedia,Multimedia1,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,SR 9,2.0
+THU,11:00 AM - 01:00 PM,Multimedia,Multimedia5,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,TR 1,2.0
+THU,11:00 AM - 12:00 PM,AI,AI1,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 2,1.0
+THU,11:00 AM - 12:00 PM,AI,AI2,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 3,1.0
+THU,11:00 AM - 12:00 PM,AI,AI5,Tutorial,CS5002NI,Software Engineering,Mr. Sanjeep Lama,TR 4,1.0
+THU,11:00 AM - 12:00 PM,AI,AI7,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 5,1.0
+THU,11:00 AM - 12:00 PM,BBA,BBA7,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 6,1.0
+THU,11:00 AM - 12:00 PM,Multimedia,Multimedia3,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 7,1.0
+THU,11:00 AM - 12:00 PM,Multimedia,Multimedia4,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 8,1.0
+THU,12:00 PM - 01:00 PM,AI,AI4,Tutorial,CS5002NI,Software Engineering,Mr. Rajiv Devkota,TR 2,1.0
+THU,12:00 PM - 01:00 PM,AI,AI5,Tutorial,MA5054NI,Further Calculus,Ms. Reena Shrestha,TR 3,1.0
+THU,12:00 PM - 01:00 PM,BBA,BBA8,Tutorial,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,TR 4,1.0
+THU,12:00 PM - 01:00 PM,BBA,BBA9,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 5,1.0
+THU,12:00 PM - 01:00 PM,Computing,Computing7,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,TR 6,1.0
+THU,12:00 PM - 01:00 PM,Multimedia,Multimedia3,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 7,1.0
+THU,01:00 PM - 02:30 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CS5003NI,Data Structure and Specialist Programming,Mr. Sudip Dahal,LT 1,1.5
+THU,01:00 PM - 02:30 PM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,LT 2,1.5
+THU,01:00 PM - 03:00 PM,BBA,BBA7,Workshop,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,SR 1,2.0
+THU,01:00 PM - 03:00 PM,BBA,BBA8,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 2,2.0
+THU,01:00 PM - 03:00 PM,Computing,Computing5,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,SR 3,2.0
+THU,01:00 PM - 02:00 PM,AI,AI6,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 1,1.0
+THU,01:00 PM - 02:00 PM,AI,AI9,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 2,1.0
+THU,01:00 PM - 02:00 PM,BBA,BBA2,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,TR 3,1.0
+THU,02:00 PM - 03:00 PM,Computing,Computing8,Tutorial,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,TR 1,1.0
+THU,02:30 PM - 04:00 PM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,LT 1,1.5
+THU,02:30 PM - 04:00 PM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,LT 2,1.5
+THU,03:00 PM - 05:00 PM,BBA,BBA6,Workshop,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,SR 1,2.0
+THU,03:00 PM - 05:00 PM,BBA,BBA9,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,SR 2,2.0
+THU,03:00 PM - 05:00 PM,Computing,Computing6,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,SR 3,2.0
+THU,03:00 PM - 05:00 PM,Computing,Computing7,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,SR 4,2.0
+THU,03:00 PM - 04:00 PM,AI,AI1,Tutorial,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,TR 1,1.0
+THU,03:00 PM - 04:00 PM,Multimedia,Multimedia1,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 2,1.0
+THU,03:00 PM - 04:00 PM,Multimedia,Multimedia2,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,TR 3,1.0
+THU,03:00 PM - 04:00 PM,Multimedia,Multimedia5,Tutorial,MM5005NI,Interactive Web Media Development,Ms. Sabina Dangol,TR 4,1.0
+THU,03:30 PM - 05:00 PM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,LT 3,1.5
+THU,04:00 PM - 05:00 PM,AI,AI10,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 1,1.0
+THU,04:00 PM - 05:00 PM,AI,AI4,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 2,1.0
+THU,04:00 PM - 05:00 PM,Computing,Computing5,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 3,1.0
+THU,04:00 PM - 05:00 PM,Multimedia,Multimedia1,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 4,1.0
+THU,04:00 PM - 05:00 PM,Multimedia,Multimedia4,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,TR 5,1.0
+FRI,07:00 AM - 08:30 AM,BBA,BBA6+BBA7+BBA8+BBA9,Lecture,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,LT 1,1.5
+FRI,07:00 AM - 09:00 AM,AI,AI1,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 1,2.0
+FRI,07:00 AM - 09:00 AM,Multimedia,Multimedia4,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,SR 10,2.0
+FRI,07:00 AM - 09:00 AM,AI,AI4,Workshop,CC5051NI,Databases,Ms. Sunita Gautam,SR 2,2.0
+FRI,07:00 AM - 09:00 AM,AI,AI5,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 3,2.0
+FRI,07:00 AM - 09:00 AM,AI,AI6,Workshop,CC5051NI,Databases,Mr. Pradeep Pokharel,SR 4,2.0
+FRI,07:00 AM - 09:00 AM,Computing,Computing2,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,SR 5,2.0
+FRI,07:00 AM - 09:00 AM,Computing,Computing7,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,SR 6,2.0
+FRI,07:00 AM - 09:00 AM,Computing,Computing8,Workshop,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,SR 7,2.0
+FRI,07:00 AM - 09:00 AM,Multimedia,Multimedia1,Workshop,MM5001NI,2D & 3D Animation Systems,Ms. Dikshya Shakya,SR 8,2.0
+FRI,07:00 AM - 09:00 AM,Multimedia,Multimedia2,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Alok Manandhar,SR 9,2.0
+FRI,07:00 AM - 09:00 AM,Multimedia,Multimedia5,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,TR 1,2.0
+FRI,07:00 AM - 08:00 AM,BBA,BBA2,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 2,1.0
+FRI,07:00 AM - 08:00 AM,BBA,BBA3,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,TR 3,1.0
+FRI,07:00 AM - 08:00 AM,BBA,BBA4,Tutorial,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,TR 4,1.0
+FRI,07:00 AM - 08:00 AM,Computing,Computing1,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 5,1.0
+FRI,07:00 AM - 08:00 AM,Multimedia,Multimedia3,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 6,1.0
+FRI,08:00 AM - 09:00 AM,AI,AI2,Tutorial,CS5002NI,Software Engineering,Mr. Sanjeep Lama,TR 2,1.0
+FRI,08:00 AM - 09:00 AM,BBA,BBA5,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 3,1.0
+FRI,08:00 AM - 09:00 AM,Computing,Computing4,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 4,1.0
+FRI,09:00 AM - 11:00 AM,AI,AI3,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 1,2.0
+FRI,09:00 AM - 11:00 AM,AI,AI8,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 2,2.0
+FRI,09:00 AM - 11:00 AM,BBA,BBA1,Workshop,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,SR 3,2.0
+FRI,09:00 AM - 11:00 AM,BBA,BBA2,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,SR 4,2.0
+FRI,09:00 AM - 11:00 AM,BBA,BBA7,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 5,2.0
+FRI,09:00 AM - 11:00 AM,BBA,BBA8,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,SR 6,2.0
+FRI,09:00 AM - 11:00 AM,Computing,Computing4,Workshop,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,SR 7,2.0
+FRI,09:00 AM - 10:00 AM,AI,AI10,Tutorial,CS5002NI,Software Engineering,Mr. Rajiv Devkota,TR 1,1.0
+FRI,09:00 AM - 10:00 AM,AI,AI5,Tutorial,MA5054NI,Further Calculus,Mr. Nadil Paudel,TR 2,1.0
+FRI,09:00 AM - 10:00 AM,AI,AI6,Tutorial,MA5054NI,Further Calculus,Ms. Reena Shrestha,TR 3,1.0
+FRI,09:00 AM - 10:00 AM,AI,AI7,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 4,1.0
+FRI,09:00 AM - 10:00 AM,AI,AI9,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 5,1.0
+FRI,09:00 AM - 10:00 AM,Multimedia,Multimedia1,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,TR 6,1.0
+FRI,09:00 AM - 10:00 AM,Multimedia,Multimedia3,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 7,1.0
+FRI,10:00 AM - 11:30 AM,Multimedia,Multimedia1+Multimedia2+Multimedia3+Multimedia4+Multimedia5,Lecture,MM5003NI,User Experience & Interface Design,Ms. Pragya Karmacharya,LT 1,1.5
+FRI,10:00 AM - 11:00 AM,AI,AI9,Tutorial,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,TR 1,1.0
+FRI,10:00 AM - 11:00 AM,Computing,Computing6,Tutorial,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,TR 2,1.0
+FRI,11:00 AM - 01:00 PM,AI,AI10,Workshop,CC5051NI,Databases,Ms. Astha Sharma,SR 1,2.0
+FRI,11:00 AM - 01:00 PM,AI,AI2,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 2,2.0
+FRI,11:00 AM - 01:00 PM,AI,AI7,Workshop,CC5051NI,Databases,Mr. Pradeep Pokharel,SR 3,2.0
+FRI,11:00 AM - 01:00 PM,BBA,BBA6,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 4,2.0
+FRI,11:00 AM - 01:00 PM,Computing,Computing5,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,SR 5,2.0
+FRI,11:00 AM - 12:00 PM,AI,AI1,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 1,1.0
+FRI,11:00 AM - 12:00 PM,AI,AI4,Tutorial,MA5054NI,Further Calculus,Ms. Reena Shrestha,TR 2,1.0
+FRI,11:00 AM - 12:00 PM,AI,AI5,Tutorial,CS5002NI,Software Engineering,Ms. Lenisha Ghimire,TR 3,1.0
+FRI,11:00 AM - 12:00 PM,AI,AI6,Tutorial,CS5002NI,Software Engineering,Mr. Rajiv Devkota,TR 4,1.0
+FRI,11:00 AM - 12:00 PM,AI,AI8,Tutorial,CS5002NI,Software Engineering,Mr. Sanjeep Lama,TR 5,1.0
+FRI,11:00 AM - 12:00 PM,Computing,Computing8,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,TR 6,1.0
+FRI,11:30 AM - 01:00 PM,BBA,BBA1+BBA2+BBA3+BBA4+BBA5,Lecture,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,LT 1,1.5
+FRI,11:30 AM - 01:00 PM,Computing,Computing1+Computing2+Computing3+Computing4,Lecture,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,LT 2,1.5
+FRI,12:00 PM - 01:00 PM,AI,AI1,Tutorial,CS5002NI,Software Engineering,Mr. Sanjeep Lama,TR 1,1.0
+FRI,12:00 PM - 01:00 PM,AI,AI3,Tutorial,CS5002NI,Software Engineering,Mr. Rajiv Devkota,TR 2,1.0
+FRI,12:00 PM - 01:00 PM,AI,AI8,Tutorial,MA5054NI,Further Calculus,Mr. Nadil Paudel,TR 3,1.0
+FRI,12:00 PM - 01:00 PM,BBA,BBA9,Tutorial,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,TR 4,1.0
+FRI,12:00 PM - 01:00 PM,Computing,Computing7,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 5,1.0
+FRI,12:00 PM - 01:00 PM,Multimedia,Multimedia2,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 6,1.0
+FRI,01:00 PM - 02:30 PM,AI,AI6+AI7+AI8+AI9+AI10,Lecture,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,LT 1,1.5
+FRI,01:00 PM - 03:00 PM,BBA,BBA3,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 1,2.0
+FRI,01:00 PM - 03:00 PM,BBA,BBA5,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,SR 2,2.0
+FRI,01:00 PM - 03:00 PM,BBA,BBA9,Workshop,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,SR 3,2.0
+FRI,01:00 PM - 03:00 PM,Computing,Computing3,Workshop,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,SR 4,2.0
+FRI,01:00 PM - 03:00 PM,Computing,Computing6,Workshop,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,SR 5,2.0
+FRI,01:00 PM - 03:00 PM,Multimedia,Multimedia3,Workshop,MM5001NI,2D & 3D Animation Systems,Ms. Dikshya Shakya,SR 6,2.0
+FRI,01:00 PM - 03:00 PM,Multimedia,Multimedia4,Workshop,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,SR 7,2.0
+FRI,01:00 PM - 02:00 PM,AI,AI2,Tutorial,MA5054NI,Further Calculus,Mr. Nadil Paudel,TR 1,1.0
+FRI,01:00 PM - 02:00 PM,AI,AI3,Tutorial,MA5054NI,Further Calculus,Dr. Anup Karki,TR 2,1.0
+FRI,01:00 PM - 02:00 PM,BBA,BBA6,Tutorial,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,TR 3,1.0
+FRI,01:00 PM - 02:00 PM,Multimedia,Multimedia2,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,TR 4,1.0
+FRI,01:00 PM - 02:00 PM,Multimedia,Multimedia5,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Rohan Chitrakar,TR 5,1.0
+FRI,02:00 PM - 03:00 PM,AI,AI4,Tutorial,CS5002NI,Software Engineering,Ms. Smriti Bista,TR 1,1.0
+FRI,02:00 PM - 03:00 PM,Computing,Computing2,Tutorial,CS5005NI,Object-Oriented Design & Programming,Mr. Sushil Subedi,TR 2,1.0
+FRI,02:00 PM - 03:00 PM,Computing,Computing5,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 3,1.0
+FRI,02:00 PM - 03:00 PM,Multimedia,Multimedia1,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 4,1.0
+FRI,02:00 PM - 03:00 PM,Multimedia,Multimedia5,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Paras Hamal,TR 5,1.0
+FRI,03:00 PM - 05:00 PM,AI,AI9,Workshop,CC5051NI,Databases,Ms. Kiran Chand,SR 1,2.0
+FRI,03:00 PM - 05:00 PM,BBA,BBA4,Workshop,BB5003NI,Organizational Behavior & Leadership,Mr. Bikram Rana,SR 2,2.0
+FRI,03:00 PM - 05:00 PM,Computing,Computing1,Workshop,CS5005NI,Object-Oriented Design & Programming,Dr. Khemraj Nepal,SR 3,2.0
+FRI,03:00 PM - 05:00 PM,Multimedia,Multimedia1,Workshop,MM5004NI,Graphic Design & Visual Identity,Ms. Barsha Tamrakar,SR 4,2.0
+FRI,03:00 PM - 05:00 PM,Multimedia,Multimedia2,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Prajwal Maskey,SR 5,2.0
+FRI,03:00 PM - 05:00 PM,Multimedia,Multimedia3,Workshop,MM5004NI,Graphic Design & Visual Identity,Mr. Upendra Joshi,SR 6,2.0
+FRI,03:00 PM - 05:00 PM,Multimedia,Multimedia5,Workshop,MM5001NI,2D & 3D Animation Systems,Mr. Sujan Shrestha,SR 7,2.0
+FRI,03:00 PM - 04:00 PM,AI,AI7,Tutorial,MA5054NI,Further Calculus,Ms. Reena Shrestha,TR 1,1.0
+FRI,03:00 PM - 04:00 PM,BBA,BBA1,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Menaka Giri,TR 2,1.0
+FRI,03:00 PM - 04:00 PM,BBA,BBA7,Tutorial,BB5003NI,Organizational Behavior & Leadership,Dr. Surendra Shrestha,TR 3,1.0
+FRI,03:00 PM - 04:00 PM,BBA,BBA8,Tutorial,BB5003NI,Organizational Behavior & Leadership,Ms. Sarita Tamang,TR 4,1.0
+FRI,03:00 PM - 04:00 PM,Computing,Computing3,Tutorial,CS5005NI,Object-Oriented Design & Programming,Ms. Ritu Banskota,TR 5,1.0
+FRI,03:00 PM - 04:00 PM,Multimedia,Multimedia4,Tutorial,MM5002NI,Digital Video Post-Production,Mr. Nirakar KC,TR 6,1.0
+FRI,03:30 PM - 05:00 PM,AI,AI1+AI2+AI3+AI4+AI5,Lecture,CS5003NI,Data Structure and Specialist Programming,Ms. Pooja Joshi,LT 1,1.5
+FRI,03:30 PM - 05:00 PM,Computing,Computing5+Computing6+Computing7+Computing8,Lecture,CS5005NI,Object-Oriented Design & Programming,Mr. Aayush Bhattarai,LT 2,1.5
+FRI,04:00 PM - 05:00 PM,AI,AI10,Tutorial,MA5054NI,Further Calculus,Mr. Bikash Thapa,TR 1,1.0
+FRI,04:00 PM - 05:00 PM,Multimedia,Multimedia4,Tutorial,MM5005NI,Interactive Web Media Development,Mr. Bishal Vaidya,TR 2,1.0

@@ -72,3 +72,33 @@ class SeatAssignment(Base):
 	exam: Mapped[Exam] = relationship(back_populates="seat_assignments")
 	student: Mapped[Student] = relationship(back_populates="seat_assignments")
 	room: Mapped[Room] = relationship(back_populates="seat_assignments")
+
+
+class TimetableEntry(Base):
+	__tablename__ = "timetable_entries"
+	__table_args__ = (
+		UniqueConstraint(
+			"day",
+			"time_slot",
+			"group_name",
+			"section_cohort",
+			"class_type",
+			"module_code",
+			"module_title",
+			"lecturer",
+			"room",
+			name="uq_timetable_entry",
+		),
+	)
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	day: Mapped[str] = mapped_column(String(20))
+	time_slot: Mapped[str] = mapped_column(String(50))
+	group_name: Mapped[str] = mapped_column(String(100))
+	section_cohort: Mapped[str] = mapped_column(String(200))
+	class_type: Mapped[str] = mapped_column(String(50))
+	module_code: Mapped[str] = mapped_column(String(50))
+	module_title: Mapped[str] = mapped_column(String(200))
+	lecturer: Mapped[str] = mapped_column(String(200))
+	room: Mapped[str] = mapped_column(String(100))
+	duration_hours: Mapped[float] = mapped_column(Float)

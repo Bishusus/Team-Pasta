@@ -101,5 +101,16 @@ export async function fetchHealth() {
   return getJson("/health");
 }
 
+/** Fetches timetable entries from GET /timetable. */
+export async function fetchTimetable(filters = {}) {
+  const params = new URLSearchParams();
+  if (filters.day) params.set("day", filters.day);
+  if (filters.moduleCode) params.set("module_code", filters.moduleCode);
+  if (filters.room) params.set("room", filters.room);
+  const query = params.toString();
+  const data = await getJson(`/timetable${query ? `?${query}` : ""}`);
+  return Array.isArray(data) ? data : [];
+}
+
 // Compatibility alias for existing dashboard consumers of the risk table.
 export const fetchStudents = fetchRiskResults;
