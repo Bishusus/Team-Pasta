@@ -6,6 +6,7 @@ import { colors, fonts } from "../theme";
 export const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard" },
   { key: "risk", label: "Risk Analysis" },
+  { key: "timetable", label: "Timetable" },
   { key: "seating", label: "Exam Seating" },
 ];
 

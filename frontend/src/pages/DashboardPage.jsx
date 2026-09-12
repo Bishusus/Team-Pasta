@@ -116,8 +116,8 @@ export default function DashboardPage({
 
         <section style={panelStyle}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 18 }}>
-            <div><h2 style={{ fontSize: 17, color: colors.ink, margin: 0 }}>Upcoming Academic Schedule</h2><p style={{ fontSize: 13, color: colors.textMuted, margin: "4px 0 0" }}>Exam dates recorded in the academic system.</p></div>
-            <button onClick={() => onNavigate("seating")} style={actionButton}>Exam Seating →</button>
+            <div><h2 style={{ fontSize: 17, color: colors.ink, margin: 0 }}>Upcoming Academic Schedule</h2><p style={{ fontSize: 13, color: colors.textMuted, margin: "4px 0 0" }}>Timetable and exam schedules recorded in the academic system.</p></div>
+            <button onClick={() => onNavigate("timetable")} style={actionButton}>Timetable →</button>
           </div>
           {upcomingExams.length ? upcomingExams.map((exam) => <div key={`${exam.module}-${exam.date}`} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.date)} · Scheduled</span></div>) : <div style={{ padding: "18px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>No upcoming exams available.</div>}
         </section>
