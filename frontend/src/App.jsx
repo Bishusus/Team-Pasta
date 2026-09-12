@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import DashboardPage from "./pages/DashboardPage";
 import StudentDetailPage from "./pages/StudentDetailPage";
 import RiskAnalysisPage from "./pages/RiskAnalysisPage";
+import TimetablePage from "./pages/TimetablePage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import { fetchAllStudents, fetchHealth, fetchRiskResults, fetchRiskSummary } from "./services/api";
 
@@ -114,6 +115,8 @@ export default function App() {
             onRetry={loadData}
             onSelectStudent={handleSelectStudent}
           />
+        ) : activeTab === "timetable" ? (
+          <TimetablePage />
         ) : (
           <PlaceholderPage title="Exam Seating" />
         )}
