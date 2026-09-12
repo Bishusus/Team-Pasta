@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
 from backend.database import Base
-from backend.exam_engine import generate_exam_schedule
+from backend.exam_engine import _invigilator_for_modules, generate_exam_schedule
 from backend.models import Classroom, ExamSchedule, ExamSeatAssignment, Student, TimetableEntry
 
 
@@ -115,3 +115,97 @@ def test_exam_engine_pairs_modules_in_one_session(tmp_path):
 			assert left is None or left.module_name != assignment.module_name
 
 	engine.dispose()
+
+
+def test_invigilators_are_unique_for_concurrent_sessions():
+	entries = [
+		TimetableEntry(
+			module_title="Algorithms",
+			lecturer="Algorithms Lecturer",
+			module_code="ALG",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 1",
+			duration_hours=1.0,
+		),
+		TimetableEntry(
+			module_title="Databases",
+			lecturer="Databases Lecturer",
+			module_code="DB",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 2",
+			duration_hours=1.0,
+		),
+		TimetableEntry(
+			module_title="Networks",
+			lecturer="Neutral Lecturer",
+			module_code="NET",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 3",
+			duration_hours=1.0,
+		),
+	]
+	busy = set()
+	first = _invigilator_for_modules(["Algorithms"], entries, busy)
+	second = _invigilator_for_modules(["Databases"], entries, busy)
+
+	assert first != second
+	assert first != "Algorithms Lecturer"
+	assert second != "Databases Lecturer"
+
+
+def test_invigilators_are_balanced_by_workload():
+	entries = [
+		TimetableEntry(
+			module_title="Algorithms",
+			lecturer="Algorithms Lecturer",
+			module_code="ALG",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 1",
+			duration_hours=1.0,
+		),
+		TimetableEntry(
+			module_title="Networks",
+			lecturer="Networks Lecturer",
+			module_code="NET",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 2",
+			duration_hours=1.0,
+		),
+		TimetableEntry(
+			module_title="Databases",
+			lecturer="Databases Lecturer",
+			module_code="DB",
+			day="SUN",
+			time_slot="09:00 - 10:00",
+			group_name="AI",
+			section_cohort="AI1",
+			class_type="Lecture",
+			room="LT 3",
+			duration_hours=1.0,
+		),
+	]
+	loads = {"Networks Lecturer": 2, "Databases Lecturer": 1}
+	selected = _invigilator_for_modules(["Algorithms"], entries, set(), loads)
+
+	assert selected == "Databases Lecturer"
+	assert loads[selected] == 2

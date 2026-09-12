@@ -4,7 +4,7 @@ import re
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy import select
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session, joinedload, selectinload
 
 from .database import get_db
 from .exam_engine import generate_exam_schedule
@@ -50,6 +50,10 @@ def _validate_booking_window(day: str, start_time: str, end_time: str):
 		raise HTTPException(status_code=400, detail="Day must be a valid weekday abbreviation.")
 	start = _booking_time(start_time)
 	end = _booking_time(end_time)
+	opening = datetime.strptime("07:00", "%H:%M").time()
+	closing = datetime.strptime("21:00", "%H:%M").time()
+	if start < opening or end > closing:
+		raise HTTPException(status_code=400, detail="Bookings are only available between 07:00 and 21:00.")
 	if start >= end:
 		raise HTTPException(status_code=400, detail="End time must be after start time.")
 	return clean_day, start, end
@@ -245,7 +249,11 @@ def get_booking_availability(day: str, start_time: str, end_time: str, db: Sessi
 	clean_day, start, end = _validate_booking_window(day, start_time, end_time)
 	classrooms = db.scalars(select(Classroom).order_by(Classroom.block_name, Classroom.room_number)).all()
 	timetable = db.scalars(select(TimetableEntry).where(TimetableEntry.day == clean_day)).all()
-	bookings = db.scalars(select(ClassroomBooking).where(ClassroomBooking.day == clean_day)).all()
+	bookings = db.scalars(
+		select(ClassroomBooking)
+		.options(joinedload(ClassroomBooking.classroom))
+		.where(ClassroomBooking.day == clean_day)
+	).all()
 	occupied_rooms = set()
 	for entry in timetable:
 		parts = entry.time_slot.split(" - ", 1)
@@ -253,7 +261,7 @@ def get_booking_availability(day: str, start_time: str, end_time: str, db: Sessi
 			occupied_rooms.add(_room_key(entry.room))
 	for booking in bookings:
 		if _interval_overlaps(start, end, _booking_time(booking.start_time), _booking_time(booking.end_time)):
-			classroom = db.get(Classroom, booking.classroom_id)
+			classroom = booking.classroom
 			if classroom:
 				occupied_rooms.add(_room_key(classroom.room_number))
 	return [{**_classroom_response(classroom), "available": _room_key(classroom.room_number) not in occupied_rooms} for classroom in classrooms]
@@ -264,8 +272,8 @@ def get_bookings(day: str | None = None, db: Session = Depends(get_db)) -> list[
 	query = select(ClassroomBooking).order_by(ClassroomBooking.day, ClassroomBooking.start_time)
 	if day:
 		query = query.where(ClassroomBooking.day == day.strip().upper())
-	bookings = db.scalars(query).all()
-	return [_booking_response(booking, db.get(Classroom, booking.classroom_id)) for booking in bookings]
+	bookings = db.scalars(query.options(joinedload(ClassroomBooking.classroom))).all()
+	return [_booking_response(booking, booking.classroom) for booking in bookings]
 
 
 @router.post("/bookings", status_code=201)
@@ -316,6 +324,9 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 		.where(ExamSeatAssignment.exam_id == exam_id)
 		.order_by(ExamSeatAssignment.room_id, ExamSeatAssignment.row, ExamSeatAssignment.column)
 	).all()
+	assignments_by_room: dict[int, list[ExamSeatAssignment]] = {}
+	for assignment in assignments:
+		assignments_by_room.setdefault(assignment.room_id, []).append(assignment)
 	rooms_by_id = {assignment.room.id: assignment.room for assignment in assignments}
 	return {
 		"exam": _exam_response(exam),
@@ -335,8 +346,7 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 						"student_id": assignment.student.student_id,
 						"student_name": assignment.student.full_name,
 					}
-					for assignment in assignments
-					if assignment.room_id == room.id
+					for assignment in assignments_by_room[room.id]
 				],
 			}
 			for room in rooms_by_id.values()
@@ -352,13 +362,15 @@ def generate_seating(db: Session = Depends(get_db)) -> dict:
 
 @router.get("/seating")
 def get_seating_plans(db: Session = Depends(get_db)) -> list[dict]:
-	exams = db.scalars(select(Exam).order_by(Exam.exam_date, Exam.start_time)).all()
+	exams = db.scalars(
+		select(Exam)
+		.options(joinedload(Exam.classroom), selectinload(Exam.seat_assignments))
+		.order_by(Exam.exam_date, Exam.start_time)
+	).all()
 	results = []
 	for exam in exams:
 		classroom = exam.classroom
-		assignments = db.scalars(
-			select(SeatAssignment).where(SeatAssignment.exam_id == exam.id)
-		).all()
+		assignments = exam.seat_assignments
 		capacity = classroom.capacity if classroom else 0
 		rows, cols = calculate_room_grid(capacity) if capacity else (0, 0)
 		results.append(
@@ -396,6 +408,7 @@ def get_seating_plan_for_exam(
 
 	assignments = db.scalars(
 		select(SeatAssignment)
+		.options(joinedload(SeatAssignment.student))
 		.where(SeatAssignment.exam_id == exam_id)
 		.order_by(SeatAssignment.row, SeatAssignment.column)
 	).all()

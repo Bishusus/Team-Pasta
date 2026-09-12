@@ -44,14 +44,20 @@ def _module_lecturers(module_name: str, timetable: list[TimetableEntry]) -> set[
 
 
 def _invigilator_for_modules(
-	module_names: list[str], timetable: list[TimetableEntry], busy: set[str]
+	module_names: list[str],
+	timetable: list[TimetableEntry],
+	busy: set[str],
+	loads: dict[str, int] | None = None,
 ) -> str:
 	lecturers = sorted({entry.lecturer for entry in timetable if entry.lecturer})
 	forbidden = set().union(*(_module_lecturers(module, timetable) for module in module_names))
 	available = [lecturer for lecturer in lecturers if lecturer not in forbidden and lecturer not in busy]
 	if available:
-		invigilator = available[0]
+		load_counts = loads if loads is not None else {}
+		invigilator = min(available, key=lambda lecturer: (load_counts.get(lecturer, 0), lecturer))
 		busy.add(invigilator)
+		if loads is not None:
+			loads[invigilator] = loads.get(invigilator, 0) + 1
 		return invigilator
 	return "External Invigilator"
 
@@ -174,18 +180,25 @@ def generate_exam_schedule(db: Session) -> int:
 		sessions_by_date[exam_date].append(pair)
 
 	generated = 0
+	busy_by_slot: dict[tuple[date, str], set[str]] = defaultdict(set)
+	invigilator_loads: dict[str, int] = defaultdict(int)
 	for exam_date in sorted(sessions_by_date):
 		for offset, pair in enumerate(sessions_by_date[exam_date]):
 			start = datetime.combine(exam_date, DAY_START) + timedelta(minutes=offset * (EXAM_DURATION_MINUTES + BREAK_MINUTES))
 			module_students = [(module, by_module[module]) for module in pair]
 			combined_name = " + ".join(pair)
-			busy_invigilators: set[str] = set()
+			busy_invigilators = busy_by_slot[(exam_date, start.strftime("%H:%M"))]
 			exam = ExamSchedule(
 				module_name=combined_name,
 				exam_date=exam_date,
 				start_time=start.strftime("%H:%M"),
 				duration_minutes=EXAM_DURATION_MINUTES,
-				invigilator=_invigilator_for_modules([module for module, _ in module_students], timetable, busy_invigilators),
+				invigilator=_invigilator_for_modules(
+					[module for module, _ in module_students],
+					timetable,
+					busy_invigilators,
+					invigilator_loads,
+				),
 				student_count=sum(len(students) for _, students in module_students),
 			)
 			db.add(exam)

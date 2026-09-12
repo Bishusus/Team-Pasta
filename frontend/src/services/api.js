@@ -10,6 +10,8 @@ export class ApiError extends Error {
   }
 }
 
+const pendingGets = new Map();
+
 function normalizeStudent(student) {
   return {
     ...student,
@@ -28,7 +30,7 @@ function normalizeStudent(student) {
   };
 }
 
-async function getJson(path) {
+async function getJsonRequest(path) {
   let response;
   try {
     response = await fetch(`${API_BASE_URL}${path}`);
@@ -58,6 +60,17 @@ async function getJson(path) {
       cause,
     });
   }
+}
+
+function getJson(path) {
+  const pending = pendingGets.get(path);
+  if (pending) return pending;
+
+  const request = getJsonRequest(path).finally(() => {
+    pendingGets.delete(path);
+  });
+  pendingGets.set(path, request);
+  return request;
 }
 
 async function sendJson(path, options, errorMessage) {

@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -21,11 +22,23 @@ REQUIRED_COLUMNS = [
 ]
 
 
-def _time_slot_key(time_slot: str) -> str:
-	return " ".join(
-		part.removesuffix(" AM").removesuffix(" PM")
-		for part in time_slot.upper().split(" - ")
-	)
+def _time_slot_key(time_slot: str) -> tuple[int, int]:
+	parts = time_slot.upper().split(" - ", 1)
+	if len(parts) != 2:
+		raise ValueError(f"Invalid timetable time slot: {time_slot}")
+	minutes = []
+	for part in parts:
+		parsed = None
+		for pattern in ("%H:%M", "%I:%M %p"):
+			try:
+				parsed = datetime.strptime(part.strip(), pattern)
+				break
+			except ValueError:
+				continue
+		if parsed is None:
+			raise ValueError(f"Invalid timetable time slot: {time_slot}")
+		minutes.append(parsed.hour * 60 + parsed.minute)
+	return tuple(minutes)
 
 
 def _entry_key(values: dict) -> tuple[str, ...]:
