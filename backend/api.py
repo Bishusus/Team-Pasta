@@ -4,8 +4,9 @@ from sqlalchemy.orm import Session
 
 from .database import get_db
 from .exam_engine import generate_exam_schedule
-from .models import Classroom, ExamRoom, ExamSchedule, ExamSeatAssignment, Student, TimetableEntry
+from .models import Classroom, Exam, ExamRoom, ExamSchedule, ExamSeatAssignment, SeatAssignment, Student, TimetableEntry
 from .risk_engine import calculate_risk
+from .seating_engine import calculate_room_grid, generate_seating_plan
 
 
 router = APIRouter()
@@ -230,4 +231,94 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 			for room in rooms
 		],
 	}
+
+
+@router.post("/seating/generate")
+def generate_seating(db: Session = Depends(get_db)) -> dict:
+	results = generate_seating_plan(db)
+	return {"status": "success", "generated_plans": results}
+
+
+@router.get("/seating")
+def get_seating_plans(db: Session = Depends(get_db)) -> list[dict]:
+	exams = db.scalars(select(Exam).order_by(Exam.exam_date, Exam.start_time)).all()
+	results = []
+	for exam in exams:
+		classroom = exam.classroom
+		assignments = db.scalars(
+			select(SeatAssignment).where(SeatAssignment.exam_id == exam.id)
+		).all()
+		capacity = classroom.capacity if classroom else 0
+		rows, cols = calculate_room_grid(capacity) if capacity else (0, 0)
+		results.append(
+			{
+				"id": exam.id,
+				"name": exam.name,
+				"exam_date": exam.exam_date,
+				"start_time": exam.start_time,
+				"invigilator": exam.invigilator or "Unassigned Staff",
+				"classroom": {
+					"id": classroom.id if classroom else None,
+					"block_name": classroom.block_name if classroom else None,
+					"room_number": classroom.room_number if classroom else None,
+					"capacity": capacity,
+					"rows": rows,
+					"cols": cols,
+				},
+				"assigned_count": len(assignments),
+			}
+		)
+	return results
+
+
+@router.get("/seating/exam/{exam_id}")
+def get_seating_plan_for_exam(
+	exam_id: int, db: Session = Depends(get_db)
+) -> dict:
+	exam = db.get(Exam, exam_id)
+	if exam is None:
+		raise HTTPException(status_code=404, detail="Exam seating plan not found")
+
+	classroom = exam.classroom
+	capacity = classroom.capacity if classroom else 0
+	rows, cols = calculate_room_grid(capacity) if capacity else (0, 0)
+
+	assignments = db.scalars(
+		select(SeatAssignment)
+		.where(SeatAssignment.exam_id == exam_id)
+		.order_by(SeatAssignment.row, SeatAssignment.column)
+	).all()
+
+	return {
+		"id": exam.id,
+		"name": exam.name,
+		"exam_date": exam.exam_date,
+		"start_time": exam.start_time,
+		"invigilator": exam.invigilator or "Unassigned Staff",
+		"classroom": {
+			"id": classroom.id if classroom else None,
+			"block_name": classroom.block_name if classroom else None,
+			"room_number": classroom.room_number if classroom else None,
+			"capacity": capacity,
+			"rows": rows,
+			"cols": cols,
+		},
+		"assignments": [
+			{
+				"id": assignment.id,
+				"row": assignment.row,
+				"column": assignment.column,
+				"seat_number": assignment.seat_number,
+				"student": {
+					"id": assignment.student.student_id,
+					"full_name": assignment.student.full_name,
+					"programme": assignment.student.programme,
+					"semester": assignment.student.semester,
+					"module_name": assignment.student.module_name,
+				},
+			}
+			for assignment in assignments
+		],
+	}
+
 

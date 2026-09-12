@@ -160,6 +160,36 @@ export async function fetchExamLayout(examId) {
   return getJson(`/exam-schedule/${encodeURIComponent(examId)}/layout`);
 }
 
+/** Triggers backend seating plan generation with invigilator assignments. */
+export async function generateSeatingPlan() {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/seating/generate`, { method: "POST" });
+  } catch (cause) {
+    throw new ApiError("Unable to reach the FastAPI server.", { path: "/seating/generate", cause });
+  }
+  if (!response.ok) {
+    throw new ApiError(`Request failed (${response.status}): ${response.statusText}`, {
+      status: response.status,
+      path: "/seating/generate",
+    });
+  }
+  return response.json();
+}
+
+/** Fetches generated seating plans. */
+export async function fetchSeatingPlans() {
+  const data = await getJson("/seating");
+  return Array.isArray(data) ? data : [];
+}
+
+/** Fetches detailed room grid layout and seat assignments for a specific exam. */
+export async function fetchSeatingPlanByExam(examId) {
+  if (!examId) throw new ApiError("An examId is required.", { path: "/seating/exam/{exam_id}" });
+  return getJson(`/seating/exam/${encodeURIComponent(examId)}`);
+}
+
 // Compatibility alias for existing dashboard consumers of the risk table.
 export const fetchStudents = fetchRiskResults;
+
 
