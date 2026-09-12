@@ -1,4 +1,5 @@
 import os
+from datetime import date
 from pathlib import Path
 
 os.environ.setdefault(
@@ -30,10 +31,11 @@ def database(tmp_path: Path):
 def test_csv_loading_is_idempotent(database, tmp_path: Path):
     csv_path = tmp_path / "students.csv"
     csv_path.write_text(
-        "student_id,name,email\n"
-        "S002,Lin,\n"
-        "S001,Ada,ada@example.com\n"
-        "S001,Ada,ada@example.com\n",
+        "student_id,full_name,programme,semester,module_name,exam_date,"
+        "attendance_percentage,exam_1_score,exam_2_score,final_exam_score\n"
+        "S002,Lin,Computing,Semester 1,Algorithms,2026-03-12,80,70,75,78\n"
+        "S001,Ada,Computing,Semester 1,Algorithms,2026-03-12,90,80,85,88\n"
+        "S001,Ada,Computing,Semester 1,Algorithms,2026-03-12,90,80,85,88\n",
         encoding="utf-8",
     )
 
@@ -61,7 +63,20 @@ def test_student_endpoints(database):
             yield db
 
     with database() as db:
-        db.add(Student(student_id="S001", name="Ada", email=None))
+        db.add(
+            Student(
+                student_id="S001",
+                full_name="Ada",
+                programme="Computing",
+                semester="Semester 1",
+                module_name="Algorithms",
+                exam_date=date(2026, 3, 12),
+                attendance_percentage=90,
+                exam_1_score=80,
+                exam_2_score=85,
+                final_exam_score=88,
+            )
+        )
         db.commit()
 
     app.dependency_overrides[get_db] = override_db
@@ -70,7 +85,18 @@ def test_student_endpoints(database):
         response = client.get("/students")
         assert response.status_code == 200
         assert response.json() == [
-            {"student_id": "S001", "name": "Ada", "email": None}
+            {
+                "student_id": "S001",
+                "full_name": "Ada",
+                "programme": "Computing",
+                "semester": "Semester 1",
+                "module_name": "Algorithms",
+                "exam_date": "2026-03-12",
+                "attendance_percentage": 90.0,
+                "exam_1_score": 80.0,
+                "exam_2_score": 85.0,
+                "final_exam_score": 88.0,
+            }
         ]
 
         response = client.get("/students/S001")

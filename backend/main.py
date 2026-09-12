@@ -4,12 +4,15 @@ from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
 
 from .api import router
-from .database import engine, init_db
+from .csv_loader import load_students_from_csv
+from .database import SessionLocal, engine, init_db
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
 	init_db()
+	with SessionLocal() as db:
+		load_students_from_csv(db)
 	yield
 
 

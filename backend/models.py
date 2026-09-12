@@ -1,4 +1,6 @@
-from sqlalchemy import ForeignKey, Integer, String, UniqueConstraint
+from datetime import date
+
+from sqlalchemy import Date, Float, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .database import Base
@@ -9,8 +11,15 @@ class Student(Base):
 
 	id: Mapped[int] = mapped_column(Integer, primary_key=True)
 	student_id: Mapped[str] = mapped_column(String(100), unique=True, index=True)
-	name: Mapped[str] = mapped_column(String(200))
-	email: Mapped[str | None] = mapped_column(String(320), nullable=True)
+	full_name: Mapped[str] = mapped_column(String(200))
+	programme: Mapped[str] = mapped_column(String(200))
+	semester: Mapped[str] = mapped_column(String(100))
+	module_name: Mapped[str] = mapped_column(String(200))
+	exam_date: Mapped[date] = mapped_column(Date)
+	attendance_percentage: Mapped[float] = mapped_column(Float)
+	exam_1_score: Mapped[float] = mapped_column(Float)
+	exam_2_score: Mapped[float] = mapped_column(Float)
+	final_exam_score: Mapped[float] = mapped_column(Float)
 
 	seat_assignments: Mapped[list["SeatAssignment"]] = relationship(
 		back_populates="student"
