@@ -3,7 +3,7 @@ import re
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.orm import Session, joinedload, selectinload
 
 from .database import get_db
@@ -38,6 +38,15 @@ def _room_key(value: str) -> str:
 	compact = re.sub(r"[^A-Z0-9]", "", value.upper())
 	match = re.fullmatch(r"([A-Z]+)0*(\d+)", compact)
 	return f"{match.group(1)}{int(match.group(2))}" if match else compact
+
+
+def _timetable_classroom_ids(room: str, classrooms: list[Classroom]) -> set[int]:
+	room_key = _room_key(room)
+	return {
+		classroom.id
+		for classroom in classrooms
+		if _room_key(classroom.room_number) == room_key
+	}
 
 
 def _interval_overlaps(start, end, other_start, other_end) -> bool:
@@ -254,17 +263,20 @@ def get_booking_availability(day: str, start_time: str, end_time: str, db: Sessi
 		.options(joinedload(ClassroomBooking.classroom))
 		.where(ClassroomBooking.day == clean_day)
 	).all()
-	occupied_rooms = set()
+	occupied_classroom_ids: set[int] = set()
 	for entry in timetable:
 		parts = entry.time_slot.split(" - ", 1)
 		if len(parts) == 2 and _interval_overlaps(start, end, _booking_time(parts[0]), _booking_time(parts[1])):
-			occupied_rooms.add(_room_key(entry.room))
+			occupied_classroom_ids.update(_timetable_classroom_ids(entry.room, classrooms))
 	for booking in bookings:
 		if _interval_overlaps(start, end, _booking_time(booking.start_time), _booking_time(booking.end_time)):
 			classroom = booking.classroom
 			if classroom:
-				occupied_rooms.add(_room_key(classroom.room_number))
-	return [{**_classroom_response(classroom), "available": _room_key(classroom.room_number) not in occupied_rooms} for classroom in classrooms]
+				occupied_classroom_ids.add(classroom.id)
+	return [
+		{**_classroom_response(classroom), "available": classroom.id not in occupied_classroom_ids}
+		for classroom in classrooms
+	]
 
 
 @router.get("/bookings")
@@ -284,9 +296,17 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dic
 		raise HTTPException(status_code=404, detail="Classroom not found")
 	if not payload.booked_by.strip() or not payload.purpose.strip():
 		raise HTTPException(status_code=400, detail="Booker name and purpose are required.")
-	availability = get_booking_availability(day, payload.start_time, payload.end_time, db)
-	selected = next(item for item in availability if item["id"] == classroom.id)
-	if not selected["available"]:
+	if db.bind.dialect.name == "postgresql":
+		db.execute(text("SELECT pg_advisory_xact_lock(:lock_key)"), {"lock_key": classroom.id})
+	conflict = db.scalar(
+		select(ClassroomBooking.id).where(
+			ClassroomBooking.classroom_id == classroom.id,
+			ClassroomBooking.day == day,
+			ClassroomBooking.start_time < end.strftime("%H:%M"),
+			ClassroomBooking.end_time > start.strftime("%H:%M"),
+		)
+	)
+	if conflict is not None:
 		raise HTTPException(status_code=409, detail="Classroom is occupied during the selected time.")
 	booking = ClassroomBooking(
 		classroom_id=classroom.id,

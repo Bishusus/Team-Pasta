@@ -1,10 +1,11 @@
 from contextlib import asynccontextmanager
 import os
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from sqlalchemy import delete, text
+from sqlalchemy import select, text
 from sqlalchemy.exc import SQLAlchemyError
 
 from .api import router
@@ -12,21 +13,20 @@ from .classroom_loader import load_classrooms_from_csv
 from .csv_loader import load_students_from_csv
 from .database import SessionLocal, engine, init_db
 from .exam_engine import generate_exam_schedule
-from .models import ExamSeatAssignment, SeatAssignment
+from .models import ExamSchedule
 from .timetable_loader import load_timetable_from_csv
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
 	init_db()
+	project_root = Path(__file__).resolve().parent.parent
 	with SessionLocal() as db:
-		db.execute(delete(ExamSeatAssignment))
-		db.execute(delete(SeatAssignment))
-		db.commit()
-		load_students_from_csv(db)
-		load_timetable_from_csv(db)
-		load_classrooms_from_csv(db)
-		generate_exam_schedule(db)
+		load_students_from_csv(db, project_root / "data" / "students.csv")
+		load_timetable_from_csv(db, project_root / "data" / "timetable.csv")
+		load_classrooms_from_csv(db, project_root / "data" / "classrooms.csv")
+		if db.scalar(select(ExamSchedule.id)) is None:
+			generate_exam_schedule(db)
 	yield
 
 

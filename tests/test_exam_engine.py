@@ -117,6 +117,44 @@ def test_exam_engine_pairs_modules_in_one_session(tmp_path):
 	engine.dispose()
 
 
+def test_exam_engine_never_moves_a_module_to_another_date(tmp_path):
+	engine = create_engine(f"sqlite:///{tmp_path / 'dated-exam.db'}")
+	Base.metadata.create_all(engine)
+	Session = sessionmaker(bind=engine)
+
+	with Session() as db:
+		db.add(Classroom(block_name="London Block", room_number="LT01", capacity=20))
+		for index, (module, exam_date) in enumerate([
+			("Algorithms", date(2026, 3, 12)),
+			("Databases", date(2026, 3, 14)),
+		]):
+			db.add(Student(
+				student_id=f"DATED-{index}",
+				full_name=f"Dated Student {index}",
+				programme="Computing",
+				semester="Year 2",
+				module_name=module,
+				exam_date=exam_date,
+				attendance_percentage=80,
+				exam_1_score=70,
+				exam_2_score=70,
+				final_exam_score=70,
+			))
+		db.commit()
+
+		assert generate_exam_schedule(db) == 2
+		exams = db.scalars(select(ExamSchedule).order_by(ExamSchedule.exam_date)).all()
+		assert [exam.exam_date for exam in exams] == [date(2026, 3, 12), date(2026, 3, 14)]
+		assignments = db.scalars(select(ExamSeatAssignment)).all()
+		student_dates = {
+			assignment.student.student_id: assignment.exam.exam_date
+			for assignment in assignments
+		}
+		assert student_dates == {"DATED-0": date(2026, 3, 12), "DATED-1": date(2026, 3, 14)}
+
+	engine.dispose()
+
+
 def test_invigilators_are_unique_for_concurrent_sessions():
 	entries = [
 		TimetableEntry(
