@@ -53,7 +53,7 @@ def _risk_response(student: Student) -> dict:
 			"final_exam_score": student.final_exam_score,
 		}
 	)
-	return {"student_id": student.student_id, **risk}
+	return {**_student_response(student), **risk}
 
 
 @router.get("/risk")
