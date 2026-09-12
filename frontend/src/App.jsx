@@ -5,7 +5,7 @@ import StudentDetailPage from "./pages/StudentDetailPage";
 import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
-import { fetchAllStudents, fetchHealth, fetchRiskResults, fetchRiskSummary } from "./services/api";
+import { fetchHealth, fetchRiskResults } from "./services/api";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -26,35 +26,24 @@ export default function App() {
     setSummaryError(null);
     setHealthLoading(true);
 
-    const [riskResult, studentResult, summaryResult, healthResult] = await Promise.allSettled([
+    const [riskResult, healthResult] = await Promise.allSettled([
       fetchRiskResults(),
-      fetchAllStudents(),
-      fetchRiskSummary(),
       fetchHealth(),
     ]);
 
     if (riskResult.status === "fulfilled") {
-      const semesterById = studentResult.status === "fulfilled"
-        ? new Map(studentResult.value.map((student) => [student.id, student.semester]))
-        : new Map();
-      const studentsById = studentResult.status === "fulfilled"
-        ? new Map(studentResult.value.map((student) => [student.id, student]))
-        : new Map();
-      setStudents(riskResult.value.map((student) => ({
-        ...studentsById.get(student.id),
-        ...student,
-        semester: semesterById.get(student.id) ?? student.semester,
-      })));
+      const riskStudents = riskResult.value;
+      setStudents(riskStudents);
+      setSummary({
+        total_students: riskStudents.length,
+        high_risk: riskStudents.filter((student) => student.riskLevel === "HIGH").length,
+        medium_risk: riskStudents.filter((student) => student.riskLevel === "MEDIUM").length,
+        low_risk: riskStudents.filter((student) => student.riskLevel === "LOW").length,
+      });
+      setSummaryError(null);
     } else {
       setStudents([]);
       setError(riskResult.reason.message || "Unable to load student risk records.");
-    }
-
-    if (summaryResult.status === "fulfilled") {
-      setSummary(summaryResult.value);
-    } else {
-      setSummary(null);
-      setSummaryError(summaryResult.reason.message || "Unable to load risk summary.");
     }
 
     if (healthResult.status === "fulfilled") {

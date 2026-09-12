@@ -23,25 +23,37 @@ def _tokens(value: str) -> set[str]:
 	}
 
 
-def _invigilator_for_module(module_name: str, timetable: list[TimetableEntry]) -> str:
-	if not timetable:
-		return "Unassigned"
+def _module_lecturers(module_name: str, timetable: list[TimetableEntry]) -> set[str]:
 	module_tokens = _tokens(module_name)
-	best_score = 0.0
-	best_invigilator = None
+	scores: list[tuple[float, str]] = []
 	for entry in timetable:
 		entry_tokens = _tokens(entry.module_title)
 		shared = len(module_tokens & entry_tokens)
 		score = shared / max(len(module_tokens | entry_tokens), 1)
-		score = max(score, SequenceMatcher(None, module_name.lower(), entry.module_title.lower()).ratio() * 0.35)
-		if score > best_score:
-			best_score = score
-			best_invigilator = entry.lecturer
-	if best_invigilator:
-		return best_invigilator
-	invigilators = sorted({entry.lecturer for entry in timetable})
-	stable_index = sum(ord(character) for character in module_name) % len(invigilators)
-	return invigilators[stable_index]
+		score = max(
+			score,
+			SequenceMatcher(None, module_name.lower(), entry.module_title.lower()).ratio() * 0.35,
+		)
+		scores.append((score, entry.lecturer))
+	if not scores:
+		return set()
+	best_score = max(score for score, _ in scores)
+	if best_score < 0.2:
+		return set()
+	return {lecturer for score, lecturer in scores if score >= best_score * 0.9}
+
+
+def _invigilator_for_modules(
+	module_names: list[str], timetable: list[TimetableEntry], busy: set[str]
+) -> str:
+	lecturers = sorted({entry.lecturer for entry in timetable if entry.lecturer})
+	forbidden = set().union(*(_module_lecturers(module, timetable) for module in module_names))
+	available = [lecturer for lecturer in lecturers if lecturer not in forbidden and lecturer not in busy]
+	if available:
+		invigilator = available[0]
+		busy.add(invigilator)
+		return invigilator
+	return "External Invigilator"
 
 
 def _room_dimensions(capacity: int) -> tuple[int, int]:
@@ -54,18 +66,56 @@ def _seat_positions(room: ExamRoom):
 	return [(row, column) for row in range(1, room.rows + 1) for column in range(1, room.columns + 1)]
 
 
-def _assign_seats(exam: ExamSchedule, students: list[Student], rooms: list[ExamRoom], db: Session) -> None:
-	student_index = 0
-	assigned_modules: dict[tuple[int, int, int], str] = {}
+def _assign_paired_seats(
+	exam: ExamSchedule,
+	module_students: list[tuple[str, list[Student]]],
+	rooms: list[ExamRoom],
+	db: Session,
+) -> None:
+	if len(module_students) == 1:
+		remaining = list(module_students[0][1])
+		for room in rooms:
+			for row, column in _seat_positions(room):
+				if not remaining:
+					return
+				if (row + column) % 2 != 0:
+					continue
+				student = remaining.pop(0)
+				db.add(
+					ExamSeatAssignment(
+						exam_id=exam.id,
+						student_id=student.id,
+						room_id=room.id,
+						row=row,
+						column=column,
+						seat_number=f"{room.name}-{row}-{column}",
+						module_name=module_students[0][0],
+					)
+				)
+		if remaining:
+			raise ValueError("Not enough classroom seats for the exam session")
+		return
+
+	remaining = {module: list(students) for module, students in module_students}
 	for room in rooms:
-		positions = _seat_positions(room)
-		for index, (row, column) in enumerate(positions):
-			if student_index >= len(students):
+		assigned_modules: dict[tuple[int, int], str] = {}
+		for row, column in _seat_positions(room):
+			if not any(remaining.values()):
 				return
-			student = students[student_index]
-			left_module = assigned_modules.get((room.id, row, column - 1))
-			if left_module == student.module_name:
+			preferred = module_students[(column - 1) % 2][0]
+			other = module_students[1 - ((column - 1) % 2)][0]
+			left_module = assigned_modules.get((row, column - 1))
+			module = next(
+				(
+					candidate
+					for candidate in (preferred, other)
+					if remaining[candidate] and candidate != left_module
+				),
+				None,
+			)
+			if module is None:
 				continue
+			student = remaining[module].pop(0)
 			db.add(
 				ExamSeatAssignment(
 					exam_id=exam.id,
@@ -74,13 +124,12 @@ def _assign_seats(exam: ExamSchedule, students: list[Student], rooms: list[ExamR
 					row=row,
 					column=column,
 					seat_number=f"{room.name}-{row}-{column}",
-					module_name=student.module_name,
+					module_name=module,
 				)
 			)
-			assigned_modules[(room.id, row, column)] = student.module_name
-			student_index += 1
-	if student_index < len(students):
-		raise ValueError("Not enough classroom seats to keep students from the same module apart")
+			assigned_modules[(row, column)] = module
+	if any(remaining.values()):
+		raise ValueError("Not enough classroom seats for the paired exam session")
 
 
 def generate_exam_schedule(db: Session) -> int:
@@ -109,28 +158,39 @@ def generate_exam_schedule(db: Session) -> int:
 		rooms.append(room)
 	db.flush()
 
-	grouped: dict[date, list[Student]] = defaultdict(list)
+	by_module: dict[str, list[Student]] = defaultdict(list)
 	for student in students:
-		grouped[student.exam_date].append(student)
+		by_module[student.module_name].append(student)
+	module_names = sorted(
+		by_module,
+		key=lambda module: (min(student.exam_date for student in by_module[module]), module),
+	)
+	pairs = [module_names[index:index + 2] for index in range(0, len(module_names), 2)]
+	sessions_by_date: dict[date, list[list[str]]] = defaultdict(list)
+	for pair in pairs:
+		exam_date = max(
+			max(student.exam_date for student in by_module[module]) for module in pair
+		)
+		sessions_by_date[exam_date].append(pair)
 
 	generated = 0
-	for exam_date in sorted(grouped):
-		by_module: dict[str, list[Student]] = defaultdict(list)
-		for student in grouped[exam_date]:
-			by_module[student.module_name].append(student)
-		for offset, module_name in enumerate(sorted(by_module)):
+	for exam_date in sorted(sessions_by_date):
+		for offset, pair in enumerate(sessions_by_date[exam_date]):
 			start = datetime.combine(exam_date, DAY_START) + timedelta(minutes=offset * (EXAM_DURATION_MINUTES + BREAK_MINUTES))
+			module_students = [(module, by_module[module]) for module in pair]
+			combined_name = " + ".join(pair)
+			busy_invigilators: set[str] = set()
 			exam = ExamSchedule(
-				module_name=module_name,
+				module_name=combined_name,
 				exam_date=exam_date,
 				start_time=start.strftime("%H:%M"),
 				duration_minutes=EXAM_DURATION_MINUTES,
-				invigilator=_invigilator_for_module(module_name, timetable),
-				student_count=len(by_module[module_name]),
+				invigilator=_invigilator_for_modules([module for module, _ in module_students], timetable, busy_invigilators),
+				student_count=sum(len(students) for _, students in module_students),
 			)
 			db.add(exam)
 			db.flush()
-			_assign_seats(exam, by_module[module_name], rooms, db)
+			_assign_paired_seats(exam, module_students, rooms, db)
 			generated += 1
 
 	db.commit()
