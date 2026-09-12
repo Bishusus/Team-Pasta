@@ -7,7 +7,12 @@ from sqlalchemy.orm import sessionmaker
 
 from backend.database import Base
 from backend.models import Classroom, Student, TimetableEntry
-from backend.seating_engine import assign_invigilator, calculate_room_grid, generate_seating_plan
+from backend.seating_engine import (
+	assign_neutral_invigilator,
+	calculate_room_grid,
+	generate_seating_plan,
+	get_module_lecturers,
+)
 
 
 def test_calculate_room_grid():
@@ -17,7 +22,7 @@ def test_calculate_room_grid():
 	assert calculate_room_grid(32) == (4, 8)
 
 
-def test_invigilator_collision_tracking(tmp_path: Path):
+def test_neutral_cross_invigilation(tmp_path: Path):
 	engine = create_engine(f"sqlite:///{tmp_path / 'test.db'}")
 	Base.metadata.create_all(engine)
 	session_factory = sessionmaker(bind=engine)
@@ -53,34 +58,28 @@ def test_invigilator_collision_tracking(tmp_path: Path):
 		)
 		db.commit()
 
+		# Verify Dr. Smith is recognized as Database Systems subject teacher
+		db_teachers = get_module_lecturers("Database Systems", db)
+		assert "Dr. Smith" in db_teachers
+
 		busy_set: set[tuple[str, str, str]] = set()
 
-		# Room 1 @ 09:00 AM gets Dr. Smith
-		inv1 = assign_invigilator(
-			module_name="Database Systems",
+		# Exam for Database Systems must NOT assign Dr. Smith; it must assign neutral teacher Prof. Jones
+		inv1 = assign_neutral_invigilator(
+			module_names=["Database Systems"],
 			exam_date="2026-10-01",
 			start_time="09:00 AM",
 			db=db,
 			busy_invigilators=busy_set,
 		)
-		assert inv1 == "Dr. Smith"
-		assert ("2026-10-01", "09:00 AM", "Dr. Smith") in busy_set
-
-		# Concurrent Room 2 @ 09:00 AM requesting Database Systems must NOT get Dr. Smith again
-		inv2 = assign_invigilator(
-			module_name="Database Systems",
-			exam_date="2026-10-01",
-			start_time="09:00 AM",
-			db=db,
-			busy_invigilators=busy_set,
-		)
-		assert inv2 != "Dr. Smith"
-		assert inv2 == "Prof. Jones"
+		assert inv1 != "Dr. Smith"
+		assert inv1 == "Prof. Jones"
+		assert ("2026-10-01", "09:00 AM", "Prof. Jones") in busy_set
 
 	engine.dispose()
 
 
-def test_generate_seating_plan(tmp_path: Path):
+def test_multi_module_interleaving(tmp_path: Path):
 	engine = create_engine(f"sqlite:///{tmp_path / 'test.db'}")
 	Base.metadata.create_all(engine)
 	session_factory = sessionmaker(bind=engine)
@@ -106,7 +105,7 @@ def test_generate_seating_plan(tmp_path: Path):
 					full_name="Bob Jones",
 					programme="BSc CS",
 					semester="S1",
-					module_name="Database Systems",
+					module_name="Web Development",
 					exam_date=date(2026, 10, 1),
 					attendance_percentage=75.0,
 					exam_1_score=70.0,
@@ -119,7 +118,14 @@ def test_generate_seating_plan(tmp_path: Path):
 
 		results = generate_seating_plan(db)
 		assert len(results) >= 1
-		assert results[0]["room_number"] == "LT01"
-		assert results[0]["assigned_count"] == 2
+		plan = results[0]
+		assert plan["room_number"] == "LT01"
+		assert plan["assigned_count"] == 2
+
+		# Verify interleaving: Odd column (C1) gets Database Systems, Even column (C2) gets Web Development
+		assignments = plan["assignments"]
+		mod_by_col = {a["column"]: a["module_name"] for a in assignments}
+		assert mod_by_col[1] == "Database Systems"
+		assert mod_by_col[2] == "Web Development"
 
 	engine.dispose()
