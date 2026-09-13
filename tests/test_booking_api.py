@@ -57,8 +57,12 @@ def test_booking_availability_and_conflicts(tmp_path):
 
 		too_early = client.get("/bookings/availability?day=mon&start_time=06:59&end_time=07:30")
 		assert too_early.status_code == 400
-		too_late = client.get("/bookings/availability?day=mon&start_time=20:30&end_time=21:01")
+		too_late = client.get("/bookings/availability?day=mon&start_time=16:30&end_time=17:01")
 		assert too_late.status_code == 400
+		no_start = client.get("/bookings/availability?day=mon&start_time=07:00&end_time=08:00")
+		assert no_start.status_code == 200
+		ends_at_closing = client.get("/bookings/availability?day=mon&start_time=16:00&end_time=17:00")
+		assert ends_at_closing.status_code == 200
 	finally:
 		app.dependency_overrides.clear()
 		engine.dispose()

@@ -60,9 +60,8 @@ def _validate_booking_window(day: str, start_time: str, end_time: str):
 	start = _booking_time(start_time)
 	end = _booking_time(end_time)
 	opening = datetime.strptime("07:00", "%H:%M").time()
-	closing = datetime.strptime("21:00", "%H:%M").time()
-	if start < opening or end > closing:
-		raise HTTPException(status_code=400, detail="Bookings are only available between 07:00 and 21:00.")
+	closing = datetime.strptime("17:00", "%H:%M").time()
+	if start < opening or end > closing:			raise HTTPException(status_code=400, detail="Bookings are only available between 07:00 and 17:00.")
 	if start >= end:
 		raise HTTPException(status_code=400, detail="End time must be after start time.")
 	return clean_day, start, end
