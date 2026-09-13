@@ -255,7 +255,7 @@ tbody tr:nth-child(10) { animation-delay: 270ms; }
   }
 }
 
-/* Printable Hall Door Notice styling */
+/* Printable Hall Door Notice + Digital Admit Card styling */
 @media print {
   body {
     background: #FFFFFF !important;
@@ -277,6 +277,15 @@ tbody tr:nth-child(10) { animation-delay: 270ms; }
   }
   tbody tr {
     animation: none !important;
+  }
+  /* Admit card: print only the document, centred, full fidelity. */
+  .admit-card-document {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+  }
+  main > div {
+    padding: 0 !important;
   }
 }
 

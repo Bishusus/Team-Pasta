@@ -6,6 +6,7 @@ import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
 import BookingPage from "./pages/BookingPage";
+import AdmitCardPage from "./pages/AdmitCardPage";
 import LoginPage from "./pages/LoginPage";
 import BackToTop from "./components/BackToTop";
 import { fetchHealth, fetchRiskResults, fetchTimetable } from "./services/api";
@@ -19,6 +20,7 @@ export default function App() {
   const [session, setSession] = useState(() => loadSession());
   const [activeTab, setActiveTab] = useState("dashboard");
   const [selectedStudentId, setSelectedStudentId] = useState(null);
+  const [admitCardRequest, setAdmitCardRequest] = useState(null); // { studentId, examId }
   const [students, setStudents] = useState([]);
   const [timetableEntries, setTimetableEntries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -132,7 +134,7 @@ export default function App() {
         session={session}
         scope={scope}
         onSignOut={handleSignOut}
-        onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }}
+        onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); setAdmitCardRequest(null); }}
       />
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
@@ -174,8 +176,19 @@ export default function App() {
           <TimetablePage scopedEntries={scopedTimetable} scope={scope} />
         ) : activeTab === "booking" ? (
           <BookingPage session={session} />
+        ) : activeTab === "admit-card" ? (
+          <AdmitCardPage
+            session={session}
+            scope={scope}
+            initialRequest={admitCardRequest}
+          />
         ) : (
-          <ExamSeatingPage onSelectStudent={handleSelectStudent} scope={scope} session={session} />
+          <ExamSeatingPage
+            onSelectStudent={handleSelectStudent}
+            scope={scope}
+            session={session}
+            onAdmitCard={(request) => { setActiveTab("admit-card"); setAdmitCardRequest(request); }}
+          />
         )}
         </div>
       </main>

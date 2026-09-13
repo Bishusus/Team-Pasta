@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -414,6 +414,59 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 			}
 			for room in rooms_by_id.values()
 		],
+	}
+
+
+@router.get("/exam-schedule/{exam_id}/admit-card/{student_id}")
+def get_admit_card(exam_id: int, student_id: str, db: Session = Depends(get_db)) -> dict:
+	"""Digital admit card: presents the student's EXISTING generated seat
+	assignment for one exam. Read-only — the admit card never recalculates
+	or reassigns seating; the seating engine remains the source of truth."""
+	student = db.scalar(select(Student).where(Student.student_id == student_id))
+	if student is None:
+		raise HTTPException(status_code=404, detail="Student not found")
+	exam = db.get(ExamSchedule, exam_id)
+	if exam is None:
+		raise HTTPException(status_code=404, detail="Exam not found")
+	# Eligibility = the exam engine's own grouping relationship: the student
+	# sits this exam when their recorded exam date matches and their module
+	# is one of the session's paired modules. No separate registration
+	# system exists, so this existing relationship is the check.
+	exam_modules = [part.strip() for part in (exam.module_name or "").split("+")]
+	if student.exam_date != exam.exam_date or student.module_name not in exam_modules:
+		raise HTTPException(status_code=409, detail="Student is not registered for this examination.")
+	assignment = db.scalar(
+		select(ExamSeatAssignment)
+		.options(joinedload(ExamSeatAssignment.room))
+		.where(ExamSeatAssignment.exam_id == exam.id, ExamSeatAssignment.student_id == student.id)
+	)
+	if assignment is None:
+		raise HTTPException(status_code=404, detail="Seat has not been assigned for this examination yet.")
+	room = assignment.room
+	start = datetime.strptime(exam.start_time, "%H:%M")
+	end_time = (start + timedelta(minutes=exam.duration_minutes)).strftime("%H:%M")
+	return {
+		"student": {
+			"student_id": student.student_id,
+			"full_name": student.full_name,
+			"programme": student.programme,
+			"semester": student.semester,
+			"module_name": student.module_name,
+			"exam_date": student.exam_date.isoformat() if student.exam_date else None,
+		},
+		"exam": {**_exam_response(exam), "end_time": end_time},
+		"room": {
+			"name": room.name,
+			"rows": room.rows,
+			"columns": room.columns,
+			"capacity": room.capacity,
+		},
+		"seat": {
+			"seat_number": assignment.seat_number,
+			"row": assignment.row,
+			"column": assignment.column,
+			"module_name": assignment.module_name,
+		},
 	}
 
 

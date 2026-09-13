@@ -3,7 +3,7 @@ import { colors, fonts } from "../theme";
 import RiskBadge from "./RiskBadge";
 import AttendanceBar from "./AttendanceBar";
 
-export default function SeatModal({ seat, exam, room, onClose, onSelectStudent }) {
+export default function SeatModal({ seat, exam, room, onClose, onSelectStudent, onAdmitCard }) {
   if (!seat) return null;
 
   return (
@@ -96,27 +96,47 @@ export default function SeatModal({ seat, exam, room, onClose, onSelectStudent }
           <div style={{ fontSize: 12, color: colors.textMuted }}>
             Date & Time: <strong>{exam?.exam_date}</strong> at <strong>{exam?.start_time}</strong>
           </div>
-          {onSelectStudent && (
-            <button
-              type="button"
-              onClick={() => {
-                onSelectStudent(seat.student_id);
-                onClose();
-              }}
-              style={{
-                border: "none",
-                background: colors.ink,
-                color: "#FFF",
-                borderRadius: 6,
-                padding: "8px 14px",
-                fontSize: 13,
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              View Full Profile →
-            </button>
-          )}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {onSelectStudent && (
+              <button
+                type="button"
+                onClick={() => {
+                  onSelectStudent(seat.student_id);
+                  onClose();
+                }}
+                style={{
+                  border: "none",
+                  background: colors.ink,
+                  color: "#FFF",
+                  borderRadius: 6,
+                  padding: "8px 14px",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                View Full Profile →
+              </button>
+            )}
+            {onAdmitCard && exam && (
+              <button
+                type="button"
+                onClick={() => onAdmitCard({ studentId: seat.student_id, examId: exam.id })}
+                style={{
+                  border: `1px solid ${colors.border}`,
+                  background: colors.card,
+                  color: colors.ink,
+                  borderRadius: 6,
+                  padding: "8px 14px",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                🎫 Admit Card
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

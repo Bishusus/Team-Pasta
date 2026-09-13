@@ -18,7 +18,7 @@ function moduleColor(moduleName, modules) {
   return seatColors[Math.max(0, modules.indexOf(moduleName)) % seatColors.length];
 }
 
-export default function ExamSeatingPage({ onSelectStudent, scope, session }) {
+export default function ExamSeatingPage({ onSelectStudent, scope, session, onAdmitCard }) {
   const [schedule, setSchedule] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [layout, setLayout] = useState(null);
@@ -484,6 +484,11 @@ export default function ExamSeatingPage({ onSelectStudent, scope, session }) {
             setSelectedSeatRoom(null);
           }}
           onSelectStudent={onSelectStudent}
+          onAdmitCard={(request) => {
+            setSelectedSeat(null);
+            setSelectedSeatRoom(null);
+            onAdmitCard && onAdmitCard(request);
+          }}
         />
       )}
     </div>

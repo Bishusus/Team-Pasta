@@ -215,6 +215,21 @@ export async function fetchExamLayout(examId) {
   return getJson(`/exam-schedule/${encodeURIComponent(examId)}/layout`);
 }
 
+/**
+ * Fetches a student's digital admit card for one generated exam.
+ * Throws ApiError (status 404 no seat/unknown, 409 not registered) on failure.
+ */
+export async function fetchAdmitCard(examId, studentId) {
+  if (!examId || !studentId) {
+    throw new ApiError("An examId and studentId are required.", {
+      path: "/exam-schedule/{exam_id}/admit-card/{student_id}",
+    });
+  }
+  return getJson(
+    `/exam-schedule/${encodeURIComponent(examId)}/admit-card/${encodeURIComponent(studentId)}`
+  );
+}
+
 /** Triggers backend seating plan generation with invigilator assignments. */
 export async function generateSeatingPlan() {
   let response;

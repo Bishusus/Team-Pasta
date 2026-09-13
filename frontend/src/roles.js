@@ -9,18 +9,21 @@ export const ROLE_NAV = {
     { key: "timetable", label: "Timetable", icon: "📅" },
     { key: "booking", label: "Classroom Booking", icon: "🔑" },
     { key: "seating", label: "Exam Seating", icon: "🗺️" },
+    { key: "admit-card", label: "Admit Cards", icon: "🎫" },
   ],
   teacher: [
     { key: "dashboard", label: "My Dashboard", icon: "📊" },
     { key: "risk", label: "Student Risk", icon: "⚠️" },
     { key: "timetable", label: "My Timetable", icon: "📅" },
     { key: "seating", label: "My Exams", icon: "🗺️" },
+    { key: "admit-card", label: "Admit Cards", icon: "🎫" },
   ],
   student: [
     { key: "dashboard", label: "My Dashboard", icon: "📊" },
     { key: "timetable", label: "My Timetable", icon: "📅" },
     { key: "booking", label: "Book a Class", icon: "🔑" },
     { key: "seating", label: "My Exams", icon: "🗺️" },
+    { key: "admit-card", label: "My Admit Card", icon: "🎫" },
   ],
 };
 
