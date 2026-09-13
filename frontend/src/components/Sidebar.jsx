@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { colors, fonts } from "../theme";
 import useScrollProgress from "../hooks/useScrollProgress";
+import { navForRole } from "../roles";
 
-export const NAV_ITEMS = [
-  { key: "dashboard", label: "Dashboard", icon: "📊" },
-  { key: "risk", label: "Risk Analysis", icon: "⚠️" },
-  { key: "timetable", label: "Timetable", icon: "📅" },
-  { key: "booking", label: "Classroom Booking", icon: "🔑" },
-  { key: "seating", label: "Exam Seating", icon: "🗺️" },
-];
-
-export default function Sidebar({ active, onSelect }) {
+export default function Sidebar({ active, onSelect, session, onSignOut, scope }) {
   const progress = useScrollProgress();
 
   // Scroll-spy: when scrolling a long page, keep the active nav item in
@@ -92,7 +85,7 @@ export default function Sidebar({ active, onSelect }) {
         </div>
 
         <nav style={{ display: "flex", flexDirection: "column", gap: 4 }} aria-label="Main navigation">
-          {NAV_ITEMS.map((item) => {
+          {navForRole(session.role).map((item) => {
             const isActive = item.key === highlighted;
             return (
               <button
@@ -146,6 +139,44 @@ export default function Sidebar({ active, onSelect }) {
           <strong style={{ color: "#F8FAFC" }}>System Live</strong>
         </div>
         <div>FastAPI & Supabase Connected</div>
+        {session && (
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 10, paddingTop: 10, borderTop: "1px solid rgba(148, 163, 184, 0.2)" }}>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ color: "#F8FAFC", fontWeight: 700, fontSize: 11.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {session.username}
+              </div>
+              <div style={{ color: "#64748B", fontSize: 10, marginTop: 1 }}>
+                {session.roleLabel}
+                {scope && scope.kind === "teacher" && scope.modules.length > 0 && (
+                  <span> · {scope.modules.length} module{scope.modules.length === 1 ? "" : "s"}</span>
+                )}
+                {scope && scope.kind === "student" && scope.record && (
+                  <span> · {scope.record.module}</span>
+                )}
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={onSignOut}
+              title="Sign out"
+              style={{
+                border: "1px solid rgba(148, 163, 184, 0.35)",
+                borderRadius: 6,
+                background: "transparent",
+                color: "#94A3B8",
+                fontSize: 10.5,
+                fontWeight: 700,
+                padding: "4px 8px",
+                cursor: "pointer",
+                transition: "color 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#F8FAFC"; e.currentTarget.style.borderColor = "#F8FAFC"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = "#94A3B8"; e.currentTarget.style.borderColor = "rgba(148, 163, 184, 0.35)"; }}
+            >
+              Sign out
+            </button>
+          </div>
+        )}
         {/* Reading progress: fills as the user scrolls the main content */}
         <div
           style={{ marginTop: 10, height: 3, borderRadius: 2, background: "rgba(148, 163, 184, 0.18)", overflow: "hidden" }}

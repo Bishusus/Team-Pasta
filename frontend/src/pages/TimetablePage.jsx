@@ -17,28 +17,24 @@ function timeValue(timeSlot) {
   return Number.isNaN(parsed) ? Number.MAX_SAFE_INTEGER : parsed;
 }
 
-export default function TimetablePage() {
-  const [entries, setEntries] = useState([]);
+export default function TimetablePage({ scopedEntries, scope }) {
+  // Entries come pre-scoped from App (teacher → their classes,
+  // student → their modules/cohort, admin → everything).
+  const entries = Array.isArray(scopedEntries) ? scopedEntries : [];
   const [filters, setFilters] = useState({ day: "", module: "", group: "", lecturer: "" });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const loading = false;
+  const error = null;
 
-  const loadTimetable = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      setEntries(await fetchTimetable());
-    } catch (reason) {
-      setEntries([]);
-      setError(reason.message || "Unable to load the timetable.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadTimetable();
-  }, []);
+  const scopeNote =
+    scope?.kind === "teacher"
+      ? scope.matched
+        ? "Showing only the classes you teach."
+        : "Sign in with a username matching a lecturer name (e.g. \"rabin adhikari\") to see your classes."
+      : scope?.kind === "student"
+        ? scope.matched
+          ? "Showing classes for your modules and cohort."
+          : "Sign in with your full name as recorded by the college to see your classes."
+        : null;
 
   const options = {
     day: [...new Set(entries.map((entry) => entry.day))].sort((a, b) => (dayOrder[a] ?? 99) - (dayOrder[b] ?? 99)),
@@ -78,8 +74,17 @@ export default function TimetablePage() {
           Timetable
         </h1>
         <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>
-          Classes, rooms, modules, and lecturers across the academic schedule.
+          {scope?.kind === "teacher"
+            ? "Your teaching schedule across the week."
+            : scope?.kind === "student"
+              ? "Classes for your modules and cohort."
+              : "Classes, rooms, modules, and lecturers across the academic schedule."}
         </p>
+        {scopeNote && (
+          <div style={{ marginTop: 10, display: "inline-block", padding: "6px 12px", background: scope.matched === false ? "#FBF2E3" : "#E7F4ED", color: scope.matched === false ? "#7A5218" : "#1E5738", borderRadius: 8, fontSize: 12.5, fontWeight: 600 }}>
+            {scopeNote}
+          </div>
+        )}
       </header>
 
       <section style={panelStyle}>
@@ -103,11 +108,11 @@ export default function TimetablePage() {
                 <span style={{ color: colors.textMuted, fontSize: 12 }}>Sunday to Friday</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 }}>
-              {[
+              {              [
                 ["day", "All days", options.day],
                 ["module", "All modules", options.module],
-                ["group", "All groups", options.group],
-                ["lecturer", "All lecturers", options.lecturer],
+                ...(scope?.kind === "admin" ? [["group", "All groups", options.group]] : []),
+                ...(scope?.kind === "admin" ? [["lecturer", "All lecturers", options.lecturer]] : []),
               ].map(([name, placeholder, values]) => (
                 <select key={name} value={filters[name]} onChange={(event) => updateFilter(name, event.target.value)} style={selectStyle} aria-label={placeholder}>
                   <option value="">{placeholder}</option>

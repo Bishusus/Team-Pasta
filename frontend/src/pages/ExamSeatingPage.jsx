@@ -3,6 +3,7 @@ import { colors, fonts } from "../theme";
 import SeatModal from "../components/SeatModal";
 import Toast from "../components/Toast";
 import { fetchExamLayout, fetchExamSchedule, generateExamSchedule } from "../services/api";
+import { scopeExams, scopeLayout } from "../scope";
 import { exportToCsv } from "../utils/exportCsv";
 
 const panelStyle = { background: colors.card, border: `1px solid ${colors.border}`, borderRadius: 10, padding: 22 };
@@ -17,7 +18,7 @@ function moduleColor(moduleName, modules) {
   return seatColors[Math.max(0, modules.indexOf(moduleName)) % seatColors.length];
 }
 
-export default function ExamSeatingPage({ onSelectStudent }) {
+export default function ExamSeatingPage({ onSelectStudent, scope, session }) {
   const [schedule, setSchedule] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [layout, setLayout] = useState(null);
@@ -99,7 +100,17 @@ export default function ExamSeatingPage({ onSelectStudent }) {
     }
   };
 
-  const modules = useMemo(() => [...new Set(layout?.rooms.flatMap((room) => room.assignments.map((seat) => seat.module_name)) ?? [])].sort(), [layout]);
+  const visibleSchedule = useMemo(
+    () => (scope ? scopeExams(scope, schedule) : schedule),
+    [schedule, scope]
+  );
+
+  const visibleLayout = useMemo(
+    () => (scope ? scopeLayout(scope, layout) : layout),
+    [layout, scope]
+  );
+
+  const modules = useMemo(() => [...new Set(visibleLayout?.rooms.flatMap((room) => room.assignments.map((seat) => seat.module_name)) ?? [])].sort(), [visibleLayout]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -129,13 +140,13 @@ export default function ExamSeatingPage({ onSelectStudent }) {
   };
 
   const handleExportSeatingPlan = () => {
-    if (!layout) return;
-    const flatRows = layout.rooms.flatMap((room) =>
+    if (!visibleLayout) return;
+    const flatRows = visibleLayout.rooms.flatMap((room) =>
       room.assignments.map((seat) => ({
-        examTitle: layout.exam.module_name,
-        examDate: layout.exam.exam_date,
-        startTime: layout.exam.start_time,
-        invigilator: layout.exam.invigilator,
+        examTitle: visibleLayout.exam.module_name,
+        examDate: visibleLayout.exam.exam_date,
+        startTime: visibleLayout.exam.start_time,
+        invigilator: visibleLayout.exam.invigilator,
         roomName: room.name,
         seatNumber: seat.seat_number,
         row: seat.row,
@@ -160,7 +171,7 @@ export default function ExamSeatingPage({ onSelectStudent }) {
       { label: "Module", key: "moduleName" },
     ];
 
-    exportToCsv(`${layout.exam.module_name}_Seating_Plan.csv`, flatRows, headers);
+    exportToCsv(`${visibleLayout.exam.module_name}_Seating_Plan.csv`, flatRows, headers);
     setToastMessage("Seating plan exported as CSV!");
   };
 
@@ -168,8 +179,8 @@ export default function ExamSeatingPage({ onSelectStudent }) {
     window.print();
   };
 
-  const totalAssigned = layout ? layout.rooms.reduce((sum, r) => sum + r.assignments.length, 0) : 0;
-  const totalCapacity = layout ? layout.rooms.reduce((sum, r) => sum + r.capacity, 0) : 0;
+  const totalAssigned = visibleLayout ? visibleLayout.rooms.reduce((sum, r) => sum + r.assignments.length, 0) : 0;
+  const totalCapacity = visibleLayout ? visibleLayout.rooms.reduce((sum, r) => sum + r.capacity, 0) : 0;
   const utilizationPct = totalCapacity ? Math.round((totalAssigned / totalCapacity) * 100) : 0;
 
   return (
@@ -179,8 +190,16 @@ export default function ExamSeatingPage({ onSelectStudent }) {
       <header data-page-section="seating" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, marginBottom: 24 }}>
         <div>
           <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>Assessment operations · room allocation</div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>Exam schedule & seating</h1>
-          <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>Every candidate, room, bench, and invigilator in one view.</p>
+          <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>
+            {session?.role === "student" ? "My exam seating" : session?.role === "teacher" ? "My module exams" : "Exam schedule & seating"}
+          </h1>
+          <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>
+            {session?.role === "student"
+              ? "Your exams, rooms, and assigned benches."
+              : session?.role === "teacher"
+                ? "Exams for the modules you teach, and the halls you invigilate."
+                : "Every candidate, room, bench, and invigilator in one view."}
+          </p>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
           {layout && (
@@ -193,9 +212,11 @@ export default function ExamSeatingPage({ onSelectStudent }) {
               </button>
             </>
           )}
-          <button type="button" onClick={regenerate} disabled={generating} style={{ border: `1px solid ${colors.border}`, borderRadius: 6, padding: "9px 13px", background: colors.card, color: colors.ink, fontWeight: 600, cursor: generating ? "wait" : "pointer" }}>
-            {generating ? "Generating..." : "Regenerate layout"}
-          </button>
+          {session?.role === "admin" && (
+            <button type="button" onClick={regenerate} disabled={generating} style={{ border: `1px solid ${colors.border}`, borderRadius: 6, padding: "9px 13px", background: colors.card, color: colors.ink, fontWeight: 600, cursor: generating ? "wait" : "pointer" }}>
+              {generating ? "Generating..." : "Regenerate layout"}
+            </button>
+          )}
         </div>
       </header>
 
@@ -276,6 +297,16 @@ export default function ExamSeatingPage({ onSelectStudent }) {
         <section style={panelStyle}>
           <p style={{ color: colors.textMuted, margin: 0 }}>No generated exams are available.</p>
         </section>
+      ) : visibleSchedule.length === 0 ? (
+        <section style={panelStyle}>
+          <p style={{ color: colors.textMuted, margin: 0 }}>
+            {session?.role === "teacher"
+              ? "None of the generated exams cover the modules you teach."
+              : session?.role === "student"
+                ? "No exams are scheduled for your modules yet."
+                : "No generated exams are available."}
+          </p>
+        </section>
       ) : (
         <>
           <section style={{ ...panelStyle, padding: 0, overflow: "hidden", marginBottom: 18 }}>
@@ -291,7 +322,7 @@ export default function ExamSeatingPage({ onSelectStudent }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {schedule.map((exam) => (
+                  {visibleSchedule.map((exam) => (
                     <tr key={exam.id} style={{ background: selectedId === exam.id ? "#F3F6FF" : colors.card }}>
                       <td style={{ padding: "12px 14px", fontSize: 13 }}>{formatDate(exam.exam_date)}</td>
                       <td style={{ padding: "12px 14px", fontFamily: fonts.mono, fontSize: 12 }}>{exam.start_time}</td>
@@ -310,13 +341,13 @@ export default function ExamSeatingPage({ onSelectStudent }) {
             </div>
           </section>
 
-          {layout && (
+          {visibleLayout && (
             <section style={panelStyle} className="print-area">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 18, flexWrap: "wrap", marginBottom: 20 }}>
                 <div>
-                  <h2 style={{ color: colors.ink, fontSize: 19, margin: 0 }}>{layout.exam.module_name}</h2>
+                  <h2 style={{ color: colors.ink, fontSize: 19, margin: 0 }}>{visibleLayout.exam.module_name}</h2>
                   <p style={{ color: colors.textMuted, fontSize: 13, margin: "5px 0 0" }}>
-                    {formatDate(layout.exam.exam_date)} · {layout.exam.start_time} · Invigilator: <strong>{layout.exam.invigilator}</strong>
+                    {formatDate(visibleLayout.exam.exam_date)} · {visibleLayout.exam.start_time} · Invigilator: <strong>{visibleLayout.exam.invigilator}</strong>
                   </p>
                 </div>
 
@@ -373,7 +404,7 @@ export default function ExamSeatingPage({ onSelectStudent }) {
                 />
               </div>
 
-              {layout.rooms.map((room) => {
+              {visibleLayout.rooms.map((room) => {
                 const seats = new Map(room.assignments.map((seat) => [`${seat.row}-${seat.column}`, seat]));
                 return (
                   <div key={room.id} style={{ marginBottom: 26 }}>
@@ -447,7 +478,7 @@ export default function ExamSeatingPage({ onSelectStudent }) {
         <SeatModal
           seat={selectedSeat}
           room={selectedSeatRoom}
-          exam={layout?.exam}
+          exam={visibleLayout?.exam}
           onClose={() => {
             setSelectedSeat(null);
             setSelectedSeatRoom(null);

@@ -43,6 +43,7 @@ export default function DashboardPage({
   onRetry,
   onNavigate,
   onSelectStudent,
+  session,
 }) {
   const [examSchedule, setExamSchedule] = useState([]);
   const [examScheduleError, setExamScheduleError] = useState(null);
@@ -112,8 +113,16 @@ export default function DashboardPage({
       <header data-page-section="dashboard" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, marginBottom: 26 }}>
         <div>
           <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>Islington College · Academic Intelligence</div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>Academic Command Center</h1>
-          <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>Smarter systems. Stronger records.</p>
+          <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>
+            {session?.role === "student" ? "My Academic Dashboard" : session?.role === "teacher" ? "Teaching Dashboard" : "Academic Command Center"}
+          </h1>
+          <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>
+            {session?.role === "student"
+              ? session?.username ? `Signed in as ${session.username}` : "Your academic overview."
+              : session?.role === "teacher"
+                ? "Your modules, students, and exam duties."
+                : "Smarter systems. Stronger records."}
+          </p>
         </div>
         <button
           type="button"
@@ -151,7 +160,7 @@ export default function DashboardPage({
         <section style={panelStyle}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 18 }}>
             <div><h2 style={{ fontSize: 17, color: colors.ink, margin: 0 }}>Academic Risk Overview</h2><p style={{ fontSize: 13, color: colors.textMuted, margin: "4px 0 0" }}>Backend-calculated student risk distribution.</p></div>
-            <button onClick={() => onNavigate("risk")} style={actionButton}>View Risk Analysis →</button>
+            {session?.role !== "student" && <button onClick={() => onNavigate("risk")} style={actionButton}>View Risk Analysis →</button>}
           </div>
           <div style={{ display: "grid", gap: 14 }}>
             {riskLevels.map((item) => {

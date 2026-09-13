@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { colors, fonts } from "../theme";
 import Toast from "../components/Toast";
-import { createBooking, fetchBookingAvailability, fetchBookings } from "../services/api";
+import { approveBooking, createBooking, fetchBookingAvailability, fetchBookings, rejectBooking } from "../services/api";
 
 const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI"];
 const panelStyle = {
@@ -11,8 +11,25 @@ const panelStyle = {
   padding: 22,
 };
 
-export default function BookingPage() {
-  const [form, setForm] = useState({ day: "MON", startTime: "12:00", endTime: "13:00", classroomId: "", bookedBy: "", purpose: "" });
+const statusStyle = {
+  pending: { bg: "#FBF2E3", text: "#7A5218", label: "Pending approval" },
+  approved: { bg: "#E7F4ED", text: "#1E5738", label: "Approved" },
+  rejected: { bg: "#FBEAE6", text: "#8A2F1D", label: "Rejected" },
+};
+
+function StatusBadge({ status }) {
+  const tone = statusStyle[status] || statusStyle.pending;
+  return (
+    <span style={{ background: tone.bg, color: tone.text, borderRadius: 999, padding: "3px 10px", fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}>
+      {tone.label}
+    </span>
+  );
+}
+
+export default function BookingPage({ session }) {
+  const isAdmin = session?.role === "admin";
+  const isStudent = session?.role === "student";
+  const [form, setForm] = useState({ day: "MON", startTime: "12:00", endTime: "13:00", classroomId: "", bookedBy: session?.role === "student" ? session.username : "", purpose: "" });
   const [classrooms, setClassrooms] = useState([]);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,12 +72,27 @@ export default function BookingPage() {
         booked_by: form.bookedBy,
         purpose: form.purpose,
       });
-      setToastMessage("Classroom booked successfully!");
+      setToastMessage(isAdmin ? "Booking recorded." : "Request submitted — an administrator will review it.");
       setForm((current) => ({ ...current, bookedBy: "", purpose: "" }));
       await loadAvailability();
     } catch (reason) {
       setToastMessage(reason.message || "Booking could not be completed.");
       await loadAvailability();
+    }
+  };
+
+  const decide = async (bookingId, decision) => {
+    try {
+      if (decision === "approved") {
+        await approveBooking(bookingId, session?.username || "Administrator");
+        setToastMessage("Booking approved.");
+      } else {
+        await rejectBooking(bookingId, session?.username || "Administrator");
+        setToastMessage("Booking rejected.");
+      }
+      await loadAvailability();
+    } catch (reason) {
+      setToastMessage(reason.message || "Action failed.");
     }
   };
 
@@ -162,8 +194,12 @@ export default function BookingPage() {
         </section>
 
         <section style={panelStyle}>
-          <h2 style={{ color: colors.ink, fontSize: 17, margin: "0 0 4px" }}>Booking details</h2>
-          <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 16px" }}>The reservation is saved centrally for other staff to see.</p>
+          <h2 style={{ color: colors.ink, fontSize: 17, margin: "0 0 4px" }}>{isStudent ? "Request details" : "Booking details"}</h2>
+          <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 16px" }}>
+            {isStudent
+              ? "Requests go to an administrator for approval before the room is held."
+              : "The reservation is saved centrally for other staff to see."}
+          </p>
           <form onSubmit={submit} style={{ display: "grid", gap: 12 }}>
             <label style={{ color: colors.textMuted, fontSize: 12 }}>
               Booked by
@@ -187,7 +223,7 @@ export default function BookingPage() {
                 cursor: form.classroomId && !loading ? "pointer" : "not-allowed",
               }}
             >
-              Book selected classroom
+              {isStudent ? "Submit booking request" : "Book selected classroom"}
             </button>
           </form>
         </section>
@@ -195,8 +231,14 @@ export default function BookingPage() {
 
       {/* Existing Bookings Timeline List */}
       <section style={{ ...panelStyle, marginTop: 18 }}>
-        <h2 style={{ color: colors.ink, fontSize: 17, margin: "0 0 4px" }}>Bookings for {form.day}</h2>
-        <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 14px" }}>Existing reservations are included in the availability check.</p>
+        <h2 style={{ color: colors.ink, fontSize: 17, margin: "0 0 4px" }}>
+          {isAdmin ? "Booking requests" : isStudent ? "My requests & bookings" : "Bookings"} for {form.day}
+        </h2>
+        <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 14px" }}>
+          {isAdmin
+            ? "Approve or reject pending requests. Approved slots are held immediately."
+            : "Approved requests hold the room; pending ones await administrator review."}
+        </p>
         {bookings.length === 0 ? (
           <p style={{ color: colors.textMuted, fontSize: 13, margin: 0 }}>No bookings recorded for this day.</p>
         ) : (
@@ -217,14 +259,38 @@ export default function BookingPage() {
                   animationDelay: `${Math.min(index * 50, 400)}ms`,
                 }}
               >
-                <div>
-                  <strong style={{ color: colors.ink }}>{booking.room}</strong>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <strong style={{ color: colors.ink }}>{booking.room}</strong>
+                    <StatusBadge status={booking.status} />
+                  </div>
                   <div style={{ fontSize: 12, color: colors.textMuted, marginTop: 2 }}>
-                    Purpose: <strong>{booking.purpose}</strong> (Booked by: {booking.booked_by})
+                    Purpose: <strong>{booking.purpose}</strong> (Requested by: {booking.booked_by})
+                    {booking.status !== "pending" && booking.decided_by ? ` · Decided by ${booking.decided_by}` : ""}
                   </div>
                 </div>
-                <div style={{ fontFamily: fonts.mono, fontSize: 12, color: colors.textMuted, alignSelf: "center" }}>
-                  {booking.start_time} - {booking.end_time}
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
+                  <div style={{ fontFamily: fonts.mono, fontSize: 12, color: colors.textMuted }}>
+                    {booking.start_time} - {booking.end_time}
+                  </div>
+                  {isAdmin && booking.status === "pending" && (
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <button
+                        type="button"
+                        onClick={() => decide(booking.id, "approved")}
+                        style={{ border: "none", borderRadius: 6, background: colors.low.dot, color: "#FFF", fontWeight: 700, fontSize: 11.5, padding: "6px 11px", cursor: "pointer" }}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => decide(booking.id, "rejected")}
+                        style={{ border: `1px solid ${colors.high.dot}`, borderRadius: 6, background: "transparent", color: colors.high.text, fontWeight: 700, fontSize: 11.5, padding: "6px 11px", cursor: "pointer" }}
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

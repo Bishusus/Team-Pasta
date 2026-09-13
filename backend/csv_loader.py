@@ -4,7 +4,7 @@ import pandas as pd
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
-from .models import Student
+from .models import ExamSeatAssignment, SeatAssignment, Student
 
 
 REQUIRED_COLUMNS = [
@@ -98,6 +98,17 @@ def load_students_from_csv(
                 setattr(student, column, value)
         loaded += 1
 
-    db.execute(delete(Student).where(Student.student_id.not_in(student_ids)))
+    # Remove students that vanished from the CSV. Their seat assignments
+    # must go first or the foreign keys on seat_assignments and
+    # generated_exam_seat_assignments reject the delete.
+    doomed_ids = [
+        student.id
+        for student in existing_students
+        if student.student_id not in student_ids
+    ]
+    if doomed_ids:
+        db.execute(delete(ExamSeatAssignment).where(ExamSeatAssignment.student_id.in_(doomed_ids)))
+        db.execute(delete(SeatAssignment).where(SeatAssignment.student_id.in_(doomed_ids)))
+        db.execute(delete(Student).where(Student.id.in_(doomed_ids)))
     db.commit()
     return loaded

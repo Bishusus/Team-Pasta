@@ -24,7 +24,7 @@ const distribution = [
   { key: "LOW", label: "Low risk", tone: "low" },
 ];
 
-export default function RiskAnalysisPage({ students, summary, summaryLoading, summaryError, loading, error, onRetry, onSelectStudent }) {
+export default function RiskAnalysisPage({ students, summary, summaryLoading, summaryError, loading, error, onRetry, onSelectStudent, session, scope }) {
   const [level, setLevel] = useState("HIGH");
   const [programme, setProgramme] = useState("");
   const [semester, setSemester] = useState("");
@@ -75,10 +75,21 @@ export default function RiskAnalysisPage({ students, summary, summaryLoading, su
           <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>
             Academic Intelligence
           </div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.ink, margin: 0 }}>Risk analysis</h1>
+          <h1 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.ink, margin: 0 }}>
+            {session?.role === "student" ? "My risk profile" : session?.role === "teacher" ? "Student risk — my modules" : "Risk analysis"}
+          </h1>
           <p style={{ fontSize: 14, color: colors.textMuted, margin: "4px 0 0" }}>
-            Focus attention on students whose academic signals need review.
+            {session?.role === "student"
+              ? "Your attendance and performance signals, explained."
+              : session?.role === "teacher"
+                ? "Students in modules you teach, ranked by academic risk."
+                : "Focus attention on students whose academic signals need review."}
           </p>
+          {scope?.kind === "teacher" && scope.matched && (
+            <div style={{ marginTop: 10, display: "inline-block", padding: "6px 12px", background: "#E7F4ED", color: "#1E5738", borderRadius: 8, fontSize: 12.5, fontWeight: 600 }}>
+              Modules: {scope.modules.join(", ")}
+            </div>
+          )}
         </div>
 
         <div style={{ display: "flex", gap: 8, background: colors.card, border: `1px solid ${colors.border}`, padding: 4, borderRadius: 8 }}>
