@@ -69,8 +69,8 @@ export default function TimetablePage() {
   };
 
   return (
-    <div style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
-      <header style={{ marginBottom: 24 }}>
+    <div className="page-transition" style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
+      <header data-page-section="timetable" style={{ marginBottom: 24 }}>
         <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>
           Islington College · Academic Intelligence
         </div>

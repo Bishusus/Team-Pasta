@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { colors, fonts } from "../theme";
 import SummaryCard from "../components/SummaryCard";
+import AnalyticsCharts from "../components/AnalyticsCharts";
+import { Reveal } from "../hooks/useReveal";
 import { fetchExamSchedule } from "../services/api";
 
 const riskLevels = [
@@ -74,7 +76,22 @@ export default function DashboardPage({
   const attendanceAlerts = students.filter((student) => student.attendance != null && student.attendance < 75).slice(0, 4);
 
   if (loading && !students.length) {
-    return <div style={{ padding: "32px 36px", color: colors.textMuted }}>Loading Islington College academic overview...</div>;
+    return (
+      <div className="dashboard-page" style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
+        <div className="skeleton-block" style={{ height: 14, width: 240, marginBottom: 12 }} />
+        <div className="skeleton-block" style={{ height: 34, width: 380, marginBottom: 30 }} />
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 22 }}>
+          {[0, 1, 2, 3].map((index) => (
+            <div key={index} className="skeleton-block" style={{ height: 92, flex: "1 1 180px", minWidth: 160 }} />
+          ))}
+        </div>
+        <div className="skeleton-block" style={{ height: 230, marginBottom: 18 }} />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 18 }}>
+          <div className="skeleton-block" style={{ height: 190 }} />
+          <div className="skeleton-block" style={{ height: 190 }} />
+        </div>
+      </div>
+    );
   }
 
   if (error && !students.length) {
@@ -91,23 +108,46 @@ export default function DashboardPage({
   }
 
   return (
-    <div className="dashboard-page" style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
-      <header style={{ marginBottom: 26 }}>
-        <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>Islington College · Academic Intelligence</div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>Academic Command Center</h1>
-        <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>Smarter systems. Stronger records.</p>
+    <div className="dashboard-page page-transition" style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
+      <header data-page-section="dashboard" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, marginBottom: 26 }}>
+        <div>
+          <div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>Islington College · Academic Intelligence</div>
+          <h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>Academic Command Center</h1>
+          <p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>Smarter systems. Stronger records.</p>
+        </div>
+        <button
+          type="button"
+          onClick={onRetry}
+          style={{
+            border: `1px solid ${colors.border}`,
+            borderRadius: 6,
+            padding: "8px 14px",
+            background: colors.card,
+            color: colors.ink,
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: "pointer",
+          }}
+        >
+          🔄 Refresh Overview
+        </button>
       </header>
 
       {summaryError && <div style={{ padding: 13, marginBottom: 18, background: "#FDF2F2", border: "1px solid #F87171", borderRadius: 10, color: "#991B1B", fontSize: 13 }}>Risk summary unavailable: {summaryError}</div>}
 
-      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 22 }}>
+      <Reveal style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 22 }}>
         <SummaryCard label="Total students" value={summaryLoading ? "-" : counts.total} tone="neutral" />
         <SummaryCard label="High-risk students" value={summaryLoading ? "-" : counts.high} tone="high" />
         <SummaryCard label="Upcoming exams" value={examSchedule.length || upcomingExams.length} tone="medium" />
         <SummaryCard label="Academic records" value={healthLoading ? "-" : health?.database === "connected" ? "Connected" : "Unavailable"} tone="low" />
-      </div>
+      </Reveal>
 
-      <div className="dashboard-primary-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.05fr) minmax(0, 0.95fr)", gap: 18, marginBottom: 18 }}>
+      {/* SVG Interactive Analytics Charts */}
+      <Reveal delay={60} style={{ marginBottom: 22 }}>
+        <AnalyticsCharts summary={summary} students={students} />
+      </Reveal>
+
+      <Reveal delay={120} className="dashboard-primary-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.05fr) minmax(0, 0.95fr)", gap: 18, marginBottom: 18 }}>
         <section style={panelStyle}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 18 }}>
             <div><h2 style={{ fontSize: 17, color: colors.ink, margin: 0 }}>Academic Risk Overview</h2><p style={{ fontSize: 13, color: colors.textMuted, margin: "4px 0 0" }}>Backend-calculated student risk distribution.</p></div>
@@ -129,9 +169,9 @@ export default function DashboardPage({
           </div>
           {examSchedule.length ? examSchedule.slice(0, 4).map((exam) => <div key={exam.id} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module_name}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.exam_date)} · {exam.start_time}</span></div>) : upcomingExams.length ? upcomingExams.map((exam) => <div key={`${exam.module}-${exam.date}`} style={{ padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, display: "flex", justifyContent: "space-between", gap: 12 }}><span style={{ color: colors.textBody, fontSize: 13, fontWeight: 600 }}>{exam.module}</span><span style={{ color: colors.textMuted, fontSize: 12 }}>{formatDate(exam.date)} · Scheduled</span></div>) : <div style={{ padding: "18px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>{examScheduleError || "No upcoming exams available."}</div>}
         </section>
-      </div>
+      </Reveal>
 
-      <div className="dashboard-secondary-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18, marginBottom: 18 }}>
+      <Reveal delay={160} className="dashboard-secondary-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18, marginBottom: 18 }}>
         <section style={panelStyle}>
           <h2 style={{ fontSize: 17, color: colors.ink, margin: "0 0 4px" }}>Academic Records</h2>
           <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 14px" }}>Centralized records for institutional decisions.</p>
@@ -144,9 +184,9 @@ export default function DashboardPage({
           <div style={{ padding: "13px 0", borderTop: `1px solid ${colors.borderLight}`, color: colors.textMuted, fontSize: 13 }}>{examSchedule.length ? `${examSchedule.reduce((sum, exam) => sum + exam.student_count, 0)} students assigned across ${examSchedule.length} exams.` : "Generating exam allocation..."}</div>
           <button onClick={() => onNavigate("seating")} style={actionButton}>Open Exam Seating →</button>
         </section>
-      </div>
+      </Reveal>
 
-      <div className="dashboard-secondary-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
+      <Reveal delay={200} className="dashboard-secondary-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
         <section style={panelStyle}>
           <h2 style={{ fontSize: 17, color: colors.ink, margin: "0 0 4px" }}>Priority Alerts</h2>
           <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 10px" }}>High-risk students requiring review.</p>
@@ -158,7 +198,8 @@ export default function DashboardPage({
           <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 10px" }}>Students below 75% attendance.</p>
           {attendanceAlerts.length ? attendanceAlerts.map((student) => <button key={student.id} onClick={() => { onNavigate("risk"); onSelectStudent(student.id); }} style={{ width: "100%", textAlign: "left", padding: "11px 0", border: "none", borderTop: `1px solid ${colors.borderLight}`, background: "none", display: "flex", justifyContent: "space-between", gap: 12, cursor: "pointer" }}><span style={{ color: colors.textBody, fontSize: 13 }}>{student.name}</span><span style={{ fontFamily: fonts.mono, color: colors.high.dot, fontSize: 12 }}>{student.attendance}%</span></button>) : <p style={{ color: colors.textMuted, fontSize: 13 }}>No attendance alerts in the current data.</p>}
         </section>
-      </div>
+      </Reveal>
     </div>
   );
 }
+

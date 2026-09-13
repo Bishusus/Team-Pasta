@@ -6,6 +6,7 @@ import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
 import BookingPage from "./pages/BookingPage";
+import BackToTop from "./components/BackToTop";
 import { fetchHealth, fetchRiskResults } from "./services/api";
 
 export default function App() {
@@ -70,11 +71,18 @@ export default function App() {
     setSelectedStudentId(null);
   };
 
+  // Return to the top of the page whenever the view changes, so a new
+  // tab always starts from its header instead of a mid-scroll position.
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [activeTab, selectedStudentId]);
+
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#F4F5F8" }}>
       <Sidebar active={activeTab} onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }} />
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+        <div key={selectedStudentId ? `student-${selectedStudentId}` : activeTab} className="page-transition" style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
         {selectedStudentId ? (
           <StudentDetailPage 
             studentId={selectedStudentId} 
@@ -110,9 +118,11 @@ export default function App() {
         ) : activeTab === "booking" ? (
           <BookingPage />
         ) : (
-          <ExamSeatingPage />
+          <ExamSeatingPage onSelectStudent={handleSelectStudent} />
         )}
+        </div>
       </main>
+      <BackToTop />
     </div>
   );
 }
