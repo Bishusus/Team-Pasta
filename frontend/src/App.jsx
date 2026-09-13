@@ -6,12 +6,21 @@ import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
 import BookingPage from "./pages/BookingPage";
-import { fetchHealth, fetchRiskResults } from "./services/api";
+import LoginPage from "./pages/LoginPage";
+import BackToTop from "./components/BackToTop";
+import { fetchHealth, fetchRiskResults, fetchTimetable } from "./services/api";
+import { loadSession, clearSession } from "./auth";
+import { navForRole, canView } from "./roles";
+import { buildScope, scopeStudents, scopeTimetable, scopeExams } from "./scope";
 
 export default function App() {
+  // Demo auth: session lives in sessionStorage only. Until a valid role
+  // session exists, the whole app is replaced by the sign-in gate.
+  const [session, setSession] = useState(() => loadSession());
   const [activeTab, setActiveTab] = useState("dashboard");
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [students, setStudents] = useState([]);
+  const [timetableEntries, setTimetableEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [summary, setSummary] = useState(null);
@@ -27,9 +36,10 @@ export default function App() {
     setSummaryError(null);
     setHealthLoading(true);
 
-    const [riskResult, healthResult] = await Promise.allSettled([
+    const [riskResult, healthResult, timetableResult] = await Promise.allSettled([
       fetchRiskResults(),
       fetchHealth(),
+      fetchTimetable(),
     ]);
 
     if (riskResult.status === "fulfilled") {
@@ -53,6 +63,12 @@ export default function App() {
       setHealth(null);
     }
 
+    if (timetableResult.status === "fulfilled") {
+      setTimetableEntries(Array.isArray(timetableResult.value) ? timetableResult.value : []);
+    } else {
+      setTimetableEntries([]);
+    }
+
     setLoading(false);
     setSummaryLoading(false);
     setHealthLoading(false);
@@ -70,11 +86,57 @@ export default function App() {
     setSelectedStudentId(null);
   };
 
+  const handleSignOut = () => {
+    clearSession();
+    setSession(null);
+    setSelectedStudentId(null);
+    setActiveTab("dashboard");
+  };
+
+  // Row-level scope for the signed-in user (teacher→their modules,
+  // student→their own records, admin→everything).
+  const scope = React.useMemo(
+    () => buildScope(session || { role: "admin", username: "" }, students, timetableEntries),
+    [session, students, timetableEntries]
+  );
+  const scopedStudents = React.useMemo(() => scopeStudents(scope, students), [scope, students]);
+  const scopedTimetable = React.useMemo(() => scopeTimetable(scope, timetableEntries), [scope, timetableEntries]);
+  const scopedSummary = React.useMemo(() => ({
+    total_students: scopedStudents.length,
+    high_risk: scopedStudents.filter((student) => student.riskLevel === "HIGH").length,
+    medium_risk: scopedStudents.filter((student) => student.riskLevel === "MEDIUM").length,
+    low_risk: scopedStudents.filter((student) => student.riskLevel === "LOW").length,
+  }), [scopedStudents]);
+
+  // Return to the top of the page whenever the view changes, so a new
+  // tab always starts from its header instead of a mid-scroll position.
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [activeTab, selectedStudentId]);
+
+  // Keep the active tab within the role's allowed pages.
+  React.useEffect(() => {
+    if (session && !canView(session.role, activeTab)) {
+      setActiveTab("dashboard");
+    }
+  }, [session, activeTab]);
+
+  if (!session) {
+    return <LoginPage onSignIn={setSession} />;
+  }
+
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#F4F5F8" }}>
-      <Sidebar active={activeTab} onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }} />
+      <Sidebar
+        active={activeTab}
+        session={session}
+        scope={scope}
+        onSignOut={handleSignOut}
+        onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }}
+      />
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+        <div key={selectedStudentId ? `student-${selectedStudentId}` : activeTab} className="page-transition" style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
         {selectedStudentId ? (
           <StudentDetailPage 
             studentId={selectedStudentId} 
@@ -82,8 +144,8 @@ export default function App() {
           />
         ) : activeTab === "dashboard" ? (
           <DashboardPage 
-            students={students}
-            summary={summary}
+            students={scopedStudents}
+            summary={scopedSummary}
             summaryLoading={summaryLoading}
             summaryError={summaryError}
             health={health}
@@ -93,26 +155,31 @@ export default function App() {
             onRetry={loadData}
             onNavigate={setActiveTab}
             onSelectStudent={handleSelectStudent}
+            session={session}
           />
         ) : activeTab === "risk" ? (
           <RiskAnalysisPage
-            students={students}
-            summary={summary}
+            students={scopedStudents}
+            summary={scopedSummary}
             summaryLoading={summaryLoading}
             summaryError={summaryError}
             loading={loading}
             error={error}
             onRetry={loadData}
             onSelectStudent={handleSelectStudent}
+            session={session}
+            scope={scope}
           />
         ) : activeTab === "timetable" ? (
-          <TimetablePage />
+          <TimetablePage scopedEntries={scopedTimetable} scope={scope} />
         ) : activeTab === "booking" ? (
-          <BookingPage />
+          <BookingPage session={session} />
         ) : (
-          <ExamSeatingPage />
+          <ExamSeatingPage onSelectStudent={handleSelectStudent} scope={scope} session={session} />
         )}
+        </div>
       </main>
+      <BackToTop />
     </div>
   );
 }

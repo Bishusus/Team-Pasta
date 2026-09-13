@@ -57,8 +57,12 @@ def test_booking_availability_and_conflicts(tmp_path):
 
 		too_early = client.get("/bookings/availability?day=mon&start_time=06:59&end_time=07:30")
 		assert too_early.status_code == 400
-		too_late = client.get("/bookings/availability?day=mon&start_time=20:30&end_time=21:01")
+		too_late = client.get("/bookings/availability?day=mon&start_time=16:30&end_time=17:01")
 		assert too_late.status_code == 400
+		no_start = client.get("/bookings/availability?day=mon&start_time=07:00&end_time=08:00")
+		assert no_start.status_code == 200
+		ends_at_closing = client.get("/bookings/availability?day=mon&start_time=16:00&end_time=17:00")
+		assert ends_at_closing.status_code == 200
 	finally:
 		app.dependency_overrides.clear()
 		engine.dispose()
@@ -92,10 +96,36 @@ def test_same_room_number_in_different_blocks_remains_distinct(tmp_path):
 			"purpose": "Workshop",
 		})
 		assert booking.status_code == 201
+		assert booking.json()["status"] == "pending"
+		# A pending request must not block the room yet.
 		availability = client.get("/bookings/availability?day=MON&start_time=09:30&end_time=09:45")
 		by_id = {item["id"]: item for item in availability.json()}
-		assert by_id[rooms[0].id]["available"] is False
+		assert by_id[rooms[0].id]["available"] is True
 		assert by_id[rooms[1].id]["available"] is True
+
+		# Approve it: now the room is blocked for overlapping windows.
+		approve = client.post(f"/bookings/{booking.json()['id']}/approve?decided_by=Admin")
+		assert approve.status_code == 200
+		assert approve.json()["status"] == "approved"
+		availability_after = client.get("/bookings/availability?day=MON&start_time=09:30&end_time=09:45")
+		by_id_after = {item["id"]: item for item in availability_after.json()}
+		assert by_id_after[rooms[0].id]["available"] is False
+		assert by_id_after[rooms[1].id]["available"] is True
+
+		# A second approval for the same slot must be rejected with 409.
+		second = client.post("/bookings", json={
+			"classroom_id": rooms[1].id,
+			"day": "MON",
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"booked_by": "Team B",
+			"purpose": "Seminar",
+		})
+		assert second.status_code == 201
+
+		# Double-deciding an already-approved request returns 409.
+		redecide = client.post(f"/bookings/{booking.json()['id']}/reject")
+		assert redecide.status_code == 409
 	finally:
 		app.dependency_overrides.clear()
 		engine.dispose()

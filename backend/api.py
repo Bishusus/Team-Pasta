@@ -60,9 +60,8 @@ def _validate_booking_window(day: str, start_time: str, end_time: str):
 	start = _booking_time(start_time)
 	end = _booking_time(end_time)
 	opening = datetime.strptime("07:00", "%H:%M").time()
-	closing = datetime.strptime("21:00", "%H:%M").time()
-	if start < opening or end > closing:
-		raise HTTPException(status_code=400, detail="Bookings are only available between 07:00 and 21:00.")
+	closing = datetime.strptime("17:00", "%H:%M").time()
+	if start < opening or end > closing:			raise HTTPException(status_code=400, detail="Bookings are only available between 07:00 and 17:00.")
 	if start >= end:
 		raise HTTPException(status_code=400, detail="End time must be after start time.")
 	return clean_day, start, end
@@ -78,7 +77,37 @@ def _booking_response(booking: ClassroomBooking, classroom: Classroom) -> dict:
 		"end_time": booking.end_time,
 		"booked_by": booking.booked_by,
 		"purpose": booking.purpose,
+		"status": booking.status,
+		"decided_by": booking.decided_by,
 	}
+
+
+def _decide_booking(booking_id: int, decision: str, db: Session, decided_by: str | None) -> dict:
+	booking = db.get(ClassroomBooking, booking_id)
+	if booking is None:
+		raise HTTPException(status_code=404, detail="Booking request not found")
+	if booking.status != "pending":
+		raise HTTPException(status_code=409, detail=f"This request was already {booking.status}.")
+	if decision == "approved":
+		# Re-check conflicts at approval time: two pending requests for the
+		# same slot can both exist, but only the first approval wins.
+		conflict = db.scalar(
+			select(ClassroomBooking.id).where(
+				ClassroomBooking.id != booking.id,
+				ClassroomBooking.classroom_id == booking.classroom_id,
+				ClassroomBooking.day == booking.day,
+				ClassroomBooking.status == "approved",
+				ClassroomBooking.start_time < booking.end_time,
+				ClassroomBooking.end_time > booking.start_time,
+			)
+		)
+		if conflict is not None:
+			raise HTTPException(status_code=409, detail="An approved booking already occupies this slot.")
+	booking.status = decision
+	booking.decided_by = (decided_by or "Administrator").strip() or "Administrator"
+	db.commit()
+	db.refresh(booking)
+	return _booking_response(booking, booking.classroom)
 
 
 def _exam_response(exam: ExamSchedule) -> dict:
@@ -269,6 +298,9 @@ def get_booking_availability(day: str, start_time: str, end_time: str, db: Sessi
 		if len(parts) == 2 and _interval_overlaps(start, end, _booking_time(parts[0]), _booking_time(parts[1])):
 			occupied_classroom_ids.update(_timetable_classroom_ids(entry.room, classrooms))
 	for booking in bookings:
+		# Only APPROVED bookings block a room; pending requests do not.
+		if booking.status != "approved":
+			continue
 		if _interval_overlaps(start, end, _booking_time(booking.start_time), _booking_time(booking.end_time)):
 			classroom = booking.classroom
 			if classroom:
@@ -315,11 +347,22 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dic
 		end_time=end.strftime("%H:%M"),
 		booked_by=payload.booked_by.strip(),
 		purpose=payload.purpose.strip(),
+		status="pending",
 	)
 	db.add(booking)
 	db.commit()
 	db.refresh(booking)
 	return _booking_response(booking, classroom)
+
+
+@router.post("/bookings/{booking_id}/approve")
+def approve_booking(booking_id: int, decided_by: str | None = None, db: Session = Depends(get_db)) -> dict:
+	return _decide_booking(booking_id, "approved", db, decided_by)
+
+
+@router.post("/bookings/{booking_id}/reject")
+def reject_booking(booking_id: int, decided_by: str | None = None, db: Session = Depends(get_db)) -> dict:
+	return _decide_booking(booking_id, "rejected", db, decided_by)
 
 
 @router.post("/exam-schedule/generate")

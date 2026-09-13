@@ -1,501 +1,501 @@
-﻿student_id,full_name,programme,semester,module_name,exam_date,attendance_percentage,exam_1_score,exam_2_score,final_exam_score
+student_id,full_name,programme,semester,module_name,exam_date,attendance_percentage,exam_1_score,exam_2_score,final_exam_score
 STU-101,Aakriti Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.5,80.0
-STU-102,Abhishek Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.5,72.0,75.0,73.5
-STU-103,Aditya Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,46.5
-STU-104,Alisha Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,88.0,91.0,90.0
-STU-105,Aman Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.5,82.0,84.0,83.5
-STU-106,Amrit Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.5,58.0,60.0,59.5
+STU-102,Abhishek Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.5,72.0,75.0,73.5
+STU-103,Aditya Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,46.5
+STU-104,Alisha Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,88.0,91.0,90.0
+STU-105,Aman Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.5,82.0,84.0,83.5
+STU-106,Amrit Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.5,58.0,60.0,59.5
 STU-107,Anand Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.0,83.0,86.0,85.0
-STU-108,Anjali Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,76.0,79.0,78.5
-STU-109,Anup Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.0,51.0,53.0,52.0
-STU-110,Anusha Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.0,91.0,93.0,94.0
-STU-111,Arjun Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.0,85.0,88.0,87.0
-STU-112,Asha Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-108,Anjali Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,76.0,79.0,78.5
+STU-109,Anup Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.0,51.0,53.0,52.0
+STU-110,Anusha Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.0,91.0,93.0,94.0
+STU-111,Arjun Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.0,85.0,88.0,87.0
+STU-112,Asha Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-113,Ashim Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,85.0,75.0,78.0,76.0
-STU-114,Ayush Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.0,71.0,73.0,72.0
-STU-115,Bandana Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.5,43.0,41.0,40.0
-STU-116,Bibha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.5,83.0,86.0,85.0
-STU-117,Bikash Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.0,77.0,79.0,78.0
-STU-118,Bimala Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.0,62.0,65.0,63.5
+STU-114,Ayush Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.0,71.0,73.0,72.0
+STU-115,Bandana Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.5,43.0,41.0,40.0
+STU-116,Bibha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.5,83.0,86.0,85.0
+STU-117,Bikash Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.0,77.0,79.0,78.0
+STU-118,Bimala Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.0,62.0,65.0,63.5
 STU-119,Binaya Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.5,80.0,83.0,82.0
-STU-120,Binu Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.5,79.0,82.0,81.0
-STU-121,Bishal Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.5,53.0,55.0,54.0
-STU-122,Chandani Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.5,89.0,92.0,91.5
-STU-123,Dipak Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.0,84.0,87.0,86.0
-STU-124,Dipesh Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.0,56.0,58.0,57.5
+STU-120,Binu Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.5,79.0,82.0,81.0
+STU-121,Bishal Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.5,53.0,55.0,54.0
+STU-122,Chandani Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.5,89.0,92.0,91.5
+STU-123,Dipak Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.0,84.0,87.0,86.0
+STU-124,Dipesh Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.0,56.0,58.0,57.5
 STU-125,Divya Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.5,85.0,87.0,86.5
-STU-126,Ganesh KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,80.0,68.0,70.0,69.0
-STU-127,Ganga Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.0,46.0,48.0,45.0
-STU-128,Gokarna Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.5,78.0,81.0,80.0
-STU-129,Hari Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,83.0,73.0,75.0,74.5
-STU-130,Indira Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.0,60.0,62.0,61.5
+STU-126,Ganesh KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,80.0,68.0,70.0,69.0
+STU-127,Ganga Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.0,46.0,48.0,45.0
+STU-128,Gokarna Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.5,78.0,81.0,80.0
+STU-129,Hari Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,83.0,73.0,75.0,74.5
+STU-130,Indira Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.0,60.0,62.0,61.5
 STU-131,Iswar Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,77.0,80.0,79.0
-STU-132,Janak Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.0,80.0,83.0,82.0
-STU-133,Kabir Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.0,49.0,52.0,50.0
-STU-134,Kalpana Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.5,90.0,94.0,93.0
-STU-135,Kalyan Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.5,87.0,89.0,88.0
-STU-136,Kamala Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.5,54.0,56.0,55.0
+STU-132,Janak Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.0,80.0,83.0,82.0
+STU-133,Kabir Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.0,49.0,52.0,50.0
+STU-134,Kalpana Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.5,90.0,94.0,93.0
+STU-135,Kalyan Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.5,87.0,89.0,88.0
+STU-136,Kamala Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.5,54.0,56.0,55.0
 STU-137,Kedar Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,81.0,84.0,83.0
-STU-138,Kiran Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,73.0,76.0,75.0
-STU-139,Kirtan Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,57.5,42.0,40.0,38.5
-STU-140,Kusum Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.5,80.0,82.0,81.0
-STU-141,Laxman Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.0,75.0,78.0,77.0
-STU-142,Laxmi Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,75.0,63.0,66.0,65.0
+STU-138,Kiran Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,73.0,76.0,75.0
+STU-139,Kirtan Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,57.5,42.0,40.0,38.5
+STU-140,Kusum Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.5,80.0,82.0,81.0
+STU-141,Laxman Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.0,75.0,78.0,77.0
+STU-142,Laxmi Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,75.0,63.0,66.0,65.0
 STU-143,Lokesh Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,94.0,87.0,89.0,88.5
-STU-144,Madan Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.5,77.0,80.0,79.0
-STU-145,Madhuri Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.5,50.0,52.0,51.0
-STU-146,Mahesh Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.0,85.0,88.0,87.0
-STU-147,Mamta Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.5
-STU-148,Manoj Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,57.0,60.0,58.5
+STU-144,Madan Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.5,77.0,80.0,79.0
+STU-145,Madhuri Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.5,50.0,52.0,51.0
+STU-146,Mahesh Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.0,85.0,88.0,87.0
+STU-147,Mamta Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.5
+STU-148,Manoj Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,57.0,60.0,58.5
 STU-149,Maya Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.5,78.0,80.0,79.0
-STU-150,Milan Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.5,82.0,85.0,84.0
-STU-151,Miruna Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.0,45.0,47.0,44.0
-STU-152,Mohit Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.0,81.0,83.0,82.5
-STU-153,Nabina Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,94.0,88.0,91.0,90.0
-STU-154,Narendra Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,66.0,53.0,55.0,54.0
+STU-150,Milan Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.5,82.0,85.0,84.0
+STU-151,Miruna Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.0,45.0,47.0,44.0
+STU-152,Mohit Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.0,81.0,83.0,82.5
+STU-153,Nabina Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,94.0,88.0,91.0,90.0
+STU-154,Narendra Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,66.0,53.0,55.0,54.0
 STU-155,Naresh Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,83.0,73.0,75.0,74.0
-STU-156,Navin Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,81.5,70.0,72.0,71.0
-STU-157,Nayan Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,67.0,54.0,56.0,55.0
-STU-158,Neeva Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.5,92.0,95.0,94.5
-STU-159,Nikita Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.0,83.0,86.0,85.0
-STU-160,Niranjan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.0,61.0,64.0,62.5
+STU-156,Navin Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,81.5,70.0,72.0,71.0
+STU-157,Nayan Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,67.0,54.0,56.0,55.0
+STU-158,Neeva Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.5,92.0,95.0,94.5
+STU-159,Nikita Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.0,83.0,86.0,85.0
+STU-160,Niranjan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.0,61.0,64.0,62.5
 STU-161,Nirisha Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.5,80.0,82.0,81.0
-STU-162,Nirmal Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,85.0,75.0,77.0,76.5
-STU-163,Niru Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.5,44.0,42.0,41.0
-STU-164,Nishan Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,86.0,77.0,79.0,78.0
-STU-165,Om Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.5,79.0,81.0,80.0
-STU-166,Padam Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.5,55.0,58.0,56.5
+STU-162,Nirmal Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,85.0,75.0,77.0,76.5
+STU-163,Niru Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.5,44.0,42.0,41.0
+STU-164,Nishan Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,86.0,77.0,79.0,78.0
+STU-165,Om Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.5,79.0,81.0,80.0
+STU-166,Padam Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.5,55.0,58.0,56.5
 STU-167,Parash Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.0,86.0,88.0,87.5
-STU-168,Parbati Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.0,72.0,74.0,73.0
-STU-169,Pawan Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.5,49.0,51.0,48.0
-STU-170,Payal Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.5,84.0,87.0,86.0
-STU-171,Prabal Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,82.0,71.0,73.0,72.5
-STU-172,Prabin Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-168,Parbati Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.0,72.0,74.0,73.0
+STU-169,Pawan Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.5,49.0,51.0,48.0
+STU-170,Payal Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.5,84.0,87.0,86.0
+STU-171,Prabal Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,82.0,71.0,73.0,72.5
+STU-172,Prabin Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-173,Pradeep Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.0,81.0,83.0,82.0
-STU-174,Prajwal Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.5,78.0,81.0,80.0
-STU-175,Prakash Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.0,50.0,52.0,49.5
-STU-176,Pramod Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.0,89.0,92.0,91.0
-STU-177,Pranisha Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.0,86.0,89.0,88.0
-STU-178,Prashant Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,76.5,64.0,67.0,65.5
+STU-174,Prajwal Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.5,78.0,81.0,80.0
+STU-175,Prakash Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.0,50.0,52.0,49.5
+STU-176,Pramod Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.0,89.0,92.0,91.0
+STU-177,Pranisha Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.0,86.0,89.0,88.0
+STU-178,Prashant Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,76.5,64.0,67.0,65.5
 STU-179,Pratik Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,84.5,74.0,76.0,75.0
-STU-180,Prena Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.5,81.0,84.0,83.0
-STU-181,Priti Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,69.0,56.0,58.0,57.0
-STU-182,Pujan Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.0,78.0,80.0,79.5
-STU-183,Puspa Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.5,76.0,78.0,77.0
-STU-184,Rabin Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.0,53.0,55.0,54.5
+STU-180,Prena Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.5,81.0,84.0,83.0
+STU-181,Priti Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,69.0,56.0,58.0,57.0
+STU-182,Pujan Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.0,78.0,80.0,79.5
+STU-183,Puspa Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.5,76.0,78.0,77.0
+STU-184,Rabin Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.0,53.0,55.0,54.5
 STU-185,Rachana Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.5,83.0,85.0,84.5
-STU-186,Radha KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,73.0,75.0,74.0
-STU-187,Ragesh Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,56.0,40.0,38.0,37.5
-STU-188,Rahul Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.5,87.0,90.0,89.0
-STU-189,Rajan Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.5,84.0,87.0,86.0
-STU-190,Rajani Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.5,59.0,61.0,60.0
+STU-186,Radha KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,73.0,75.0,74.0
+STU-187,Ragesh Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,56.0,40.0,38.0,37.5
+STU-188,Rahul Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.5,87.0,90.0,89.0
+STU-189,Rajan Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.5,84.0,87.0,86.0
+STU-190,Rajani Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.5,59.0,61.0,60.0
 STU-191,Raju Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.5,78.0,81.0,79.5
-STU-192,Rakesh Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.5
-STU-193,Raman Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.5,50.0,52.0,51.0
-STU-194,Ramila Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.0,82.0,85.0,84.0
-STU-195,Ranju Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,84.0,74.0,76.0,75.5
-STU-196,Rashmi Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.5,57.0,59.0,58.0
+STU-192,Rakesh Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.5
+STU-193,Raman Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.5,50.0,52.0,51.0
+STU-194,Ramila Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.0,82.0,85.0,84.0
+STU-195,Ranju Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,84.0,74.0,76.0,75.5
+STU-196,Rashmi Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.5,57.0,59.0,58.0
 STU-197,Ravi Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,94.5,88.0,90.0,89.5
-STU-198,Reshma Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,77.0,79.0,78.0
-STU-199,Rijjan Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.5,47.0,49.0,46.0
-STU-200,Rina Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.5,86.0,89.0,88.0
-STU-201,Rohan Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.0,81.0,83.0,82.5
-STU-202,Rojina Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.5,61.0,63.0,62.0
+STU-198,Reshma Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,77.0,79.0,78.0
+STU-199,Rijjan Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.5,47.0,49.0,46.0
+STU-200,Rina Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.5,86.0,89.0,88.0
+STU-201,Rohan Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.0,81.0,83.0,82.5
+STU-202,Rojina Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.5,61.0,63.0,62.0
 STU-203,Romit Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.0,76.0,79.0,78.0
-STU-204,Roshani Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,91.0,83.0,86.0,85.0
-STU-205,Rubina Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,68.0,55.0,57.0,56.0
-STU-206,Rupesh Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.0,79.0,82.0,81.0
-STU-207,Sabik Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,83.5,73.0,75.0,74.0
-STU-208,Sabin Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,65.5,52.0,54.0,53.0
+STU-204,Roshani Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,91.0,83.0,86.0,85.0
+STU-205,Rubina Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,68.0,55.0,57.0,56.0
+STU-206,Rupesh Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.0,79.0,82.0,81.0
+STU-207,Sabik Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,83.5,73.0,75.0,74.0
+STU-208,Sabin Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,65.5,52.0,54.0,53.0
 STU-209,Sacheen Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.5,82.0,84.0,83.5
-STU-210,Sadikshya Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,78.0,80.0,79.0
-STU-211,Sagar Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.5,46.0,48.0,45.5
-STU-212,Sakshyam Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,88.0,91.0,90.0
-STU-213,Salina Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.5,86.0,88.0,87.5
-STU-214,Samir Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.5,60.0,62.0,61.0
+STU-210,Sadikshya Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,78.0,80.0,79.0
+STU-211,Sagar Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.5,46.0,48.0,45.5
+STU-212,Sakshyam Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,88.0,91.0,90.0
+STU-213,Salina Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.5,86.0,88.0,87.5
+STU-214,Samir Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.5,60.0,62.0,61.0
 STU-215,Samjhana Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-216,Sampada Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.5,72.0,74.0,73.0
-STU-217,Samyak Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.0,52.0,55.0,53.5
-STU-218,Sandeep Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,85.5,76.0,78.0,77.0
-STU-219,Sandesh Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.5,80.0,83.0,82.0
-STU-220,Sangeeta Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,58.0,60.0,59.0
+STU-216,Sampada Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.5,72.0,74.0,73.0
+STU-217,Samyak Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.0,52.0,55.0,53.5
+STU-218,Sandeep Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,85.5,76.0,78.0,77.0
+STU-219,Sandesh Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.5,80.0,83.0,82.0
+STU-220,Sangeeta Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,58.0,60.0,59.0
 STU-221,Sanjay Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.0,84.0,87.0,86.0
-STU-222,Sanjok Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.5,74.0,76.0,75.0
-STU-223,Santosh Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.0,43.0,45.0,42.0
-STU-224,Sarika Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.0,83.0,86.0,85.0
-STU-225,Saroj Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.5,78.0,80.0,79.0
-STU-226,Satish Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.5,63.0,65.0,64.0
+STU-222,Sanjok Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.5,74.0,76.0,75.0
+STU-223,Santosh Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.0,43.0,45.0,42.0
+STU-224,Sarika Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.0,83.0,86.0,85.0
+STU-225,Saroj Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.5,78.0,80.0,79.0
+STU-226,Satish Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.5,63.0,65.0,64.0
 STU-227,Saurav Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.5,81.0,83.0,82.5
-STU-228,Sejal Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.0,82.0,84.0,83.5
-STU-229,Shambhu Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.5,51.0,53.0,50.0
-STU-230,Sharmila Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.0,90.0,94.0,93.0
-STU-231,Shikha Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.0,83.0,86.0,85.0
-STU-232,Shiva Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.5,54.0,56.0,55.0
+STU-228,Sejal Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.0,82.0,84.0,83.5
+STU-229,Shambhu Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.5,51.0,53.0,50.0
+STU-230,Sharmila Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.0,90.0,94.0,93.0
+STU-231,Shikha Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.0,83.0,86.0,85.0
+STU-232,Shiva Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.5,54.0,56.0,55.0
 STU-233,Shobha Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,85.5,76.0,78.0,77.0
-STU-234,Shreeya Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.0
-STU-235,Shristi Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,47.5
-STU-236,Shubham Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.5,82.0,84.0,83.0
-STU-237,Siddhant Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,95.0,89.0,92.0,91.0
-STU-238,Smriti Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,58.0,61.0,59.5
+STU-234,Shreeya Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.0
+STU-235,Shristi Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,47.5
+STU-236,Shubham Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.5,82.0,84.0,83.0
+STU-237,Siddhant Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,95.0,89.0,92.0,91.0
+STU-238,Smriti Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,58.0,61.0,59.5
 STU-239,Sohan Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,77.0,80.0,78.5
-STU-240,Sonam Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.5,73.0,75.0,74.0
-STU-241,Sonia Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.0,52.0,54.0,53.0
-STU-242,Subash Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,86.0,89.0,88.0
-STU-243,Sudip Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,79.0,81.0,80.0
-STU-244,Sujit Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-240,Sonam Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.5,73.0,75.0,74.0
+STU-241,Sonia Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.0,52.0,54.0,53.0
+STU-242,Subash Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,86.0,89.0,88.0
+STU-243,Sudip Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,79.0,81.0,80.0
+STU-244,Sujit Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-245,Sukriti Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.0,82.0,85.0,84.0
-STU-246,Suman KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,76.0,79.0,78.0
-STU-247,Sumit Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.0,42.0,44.0,41.0
-STU-248,Sunil Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.5,80.0,82.0,81.5
-STU-249,Suraj Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.5,83.0,85.0,84.0
-STU-250,Suresh Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.0,60.0,63.0,61.5
+STU-246,Suman KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,76.0,79.0,78.0
+STU-247,Sumit Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.0,42.0,44.0,41.0
+STU-248,Sunil Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.5,80.0,82.0,81.5
+STU-249,Suraj Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.5,83.0,85.0,84.0
+STU-250,Suresh Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.0,60.0,63.0,61.5
 STU-251,Sushant Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.5,86.0,89.0,88.0
-STU-252,Sushil Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,81.0,71.0,73.0,72.0
-STU-253,Sushma Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.0,49.0,51.0,48.5
-STU-254,Swechha Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.5,88.0,91.0,90.5
-STU-255,Tika Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,84.5,75.0,77.0,76.0
-STU-256,Trishna Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,66.5,53.0,56.0,54.5
+STU-252,Sushil Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,81.0,71.0,73.0,72.0
+STU-253,Sushma Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.0,49.0,51.0,48.5
+STU-254,Swechha Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.5,88.0,91.0,90.5
+STU-255,Tika Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,84.5,75.0,77.0,76.0
+STU-256,Trishna Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,66.5,53.0,56.0,54.5
 STU-257,Tulasi Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.5,79.0,82.0,81.0
-STU-258,Umesh Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.0,80.0,82.0,81.5
-STU-259,Upasana Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,67.5,54.0,56.0,55.0
-STU-260,Usha Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.0,82.0,84.0,83.5
-STU-261,Uttam Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.0,85.0,87.0,86.5
-STU-262,Varun Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,75.5,63.0,66.0,64.5
+STU-258,Umesh Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.0,80.0,82.0,81.5
+STU-259,Upasana Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,67.5,54.0,56.0,55.0
+STU-260,Usha Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.0,82.0,84.0,83.5
+STU-261,Uttam Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.0,85.0,87.0,86.5
+STU-262,Varun Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,75.5,63.0,66.0,64.5
 STU-263,Vidya Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.0,77.0,79.0,78.0
-STU-264,Vijay Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,85.5,76.0,78.0,77.0
-STU-265,Vikram Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.0,47.0,49.0,46.5
-STU-266,Vimal Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.0,85.0,87.0,86.5
-STU-267,Vishal Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-268,Yashoda Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.0,56.0,58.0,57.0
+STU-264,Vijay Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,85.5,76.0,78.0,77.0
+STU-265,Vikram Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.0,47.0,49.0,46.5
+STU-266,Vimal Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.0,85.0,87.0,86.5
+STU-267,Vishal Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-268,Yashoda Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.0,56.0,58.0,57.0
 STU-269,Yogesh Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,81.0,84.0,83.0
-STU-270,Yubraj Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.5,78.0,80.0,79.5
-STU-271,Yuwika Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.5,52.0,55.0,53.5
-STU-272,Aayusha Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.5,90.0,93.0,92.0
-STU-273,Abhaya Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.5,82.0,84.0,83.0
-STU-274,Abhinav Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.5,59.0,61.0,60.0
+STU-270,Yubraj Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.5,78.0,80.0,79.5
+STU-271,Yuwika Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.5,52.0,55.0,53.5
+STU-272,Aayusha Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.5,90.0,93.0,92.0
+STU-273,Abhaya Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.5,82.0,84.0,83.0
+STU-274,Abhinav Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.5,59.0,61.0,60.0
 STU-275,Aditi Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.5,85.0,88.0,87.0
-STU-276,Agrim Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.0,73.0,75.0,74.0
-STU-277,Aishwarya Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.5,44.0,46.0,43.0
-STU-278,Akriti Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.5,79.0,81.0,80.0
-STU-279,Akash Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.0,78.0,80.0,79.0
-STU-280,Aman Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.5,58.0,60.0,59.0
+STU-276,Agrim Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.0,73.0,75.0,74.0
+STU-277,Aishwarya Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.5,44.0,46.0,43.0
+STU-278,Akriti Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.5,79.0,81.0,80.0
+STU-279,Akash Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.0,78.0,80.0,79.0
+STU-280,Aman Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.5,58.0,60.0,59.0
 STU-281,Ambika Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.0,80.0,83.0,81.5
-STU-282,Amir Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.5,80.0,82.0,81.0
-STU-283,Amrita Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.0,49.0,51.0,48.0
-STU-284,Ananta Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.0,83.0,85.0,84.5
-STU-285,Anil Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.0,86.0,89.0,88.0
-STU-286,Anisha Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.0,60.0,62.0,61.0
+STU-282,Amir Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.5,80.0,82.0,81.0
+STU-283,Amrita Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.0,49.0,51.0,48.0
+STU-284,Ananta Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.0,83.0,85.0,84.5
+STU-285,Anil Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.0,86.0,89.0,88.0
+STU-286,Anisha Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.0,60.0,62.0,61.0
 STU-287,Anil Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,84.0,74.0,76.0,75.0
-STU-288,Anita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.0,71.0,73.0,72.0
-STU-289,Ankit Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.5,53.0,55.0,54.0
-STU-290,Anmol Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.5,87.0,89.0,88.5
-STU-291,Anshu Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,79.0,81.0,80.0
-STU-292,Anup Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-288,Anita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.0,71.0,73.0,72.0
+STU-289,Ankit Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.5,53.0,55.0,54.0
+STU-290,Anmol Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.5,87.0,89.0,88.5
+STU-291,Anshu Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,79.0,81.0,80.0
+STU-292,Anup Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-293,Anupama Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.0,82.0,85.0,84.0
-STU-294,Anurag Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.5,77.0,79.0,78.0
-STU-295,Anuskha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.0,45.0,47.0,44.5
-STU-296,Apeksha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.0,80.0,82.0,81.0
-STU-297,Arati Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.0,82.0,85.0,84.0
-STU-298,Archana Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.0,62.0,64.0,63.0
+STU-294,Anurag Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.5,77.0,79.0,78.0
+STU-295,Anuskha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.0,45.0,47.0,44.5
+STU-296,Apeksha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.0,80.0,82.0,81.0
+STU-297,Arati Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.0,82.0,85.0,84.0
+STU-298,Archana Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.0,62.0,64.0,63.0
 STU-299,Arpan Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,95.0,89.0,92.0,91.0
-STU-300,Arun Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,74.0,76.0,75.0
-STU-301,Arya Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.5,47.0,49.0,46.0
-STU-302,Asmita Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.0,91.0,94.0,93.5
-STU-303,Atharva Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,81.0,83.0,82.0
-STU-304,Avinash Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.5,57.0,59.0,58.0
+STU-300,Arun Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,74.0,76.0,75.0
+STU-301,Arya Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.5,47.0,49.0,46.0
+STU-302,Asmita Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.0,91.0,94.0,93.5
+STU-303,Atharva Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,81.0,83.0,82.0
+STU-304,Avinash Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.5,57.0,59.0,58.0
 STU-305,Ayusha Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.5,78.0,80.0,79.0
-STU-306,Babita KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.0,81.0,84.0,83.0
-STU-307,Babu Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.0,50.0,52.0,49.0
-STU-308,Balram Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.5,86.0,88.0,87.0
-STU-309,Basanta Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.0,76.0,78.0,77.0
-STU-310,Basundhara Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.0,61.0,63.0,62.0
+STU-306,Babita KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.0,81.0,84.0,83.0
+STU-307,Babu Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.0,50.0,52.0,49.0
+STU-308,Balram Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.5,86.0,88.0,87.0
+STU-309,Basanta Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.0,76.0,78.0,77.0
+STU-310,Basundhara Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.0,61.0,63.0,62.0
 STU-311,Bhadra Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.5,77.0,79.0,78.0
-STU-312,Bhagawati Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,78.0,80.0,79.0
-STU-313,Bhanu Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.0,43.0,45.0,42.0
-STU-314,Bharat Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.0,81.0,83.0,82.0
-STU-315,Bhaskar Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.5,84.0,86.0,85.0
-STU-316,Bhim Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.0,54.0,56.0,55.0
+STU-312,Bhagawati Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,78.0,80.0,79.0
+STU-313,Bhanu Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.0,43.0,45.0,42.0
+STU-314,Bharat Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.0,81.0,83.0,82.0
+STU-315,Bhaskar Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.5,84.0,86.0,85.0
+STU-316,Bhim Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.0,54.0,56.0,55.0
 STU-317,Bhola Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.0,85.0,88.0,87.0
-STU-318,Bhuwan Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,81.5,70.0,73.0,71.5
-STU-319,Bibek Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.0,51.0,54.0,52.5
-STU-320,Bidhya Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,87.0,90.0,89.0
-STU-321,Bijay Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.0,77.0,79.0,78.0
-STU-322,Bikas Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,58.0,60.0,59.0
+STU-318,Bhuwan Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,81.5,70.0,73.0,71.5
+STU-319,Bibek Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.0,51.0,54.0,52.5
+STU-320,Bidhya Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,87.0,90.0,89.0
+STU-321,Bijay Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.0,77.0,79.0,78.0
+STU-322,Bikas Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,58.0,60.0,59.0
 STU-323,Bikram Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,81.0,83.0,82.0
-STU-324,Bindu Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.5,81.0,83.0,82.5
-STU-325,Binita Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.5,48.0,50.0,47.0
-STU-326,Binu Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,86.5,78.0,80.0,79.0
-STU-327,Bipin Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,94.5,88.0,91.0,90.0
-STU-328,Bipul Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,75.0,63.0,65.0,64.0
+STU-324,Bindu Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.5,81.0,83.0,82.5
+STU-325,Binita Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.5,48.0,50.0,47.0
+STU-326,Binu Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,86.5,78.0,80.0,79.0
+STU-327,Bipin Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,94.5,88.0,91.0,90.0
+STU-328,Bipul Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,75.0,63.0,65.0,64.0
 STU-329,Birendra Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-330,Bisaal Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.5,73.0,75.0,74.0
-STU-331,Bishnu Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,68.0,55.0,57.0,56.0
-STU-332,Biswas Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.5,83.0,85.0,84.0
-STU-333,Chandika Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.5,79.0,81.0,80.5
-STU-334,Chandra Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,66.0,53.0,55.0,54.0
+STU-330,Bisaal Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.5,73.0,75.0,74.0
+STU-331,Bishnu Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,68.0,55.0,57.0,56.0
+STU-332,Biswas Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.5,83.0,85.0,84.0
+STU-333,Chandika Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.5,79.0,81.0,80.5
+STU-334,Chandra Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,66.0,53.0,55.0,54.0
 STU-335,Charu Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.0,84.0,86.0,85.0
-STU-336,Chetan Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,85.0,75.0,78.0,76.5
-STU-337,Chhabi Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.0,43.0,45.0,42.0
-STU-338,Chitra Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,86.0,88.0,87.0
-STU-339,Damodar Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.0,82.0,84.0,83.0
-STU-340,Darshan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.5,60.0,62.0,61.0
+STU-336,Chetan Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,85.0,75.0,78.0,76.5
+STU-337,Chhabi Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.0,43.0,45.0,42.0
+STU-338,Chitra Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,86.0,88.0,87.0
+STU-339,Damodar Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.0,82.0,84.0,83.0
+STU-340,Darshan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.5,60.0,62.0,61.0
 STU-341,Dayaram Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,85.0,75.0,77.0,76.0
-STU-342,Deepa Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.0
-STU-343,Deepak Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.5,50.0,52.0,49.5
-STU-344,Deepika Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.0,89.0,92.0,91.0
-STU-345,Dev Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,83.0,72.0,74.0,73.0
-STU-346,Devaki Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-342,Deepa Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.0
+STU-343,Deepak Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.5,50.0,52.0,49.5
+STU-344,Deepika Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.0,89.0,92.0,91.0
+STU-345,Dev Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,83.0,72.0,74.0,73.0
+STU-346,Devaki Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-347,Devendra Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.5,81.0,84.0,82.5
-STU-348,Dhan Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,77.0,79.0,78.0
-STU-349,Dhana Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,67.0,54.0,56.0,55.0
-STU-350,Dhani Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.5,80.0,83.0,82.0
-STU-351,Dharma Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.5,86.0,88.0,87.0
-STU-352,Dharmendra Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.5,55.0,57.0,56.0
+STU-348,Dhan Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,77.0,79.0,78.0
+STU-349,Dhana Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,67.0,54.0,56.0,55.0
+STU-350,Dhani Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.5,80.0,83.0,82.0
+STU-351,Dharma Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.5,86.0,88.0,87.0
+STU-352,Dharmendra Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.5,55.0,57.0,56.0
 STU-353,Dhirendra Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,94.0,87.0,90.0,88.5
-STU-354,Dilip Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,80.5,70.0,72.0,71.0
-STU-355,Dilliram Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.0,46.0,48.0,45.0
-STU-356,Dina Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.5,84.0,86.0,85.0
-STU-357,Dipen Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.0,81.0,83.0,82.0
-STU-358,Dipika Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.5,61.0,63.0,62.0
+STU-354,Dilip Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,80.5,70.0,72.0,71.0
+STU-355,Dilliram Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.0,46.0,48.0,45.0
+STU-356,Dina Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.5,84.0,86.0,85.0
+STU-357,Dipen Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.0,81.0,83.0,82.0
+STU-358,Dipika Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.5,61.0,63.0,62.0
 STU-359,Dippi Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,78.0,80.0,79.0
-STU-360,Divakar Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.5,74.0,76.0,75.0
-STU-361,Dolraj Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.0,50.0,52.0,49.0
-STU-362,Draupadi Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.0,85.0,87.0,86.0
-STU-363,Durga Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,78.0,80.0,79.0
-STU-364,Ekaraj Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.0,56.0,58.0,57.0
+STU-360,Divakar Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.5,74.0,76.0,75.0
+STU-361,Dolraj Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.0,50.0,52.0,49.0
+STU-362,Draupadi Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.0,85.0,87.0,86.0
+STU-363,Durga Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,78.0,80.0,79.0
+STU-364,Ekaraj Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.0,56.0,58.0,57.0
 STU-365,Elina Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.5,82.0,85.0,84.0
-STU-366,Gagan KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.5,78.0,80.0,79.0
-STU-367,Gajendra Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,57.5,41.0,43.0,40.0
-STU-368,Ganesh Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,86.5,78.0,80.0,79.0
-STU-369,Garima Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.5,87.0,89.0,88.0
-STU-370,Gaurab Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.5,59.0,61.0,60.0
+STU-366,Gagan KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.5,78.0,80.0,79.0
+STU-367,Gajendra Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,57.5,41.0,43.0,40.0
+STU-368,Ganesh Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,86.5,78.0,80.0,79.0
+STU-369,Garima Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.5,87.0,89.0,88.0
+STU-370,Gaurab Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.5,59.0,61.0,60.0
 STU-371,Gauri Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.5,83.0,86.0,85.0
-STU-372,Gautam Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.5,72.0,74.0,73.0
-STU-373,Ghanashyam Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.0,53.0,55.0,53.5
-STU-374,Gita Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,88.0,90.0,89.5
-STU-375,Gobinda Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-376,Gokul Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,76.0,64.0,66.0,65.0
+STU-372,Gautam Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.5,72.0,74.0,73.0
+STU-373,Ghanashyam Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.0,53.0,55.0,53.5
+STU-374,Gita Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,88.0,90.0,89.5
+STU-375,Gobinda Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-376,Gokul Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,76.0,64.0,66.0,65.0
 STU-377,Goma Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-378,Gopal Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,91.0,83.0,85.0,84.0
-STU-379,Gopi Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,47.0
-STU-380,Govinda Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.0,79.0,81.0,80.0
-STU-381,Grishma Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.5,76.0,78.0,77.0
-STU-382,Gulshan Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.5,54.0,56.0,55.0
+STU-378,Gopal Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,91.0,83.0,85.0,84.0
+STU-379,Gopi Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,47.0
+STU-380,Govinda Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.0,79.0,81.0,80.0
+STU-381,Grishma Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.5,76.0,78.0,77.0
+STU-382,Gulshan Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.5,54.0,56.0,55.0
 STU-383,Gyanu Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.0,85.0,88.0,87.0
-STU-384,Hemanta Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.0,73.0,75.0,74.0
-STU-385,Hira Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.5,46.0,48.0,45.0
-STU-386,Hitendra Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.0,82.0,85.0,84.0
-STU-387,Homan Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.0,85.0,87.0,86.0
-STU-388,Homnath Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.0,59.0,62.0,60.5
+STU-384,Hemanta Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.0,73.0,75.0,74.0
+STU-385,Hira Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.5,46.0,48.0,45.0
+STU-386,Hitendra Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.0,82.0,85.0,84.0
+STU-387,Homan Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.0,85.0,87.0,86.0
+STU-388,Homnath Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.0,59.0,62.0,60.5
 STU-389,Indra Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.0,77.0,79.0,78.0
-STU-390,Isha Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.0,80.0,83.0,82.0
-STU-391,Ishwor Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.5,52.0,54.0,53.0
-STU-392,Jagadish Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,86.0,89.0,88.0
-STU-393,Jagan Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.5,78.0,80.0,79.0
-STU-394,Janaki Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-390,Isha Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.0,80.0,83.0,82.0
+STU-391,Ishwor Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.5,52.0,54.0,53.0
+STU-392,Jagadish Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,86.0,89.0,88.0
+STU-393,Jagan Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.5,78.0,80.0,79.0
+STU-394,Janaki Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-395,Janardan Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,94.5,88.0,91.0,90.0
-STU-396,Januka Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.5,77.0,79.0,78.5
-STU-397,Jasmin Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.5,43.0,45.0,42.0
-STU-398,Jaya Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.5,81.0,84.0,83.0
-STU-399,Jayendra Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.0,83.0,86.0,85.0
-STU-400,Jeevan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.5,62.0,65.0,63.5
+STU-396,Januka Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.5,77.0,79.0,78.5
+STU-397,Jasmin Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.5,43.0,45.0,42.0
+STU-398,Jaya Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.5,81.0,84.0,83.0
+STU-399,Jayendra Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.0,83.0,86.0,85.0
+STU-400,Jeevan Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.5,62.0,65.0,63.5
 STU-401,Jhapendra Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-402,Jiban Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,81.0,70.0,72.0,71.0
-STU-403,Jitendra Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.0,49.0,51.0,48.0
-STU-404,Jiva Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.0,85.0,87.0,86.0
-STU-405,Jogan Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-406,Jugal Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-402,Jiban Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,81.0,70.0,72.0,71.0
+STU-403,Jitendra Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.0,49.0,51.0,48.0
+STU-404,Jiva Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.0,85.0,87.0,86.0
+STU-405,Jogan Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-406,Jugal Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-407,Jugesh Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,82.0,84.0,83.0
-STU-408,Jyoti Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,78.0,80.0,79.0
-STU-409,Kailash Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.5,53.0,55.0,54.0
-STU-410,Kalpana Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.5,92.0,95.0,94.0
-STU-411,Kalu Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,84.0,75.0,77.0,76.0
-STU-412,Kamal Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.0,56.0,58.0,57.0
+STU-408,Jyoti Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,78.0,80.0,79.0
+STU-409,Kailash Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.5,53.0,55.0,54.0
+STU-410,Kalpana Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.5,92.0,95.0,94.0
+STU-411,Kalu Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,84.0,75.0,77.0,76.0
+STU-412,Kamal Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.0,56.0,58.0,57.0
 STU-413,Kamala Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.0,83.0,85.0,84.5
-STU-414,Kameshwar Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,85.0,75.0,77.0,76.0
-STU-415,Kanchha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.5,44.0,46.0,43.0
-STU-416,Kanishka Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.5,79.0,81.0,80.0
-STU-417,Kapil Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.0,82.0,84.0,83.0
-STU-418,Karun Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.0,60.0,62.0,61.0
+STU-414,Kameshwar Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,85.0,75.0,77.0,76.0
+STU-415,Kanchha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.5,44.0,46.0,43.0
+STU-416,Kanishka Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.5,79.0,81.0,80.0
+STU-417,Kapil Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.0,82.0,84.0,83.0
+STU-418,Karun Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.0,60.0,62.0,61.0
 STU-419,Kasthamandap Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.5,86.0,89.0,88.0
-STU-420,Kausal Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.5,73.0,75.0,74.0
-STU-421,Keshab Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.5,47.0,49.0,46.0
-STU-422,Kewal Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,88.0,91.0,90.0
-STU-423,Khem Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,78.0,80.0,79.0
-STU-424,Khagendra Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.0,54.0,56.0,55.0
+STU-420,Kausal Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.5,73.0,75.0,74.0
+STU-421,Keshab Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.5,47.0,49.0,46.0
+STU-422,Kewal Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,88.0,91.0,90.0
+STU-423,Khem Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,78.0,80.0,79.0
+STU-424,Khagendra Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.0,54.0,56.0,55.0
 STU-425,Khemraj Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.5,80.0,82.0,81.0
-STU-426,Khima KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.0,82.0,84.0,83.0
-STU-427,Khimsara Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.5,51.0,53.0,50.0
-STU-428,Kiran Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.0,83.0,86.0,85.0
-STU-429,Kirtan Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.0,81.0,83.0,82.0
-STU-430,Kishna Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,58.0,60.0,59.0
+STU-426,Khima KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.0,82.0,84.0,83.0
+STU-427,Khimsara Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.5,51.0,53.0,50.0
+STU-428,Kiran Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.0,83.0,86.0,85.0
+STU-429,Kirtan Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.0,81.0,83.0,82.0
+STU-430,Kishna Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,58.0,60.0,59.0
 STU-431,Kishor Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.0,77.0,79.0,78.0
-STU-432,Kishori Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.0
-STU-433,Koppila Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,47.0
-STU-434,Kripa Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.5,90.0,93.0,92.0
-STU-435,Krishna Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.0,76.0,78.0,77.0
-STU-436,Kritika Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,75.0,63.0,65.0,64.0
+STU-432,Kishori Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.0
+STU-433,Koppila Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,47.0
+STU-434,Kripa Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.5,90.0,93.0,92.0
+STU-435,Krishna Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.0,76.0,78.0,77.0
+STU-436,Kritika Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,75.0,63.0,65.0,64.0
 STU-437,Kula Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,78.0,80.0,79.0
-STU-438,Kuldeep Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,74.0,76.0,75.0
-STU-439,Kumar Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.0,45.0,47.0,44.0
-STU-440,Kumari Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.0,80.0,82.0,81.0
-STU-441,Kunsang Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.0,86.0,88.0,87.0
-STU-442,Kusam Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.5,55.0,57.0,56.0
+STU-438,Kuldeep Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,74.0,76.0,75.0
+STU-439,Kumar Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.0,45.0,47.0,44.0
+STU-440,Kumari Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.0,80.0,82.0,81.0
+STU-441,Kunsang Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.0,86.0,88.0,87.0
+STU-442,Kusam Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.5,55.0,57.0,56.0
 STU-443,Kush Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.0,84.0,86.0,85.0
-STU-444,Labanya Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,77.0,79.0,78.0
-STU-445,Lachi Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.0,52.0,54.0,53.0
-STU-446,Lahan Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.0,82.0,84.0,83.0
-STU-447,Lajana Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.5,80.0,82.0,81.0
-STU-448,Lakpa Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.0,59.0,61.0,60.0
+STU-444,Labanya Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,77.0,79.0,78.0
+STU-445,Lachi Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.0,52.0,54.0,53.0
+STU-446,Lahan Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.0,82.0,84.0,83.0
+STU-447,Lajana Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.5,80.0,82.0,81.0
+STU-448,Lakpa Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.0,59.0,61.0,60.0
 STU-449,Lal Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.0,80.0,82.0,81.0
-STU-450,Lalita Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.0,71.0,73.0,72.0
-STU-451,Lata Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.0,42.0,44.0,41.0
-STU-452,Lavin Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.5,87.0,89.0,88.0
-STU-453,Lekh Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.0,83.0,85.0,84.0
-STU-454,Lekhnath Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.0,62.0,64.0,63.0
+STU-450,Lalita Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.0,71.0,73.0,72.0
+STU-451,Lata Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.0,42.0,44.0,41.0
+STU-452,Lavin Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.5,87.0,89.0,88.0
+STU-453,Lekh Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.0,83.0,85.0,84.0
+STU-454,Lekhnath Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.0,62.0,64.0,63.0
 STU-455,Lila Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,85.5,76.0,78.0,77.0
-STU-456,Liladhar Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.5,78.0,80.0,79.0
-STU-457,Lochan Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.5,50.0,52.0,49.0
-STU-458,Lok Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.5,84.0,86.0,85.0
-STU-459,Lokendra Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.5,78.0,80.0,79.0
-STU-460,Madhav Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.5,58.0,60.0,59.0
+STU-456,Liladhar Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.5,78.0,80.0,79.0
+STU-457,Lochan Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.5,50.0,52.0,49.0
+STU-458,Lok Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.5,84.0,86.0,85.0
+STU-459,Lokendra Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.5,78.0,80.0,79.0
+STU-460,Madhav Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.5,58.0,60.0,59.0
 STU-461,Madhavi Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,94.0,87.0,89.0,88.0
-STU-462,Madhukar Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.0,80.0,82.0,81.0
-STU-463,Mahabir Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.0,46.0,48.0,45.0
-STU-464,Mahanta Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.0,79.0,81.0,80.0
-STU-465,Mahendra Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.5,86.0,88.0,87.0
-STU-466,Maheshwar Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.5,54.0,56.0,55.0
+STU-462,Madhukar Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.0,80.0,82.0,81.0
+STU-463,Mahabir Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.0,46.0,48.0,45.0
+STU-464,Mahanta Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.0,79.0,81.0,80.0
+STU-465,Mahendra Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.5,86.0,88.0,87.0
+STU-466,Maheshwar Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.5,54.0,56.0,55.0
 STU-467,Maina Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.5,82.0,84.0,83.0
-STU-468,Makhan Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.5,74.0,76.0,75.0
-STU-469,Mala Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,67.0,54.0,56.0,55.0
-STU-470,Malati Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.0,91.0,93.0,92.5
-STU-471,Malika Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,79.0,81.0,80.0
-STU-472,Man Bahadur Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.5,57.0,59.0,58.0
+STU-468,Makhan Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.5,74.0,76.0,75.0
+STU-469,Mala Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,67.0,54.0,56.0,55.0
+STU-470,Malati Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.0,91.0,93.0,92.5
+STU-471,Malika Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,79.0,81.0,80.0
+STU-472,Man Bahadur Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.5,57.0,59.0,58.0
 STU-473,Mandira Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.5,85.0,87.0,86.0
-STU-474,Mangal Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.0,73.0,75.0,74.0
-STU-475,Mani Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.5,49.0,51.0,48.0
-STU-476,Manisha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.0,81.0,83.0,82.0
-STU-477,Manita Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.5,83.0,85.0,84.0
-STU-478,Manju Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.0,60.0,62.0,61.0
+STU-474,Mangal Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.0,73.0,75.0,74.0
+STU-475,Mani Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.5,49.0,51.0,48.0
+STU-476,Manisha Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.0,81.0,83.0,82.0
+STU-477,Manita Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.5,83.0,85.0,84.0
+STU-478,Manju Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.0,60.0,62.0,61.0
 STU-479,Manmohan Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.5,77.0,79.0,78.0
-STU-480,Manoj Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.0
-STU-481,Manoranjan Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.0,43.0,45.0,42.0
-STU-482,Manorama Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.5,86.0,88.0,87.0
-STU-483,Marich Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,84.0,75.0,77.0,76.0
-STU-484,Matrika Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.5,59.0,61.0,60.0
+STU-480,Manoj Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.0
+STU-481,Manoranjan Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.0,43.0,45.0,42.0
+STU-482,Manorama Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.5,86.0,88.0,87.0
+STU-483,Marich Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,84.0,75.0,77.0,76.0
+STU-484,Matrika Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.5,59.0,61.0,60.0
 STU-485,Meena Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.0,85.0,87.0,86.0
-STU-486,Meenakshi KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,77.0,79.0,78.0
-STU-487,Megh Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.0,50.0,52.0,49.0
-STU-488,Milap Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.5,88.0,91.0,90.0
-STU-489,Min Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.5,82.0,84.0,83.0
-STU-490,Mina Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-486,Meenakshi KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,77.0,79.0,78.0
+STU-487,Megh Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.0,50.0,52.0,49.0
+STU-488,Milap Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.5,88.0,91.0,90.0
+STU-489,Min Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.5,82.0,84.0,83.0
+STU-490,Mina Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-491,Minakshi Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.5,78.0,80.0,79.0
-STU-492,Minraj Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.0,81.0,83.0,82.0
-STU-493,Mira Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.0,53.0,55.0,53.5
-STU-494,Mithilesh Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.0,83.0,85.0,84.0
-STU-495,Mitra Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.5,76.0,78.0,77.0
-STU-496,Mohnish Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.5,60.0,62.0,61.0
+STU-492,Minraj Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.0,81.0,83.0,82.0
+STU-493,Mira Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.0,53.0,55.0,53.5
+STU-494,Mithilesh Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.0,83.0,85.0,84.0
+STU-495,Mitra Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.5,76.0,78.0,77.0
+STU-496,Mohnish Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.5,60.0,62.0,61.0
 STU-497,Moti Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.5,81.0,83.0,82.0
-STU-498,Mukunda Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,81.5,70.0,72.0,71.0
-STU-499,Muna Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.0,45.0,47.0,44.0
-STU-500,Murali Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.0,79.0,81.0,80.0
-STU-501,Nabraj Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.5,87.0,89.0,88.0
-STU-502,Nagesh Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,75.0,63.0,65.0,64.0
+STU-498,Mukunda Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,81.5,70.0,72.0,71.0
+STU-499,Muna Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.0,45.0,47.0,44.0
+STU-500,Murali Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.0,79.0,81.0,80.0
+STU-501,Nabraj Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.5,87.0,89.0,88.0
+STU-502,Nagesh Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,75.0,63.0,65.0,64.0
 STU-503,Nagendra Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.0,82.0,85.0,84.0
-STU-504,Naina Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,78.0,80.0,79.0
-STU-505,Nakul Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,61.5,47.0,49.0,46.0
-STU-506,Namrata Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.0,89.0,92.0,91.0
-STU-507,Nanda Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-508,Nandakishor Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-504,Naina Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,78.0,80.0,79.0
+STU-505,Nakul Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,61.5,47.0,49.0,46.0
+STU-506,Namrata Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.0,89.0,92.0,91.0
+STU-507,Nanda Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-508,Nandakishor Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-509,Narayan Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-510,Narayanmani Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.5,73.0,75.0,74.0
-STU-511,Nardev Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.5,51.0,53.0,50.0
-STU-512,Naresh Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.0,82.0,84.0,83.0
-STU-513,Nati Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.0,85.0,87.0,86.0
-STU-514,Navaraj Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,73.5,61.0,63.0,62.0
+STU-510,Narayanmani Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.5,73.0,75.0,74.0
+STU-511,Nardev Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.5,51.0,53.0,50.0
+STU-512,Naresh Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.0,82.0,84.0,83.0
+STU-513,Nati Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.0,85.0,87.0,86.0
+STU-514,Navaraj Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,73.5,61.0,63.0,62.0
 STU-515,Naveen Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.0,84.0,86.0,85.0
-STU-516,Navita Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.0,77.0,79.0,78.0
-STU-517,Nayanraja Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.0,43.0,45.0,41.5
-STU-518,Neelam Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,86.0,88.0,87.0
-STU-519,Neeta Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.5,78.0,80.0,79.0
-STU-520,Netra Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.0,56.0,58.0,57.0
+STU-516,Navita Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.0,77.0,79.0,78.0
+STU-517,Nayanraja Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.0,43.0,45.0,41.5
+STU-518,Neelam Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,86.0,88.0,87.0
+STU-519,Neeta Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.5,78.0,80.0,79.0
+STU-520,Netra Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.0,56.0,58.0,57.0
 STU-521,Nibhriti Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,81.0,83.0,82.0
-STU-522,Nichit Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.5,81.0,83.0,82.0
-STU-523,Nidhi Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,67.5,54.0,56.0,55.0
-STU-524,Nigar Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,96.0,91.0,94.0,93.0
-STU-525,Niharika Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,85.0,76.0,78.0,77.0
-STU-526,Nijash Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,58.0,60.0,59.0
+STU-522,Nichit Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.5,81.0,83.0,82.0
+STU-523,Nidhi Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,67.5,54.0,56.0,55.0
+STU-524,Nigar Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,96.0,91.0,94.0,93.0
+STU-525,Niharika Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,85.0,76.0,78.0,77.0
+STU-526,Nijash Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,58.0,60.0,59.0
 STU-527,Nikesh Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,78.0,80.0,79.0
-STU-528,Nikita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.5,79.0,81.0,80.0
-STU-529,Nima Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.0,49.0,51.0,48.0
-STU-530,Nimesh Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.5,80.0,82.0,81.0
-STU-531,Nirakar Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,91.5,84.0,86.0,85.0
-STU-532,Nirala Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.5,54.0,56.0,55.0
+STU-528,Nikita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.5,79.0,81.0,80.0
+STU-529,Nima Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.0,49.0,51.0,48.0
+STU-530,Nimesh Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.5,80.0,82.0,81.0
+STU-531,Nirakar Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,91.5,84.0,86.0,85.0
+STU-532,Nirala Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.5,54.0,56.0,55.0
 STU-533,Niramal Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.5,86.0,88.0,87.0
-STU-534,Niranjana Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.5,72.0,74.0,73.0
-STU-535,Niraj Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.5,46.0,48.0,45.0
-STU-536,Niranjan Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.0,85.0,87.0,86.0
-STU-537,Nirat Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.0,79.0,81.0,80.0
-STU-538,Nirendra Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.5,62.0,65.0,63.5
+STU-534,Niranjana Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.5,72.0,74.0,73.0
+STU-535,Niraj Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.5,46.0,48.0,45.0
+STU-536,Niranjan Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.0,85.0,87.0,86.0
+STU-537,Nirat Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.0,79.0,81.0,80.0
+STU-538,Nirendra Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.5,62.0,65.0,63.5
 STU-539,Nirmala Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.0,77.0,79.0,78.0
-STU-540,Nirvan Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,90.0,82.0,84.0,83.0
-STU-541,Nischal Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,66.0,53.0,55.0,54.0
-STU-542,Nishan Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,88.0,90.0,89.0
-STU-543,Nishi Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,89.0,81.0,83.0,82.0
-STU-544,Nishita Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-540,Nirvan Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,90.0,82.0,84.0,83.0
+STU-541,Nischal Giri,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,66.0,53.0,55.0,54.0
+STU-542,Nishan Gyawali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,88.0,90.0,89.0
+STU-543,Nishi Humagain,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,89.0,81.0,83.0,82.0
+STU-544,Nishita Kandel,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-545,Niteen Karki,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,91.5,83.0,86.0,85.0
-STU-546,Nitesh KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,74.0,76.0,75.0
-STU-547,Niti Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,59.0,43.0,45.0,42.0
-STU-548,Niva Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,87.5,79.0,81.0,80.0
-STU-549,Niyama Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,93.0,86.0,88.0,87.0
-STU-550,Nripesh Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.0,59.0,61.0,60.0
+STU-546,Nitesh KC,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,74.0,76.0,75.0
+STU-547,Niti Khadka,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,59.0,43.0,45.0,42.0
+STU-548,Niva Khanal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,87.5,79.0,81.0,80.0
+STU-549,Niyama Khatri,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,93.0,86.0,88.0,87.0
+STU-550,Nripesh Koirala,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.0,59.0,61.0,60.0
 STU-551,Nutan Kunwar,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.5,80.0,82.0,81.0
-STU-552,Ojaswi Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,87.0,78.0,80.0,79.0
-STU-553,Omkar Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,47.0
-STU-554,OmPrakash Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,90.5,83.0,85.0,84.0
-STU-555,Oshin Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,86.0,77.0,79.0,78.0
-STU-556,Padma Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,68.0,55.0,57.0,56.0
+STU-552,Ojaswi Lamsal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,87.0,78.0,80.0,79.0
+STU-553,Omkar Magar,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,47.0
+STU-554,OmPrakash Mainali,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,90.5,83.0,85.0,84.0
+STU-555,Oshin Marasini,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,86.0,77.0,79.0,78.0
+STU-556,Padma Mishara,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,68.0,55.0,57.0,56.0
 STU-557,Pallavi Neupane,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,95.0,89.0,91.0,90.0
-STU-558,Pankaj Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,83.0,73.0,75.0,74.0
-STU-559,Paras Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,65.0,51.0,53.0,52.0
-STU-560,Parashar Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,93.0,86.0,88.0,87.0
-STU-561,Pari Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-562,Parikshit Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,76.0,64.0,66.0,65.0
+STU-558,Pankaj Niraula,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,83.0,73.0,75.0,74.0
+STU-559,Paras Oli,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,65.0,51.0,53.0,52.0
+STU-560,Parashar Pandey,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,93.0,86.0,88.0,87.0
+STU-561,Pari Poudel,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-562,Parikshit Pradhan,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,76.0,64.0,66.0,65.0
 STU-563,Parineeta Prasai,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,87.0,78.0,80.0,79.0
-STU-564,Parita Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,91.0,83.0,85.0,84.0
-STU-565,Parivartan Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,63.5,50.0,52.0,49.0
-STU-566,Parma Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,89.0,81.0,83.0,82.0
-STU-567,Parshuram Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,84.5,75.0,77.0,76.0
-STU-568,Pashupati Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,69.5,57.0,59.0,58.0
+STU-564,Parita Pun,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,91.0,83.0,85.0,84.0
+STU-565,Parivartan Pyakurel,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,63.5,50.0,52.0,49.0
+STU-566,Parma Rana,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,89.0,81.0,83.0,82.0
+STU-567,Parshuram Regmi,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,84.5,75.0,77.0,76.0
+STU-568,Pashupati Rijal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,69.5,57.0,59.0,58.0
 STU-569,Pavitra Rimal,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,92.5,85.0,87.0,86.0
-STU-570,Pema Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,85.5,76.0,78.0,77.0
-STU-571,Phurba Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,60.0,45.0,47.0,44.0
-STU-572,Pooja Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,91.0,83.0,85.0,84.0
-STU-573,Prabhat Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,94.0,88.0,90.0,89.0
-STU-574,Prabhav Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,71.0,58.0,60.0,59.0
+STU-570,Pema Sapkota,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,85.5,76.0,78.0,77.0
+STU-571,Phurba Shah,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,60.0,45.0,47.0,44.0
+STU-572,Pooja Shahi,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,91.0,83.0,85.0,84.0
+STU-573,Prabhat Shakya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,94.0,88.0,90.0,89.0
+STU-574,Prabhav Silwal,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,71.0,58.0,60.0,59.0
 STU-575,Prabhu Subedi,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,89.0,80.0,82.0,81.0
-STU-576,Prabin Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,88.0,79.0,81.0,80.0
-STU-577,Prachanda Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,64.0,50.0,52.0,49.0
-STU-578,Prachi Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,95.5,90.0,93.0,92.0
-STU-579,Pradeep Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,87.5,79.0,81.0,80.0
-STU-580,Pradhumna Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,72.5,60.0,62.0,61.0
+STU-576,Prabin Timsina,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,88.0,79.0,81.0,80.0
+STU-577,Prachanda Tripathi,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,64.0,50.0,52.0,49.0
+STU-578,Prachi Tuladhar,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,95.5,90.0,93.0,92.0
+STU-579,Pradeep Upadhyaya,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,87.5,79.0,81.0,80.0
+STU-580,Pradhumna Wagle,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,72.5,60.0,62.0,61.0
 STU-581,Praful Acharya,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,86.5,77.0,79.0,78.0
-STU-582,Pragya Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,82.0,71.0,73.0,72.0
-STU-583,Prajwal Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,68.0,55.0,57.0,56.0
-STU-584,Prajwala Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,92.5,86.0,88.0,87.0
-STU-585,Prakriti Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,90.0,82.0,84.0,83.0
-STU-586,Pralhad Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,67.0,54.0,56.0,55.0
+STU-582,Pragya Agrawal,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,82.0,71.0,73.0,72.0
+STU-583,Prajwal Aryal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,68.0,55.0,57.0,56.0
+STU-584,Prajwala Baniya,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,92.5,86.0,88.0,87.0
+STU-585,Prakriti Baral,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,90.0,82.0,84.0,83.0
+STU-586,Pralhad Basnet,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,67.0,54.0,56.0,55.0
 STU-587,Pramila Bhandari,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,93.0,85.0,88.0,87.0
-STU-588,Pramita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,86.5,77.0,79.0,78.0
-STU-589,Pramod Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,58.5,43.0,45.0,42.0
-STU-590,Pranaya Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,88.0,80.0,82.0,81.0
-STU-591,Pranisa Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,92.0,85.0,87.0,86.0
-STU-592,Pranjal Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,74.0,62.0,64.0,63.0
+STU-588,Pramita Bhatta,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,86.5,77.0,79.0,78.0
+STU-589,Pramod Bhattarai,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,58.5,43.0,45.0,42.0
+STU-590,Pranaya Bhusal,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,88.0,80.0,82.0,81.0
+STU-591,Pranisa Budhathoki,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,92.0,85.0,87.0,86.0
+STU-592,Pranjal Chand,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,74.0,62.0,64.0,63.0
 STU-593,Pranod Chapagain,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,90.0,81.0,83.0,82.0
-STU-594,Prasanna Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,84.0,74.0,76.0,75.0
-STU-595,Prasansha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-14,62.0,48.0,50.0,47.0
-STU-596,Prasant Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-22,94.0,88.0,90.0,89.0
-STU-597,Prasoon Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-25,88.0,80.0,82.0,81.0
-STU-598,Pratima Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-24,70.0,57.0,59.0,58.0
+STU-594,Prasanna Chhetri,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,84.0,74.0,76.0,75.0
+STU-595,Prasansha Dahal,Bachelor of International Business,Year 2 - Semester 2,Financial Management,2026-03-12,62.0,48.0,50.0,47.0
+STU-596,Prasant Devkota,BSc (Hons) Computing with AI,Year 2 - Semester 2,Machine Learning Basics,2026-03-14,94.0,88.0,90.0,89.0
+STU-597,Prasoon Dhakal,BSc Multimedia Technologies,Year 2 - Semester 2,3D Modeling & Animation,2026-03-21,88.0,80.0,82.0,81.0
+STU-598,Pratima Dhungana,Bachelor of International Business,Year 2 - Semester 1,Corporate Finance,2026-03-21,70.0,57.0,59.0,58.0
 STU-599,Pratista Gautam,BSc (Hons) Computing with AI,Year 2 - Semester 1,Data Structures & Algorithms,2026-03-12,88.0,79.0,81.0,80.0
-STU-600,Pratyush Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-21,89.0,80.0,82.0,81.0
+STU-600,Pratyush Ghimire,BSc Multimedia Technologies,Year 2 - Semester 1,Advanced UI Design,2026-03-14,89.0,80.0,82.0,81.0

@@ -1,21 +1,300 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500&family=IBM+Plex+Mono:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+:root {
+  --primary-glow: rgba(107, 124, 240, 0.15);
+  --card-shadow: 0 4px 12px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+  --card-hover-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
-  background: #f5f6fa;
-  color: #20243a;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Responsive: below 900px the sidebar collapses to icon-free horizontal
-   nav at the top instead of taking 220px off the side. Simple and easy
-   to extend — this is the one thing that isn't inline styles because
-   media queries can't be written as inline React style props. */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #F4F5F8;
+  color: #1F2C4E;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F3F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Keyboard focus visibility */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 2px;
+}
+
+/* Interactive card hover elevation class */
+.elevate-card {
+  transition: var(--transition-smooth);
+}
+
+.elevate-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow) !important;
+}
+
+/* ---------- Scroll reveal system ----------
+   Elements start hidden + shifted (class `reveal`, applied by JS only when
+   motion is allowed) and transition in (class `reveal-visible`) the first
+   time they enter the viewport. --reveal-delay staggers sibling cards. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.55s ease var(--reveal-delay, 0ms),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* ---------- Page transition ----------
+   Applied to the main content wrapper on tab change. */
+.page-transition {
+  animation: pageIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Table row entrance ---------- */
+@keyframes slideInRow {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+tbody tr {
+  animation: slideInRow 0.35s ease both;
+}
+
+tbody tr:nth-child(2) { animation-delay: 30ms; }
+tbody tr:nth-child(3) { animation-delay: 60ms; }
+tbody tr:nth-child(4) { animation-delay: 90ms; }
+tbody tr:nth-child(5) { animation-delay: 120ms; }
+tbody tr:nth-child(6) { animation-delay: 150ms; }
+tbody tr:nth-child(7) { animation-delay: 180ms; }
+tbody tr:nth-child(8) { animation-delay: 210ms; }
+tbody tr:nth-child(9) { animation-delay: 240ms; }
+tbody tr:nth-child(10) { animation-delay: 270ms; }
+
+/* ---------- Seat map pop-in ---------- */
+.seat-cell {
+  animation: seatPop 0.35s var(--ease-spring) backwards;
+  animation-delay: var(--seat-delay, 0ms);
+}
+
+@keyframes seatPop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- Back to top ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 92px;
+  right: 28px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #E3E6ED;
+  background: #14213D;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 8500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-spring), background 0.2s ease;
+  box-shadow: 0 10px 24px -6px rgba(20, 33, 61, 0.4);
+}
+
+.back-to-top-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: #22335C;
+}
+
+/* ---------- Skeleton shimmer ---------- */
+.skeleton-block {
+  background: linear-gradient(90deg, #EEF0F5 25%, #F7F8FB 50%, #EEF0F5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.15);
+  }
+}
+
+.pulse-dot {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .page-transition,
+  tbody tr,
+  .seat-cell,
+  .fade-in-up,
+  .pulse-dot,
+  .skeleton-block {
+    animation: none !important;
+  }
+
+  .elevate-card:hover {
+    transform: none;
+  }
+
+  .back-to-top {
+    transition: none;
+  }
+}
+
+/* Printable Hall Door Notice styling */
+@media print {
+  body {
+    background: #FFFFFF !important;
+  }
+  aside, header button, .print-hide, .back-to-top {
+    display: none !important;
+  }
+  #root > div {
+    display: block !important;
+  }
+  .print-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  aside, .sidebar {
+    display: none !important;
+  }
+  tbody tr {
+    animation: none !important;
+  }
+}
+
+/* Responsive adjustments */
 @media (max-width: 900px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .sidebar {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding: 12px !important;
+  }
+
   aside {
     width: 100% !important;
     flex-direction: row !important;
@@ -25,7 +304,10 @@ body {
   aside nav {
     flex-direction: row !important;
   }
-  aside > div:first-child {
+  .sidebar > div:first-child > div:first-child {
+    display: none;
+  }
+  .sidebar > div:last-child {
     display: none;
   }
   #root > div {
@@ -39,11 +321,16 @@ body {
   }
 
   .dashboard-page {
-    padding: 24px 18px 32px !important;
+    padding: 20px 14px 28px !important;
   }
 
   .dashboard-primary-grid,
   .dashboard-secondary-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
   }
 }

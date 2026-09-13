@@ -174,6 +174,18 @@ export async function createBooking(booking) {
   return sendJson("/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(booking) }, "Booking failed");
 }
 
+/** Admin: approves a pending booking request. */
+export async function approveBooking(bookingId, decidedBy) {
+  const params = decidedBy ? `?decided_by=${encodeURIComponent(decidedBy)}` : "";
+  return sendJson(`/bookings/${encodeURIComponent(bookingId)}/approve${params}`, { method: "POST" }, "Approval failed");
+}
+
+/** Admin: rejects a pending booking request. */
+export async function rejectBooking(bookingId, decidedBy) {
+  const params = decidedBy ? `?decided_by=${encodeURIComponent(decidedBy)}` : "";
+  return sendJson(`/bookings/${encodeURIComponent(bookingId)}/reject${params}`, { method: "POST" }, "Rejection failed");
+}
+
 /** Fetches the generated exam schedule. */
 export async function fetchExamSchedule() {
   const data = await getJson("/exam-schedule");

@@ -17,9 +17,38 @@ from .models import ExamSchedule
 from .timetable_loader import load_timetable_from_csv
 
 
+def _ensure_booking_columns() -> None:
+	"""Idempotent lightweight migration: create_all does not add columns to
+	existing tables, so classroom_bookings.status / decided_by are ensured
+	here. Bookings created before the approval workflow default to
+	'approved' so they keep blocking their rooms."""
+	from sqlalchemy import text
+
+	with engine.begin() as connection:
+		connection.execute(text(
+			"ALTER TABLE classroom_bookings ADD COLUMN IF NOT EXISTS status VARCHAR(12)"
+		))
+		connection.execute(text(
+			"UPDATE classroom_bookings SET status = 'approved' WHERE status IS NULL"
+		))
+		connection.execute(text(
+			"ALTER TABLE classroom_bookings ALTER COLUMN status SET DEFAULT 'pending'"
+		))
+		connection.execute(text(
+			"ALTER TABLE classroom_bookings ALTER COLUMN status SET NOT NULL"
+		))
+		connection.execute(text(
+			"ALTER TABLE classroom_bookings ADD COLUMN IF NOT EXISTS decided_by VARCHAR(200)"
+		))
+		connection.execute(text(
+			"CREATE INDEX IF NOT EXISTS ix_classroom_bookings_status ON classroom_bookings (status)"
+		))
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
 	init_db()
+	_ensure_booking_columns()
 	project_root = Path(__file__).resolve().parent.parent
 	with SessionLocal() as db:
 		load_students_from_csv(db, project_root / "data" / "students.csv")

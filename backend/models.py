@@ -139,6 +139,10 @@ class ClassroomBooking(Base):
 	end_time: Mapped[str] = mapped_column(String(5))
 	booked_by: Mapped[str] = mapped_column(String(200))
 	purpose: Mapped[str] = mapped_column(String(300))
+	# Request lifecycle: students submit "pending" requests; an admin
+	# "approves" or "rejects" them. Only approved bookings block the room.
+	status: Mapped[str] = mapped_column(String(12), default="pending", server_default="pending", index=True)
+	decided_by: Mapped[str | None] = mapped_column(String(200), nullable=True)
 
 	classroom: Mapped[Classroom] = relationship()
 
