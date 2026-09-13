@@ -12,7 +12,8 @@ from sqlalchemy.orm import sessionmaker
 from backend.api import get_db
 from backend.database import Base
 from backend.main import app
-from backend.models import Classroom, Student, TimetableEntry
+from backend.auth import hash_password
+from backend.models import Classroom, Student, TimetableEntry, User
 
 
 def test_seating_api_endpoints(tmp_path):
@@ -59,25 +60,30 @@ def test_seating_api_endpoints(tmp_path):
 	app.dependency_overrides[get_db] = override_db
 	try:
 		client = TestClient(app)
-		response = client.post("/seating/generate")
+		with session_factory() as db:
+			db.add(User(username="admin", email="admin@example.com", password_hash=hash_password("secret"), role="ADMIN"))
+			db.commit()
+		login = client.post("/auth/login", data={"username": "admin", "password": "secret"})
+		headers = {"Authorization": f"Bearer {login.json()['access_token']}"}
+		response = client.post("/seating/generate", headers=headers)
 		assert response.status_code == 200
 		assert response.json()["status"] == "success"
 
-		response = client.get("/seating")
+		response = client.get("/seating", headers=headers)
 		assert response.status_code == 200
 		data = response.json()
 		assert len(data) >= 1
 		assert data[0]["invigilator"] == "Dr. Smith"
 		exam_id = data[0]["id"]
 
-		response = client.get(f"/seating/exam/{exam_id}")
+		response = client.get(f"/seating/exam/{exam_id}", headers=headers)
 		assert response.status_code == 200
 		exam_detail = response.json()
 		assert exam_detail["id"] == exam_id
 		assert len(exam_detail["assignments"]) == 1
 		assert exam_detail["assignments"][0]["student"]["full_name"] == "Alice Smith"
 
-		response = client.get("/seating/exam/9999")
+		response = client.get("/seating/exam/9999", headers=headers)
 		assert response.status_code == 404
 		assert response.json()["detail"] == "Exam seating plan not found"
 	finally:

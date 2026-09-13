@@ -119,6 +119,32 @@ Then open the local Vite URL, usually:
 
 - http://localhost:5173
 
+### 5. Create the admin account
+
+All users authenticate with a role. Admins can access the full dashboard and approve booking requests. Teachers see only their timetable, taught-module risk data, and assigned exam seating. Students see only their own timetable, risk data, exams, seating, and booking requests.
+
+Set an admin password in PowerShell and run the one-time account creation command:
+
+```powershell
+$env:ADMIN_PASSWORD = "choose-a-strong-password"
+python -m backend.create_admin
+```
+
+For production, also set a random JWT secret:
+
+```powershell
+$env:AUTH_SECRET_KEY = "at-least-32-random-characters"
+```
+
+The role login is available when opening the dashboard, and the current user can sign out from the sidebar.
+
+Create teacher and student accounts with an identity matching the timetable lecturer or student ID:
+
+```powershell
+python -m backend.create_user --username teacher1 --email teacher@example.com --password "choose-a-password" --role TEACHER --identity "Teacher Name"
+python -m backend.create_user --username STU-101 --email student@example.com --password "choose-a-password" --role STUDENT --identity STU-101 --section AI3
+```
+
 ## Main API Features
 
 The backend exposes routes for:

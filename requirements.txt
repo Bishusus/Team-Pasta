@@ -6,3 +6,6 @@ pandas>=2.0
 python-dotenv
 pytest
 httpx2
+PyJWT
+pwdlib[argon2]
+python-multipart

@@ -10,9 +10,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from backend.api import get_db
+from backend.auth import get_current_user
 from backend.database import Base
 from backend.main import app
 from backend.models import Student
+from backend.models import User
 
 
 def test_risk_endpoints_match_existing_engine(tmp_path):
@@ -68,6 +70,7 @@ def test_risk_endpoints_match_existing_engine(tmp_path):
             yield db
 
     app.dependency_overrides[get_db] = override_db
+    app.dependency_overrides[get_current_user] = lambda: User(role="ADMIN", username="test-admin")
     try:
         client = TestClient(app)
         response = client.get("/risk")

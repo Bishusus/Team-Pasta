@@ -9,6 +9,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from backend.api import get_db
+from backend.auth import get_current_user
+from backend.models import User
 from backend.database import Base
 from backend.main import app
 
@@ -23,6 +25,7 @@ def test_empty_database_and_cors(tmp_path):
             yield db
 
     app.dependency_overrides[get_db] = override_db
+    app.dependency_overrides[get_current_user] = lambda: User(role="ADMIN", username="test-admin")
     try:
         client = TestClient(app)
         response = client.get(

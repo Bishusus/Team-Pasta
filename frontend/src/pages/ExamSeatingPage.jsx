@@ -13,7 +13,7 @@ function moduleColor(moduleName, modules) {
   return seatColors[Math.max(0, modules.indexOf(moduleName)) % seatColors.length];
 }
 
-export default function ExamSeatingPage() {
+export default function ExamSeatingPage({ isAdmin, role, identity, onLogin }) {
   const [schedule, setSchedule] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [layout, setLayout] = useState(null);
@@ -29,7 +29,9 @@ export default function ExamSeatingPage() {
       setSchedule(exams);
       const nextId = selectedId && exams.some((exam) => exam.id === selectedId) ? selectedId : exams[0]?.id;
       setSelectedId(nextId ?? null);
-      if (nextId) setLayout(await fetchExamLayout(nextId));
+      const selectedExam = exams.find((exam) => exam.id === nextId);
+      const canViewLayout = isAdmin || role === "STUDENT" || (role === "TEACHER" && selectedExam?.invigilator === identity);
+      if (nextId && canViewLayout) setLayout(await fetchExamLayout(nextId));
       else setLayout(null);
     } catch (reason) {
       setError(reason.message || "Unable to load exam seating.");
@@ -42,6 +44,14 @@ export default function ExamSeatingPage() {
 
   const selectExam = async (examId) => {
     setSelectedId(examId);
+    const exam = schedule.find((item) => item.id === examId);
+    const canViewLayout = isAdmin || role === "STUDENT" || (role === "TEACHER" && exam?.invigilator === identity);
+    if (!canViewLayout) {
+      setLayout(null);
+      setError("Only the assigned invigilator can view this seating arrangement.");
+      return;
+    }
+    setError(null);
     setLayout(await fetchExamLayout(examId));
   };
 
@@ -64,7 +74,7 @@ export default function ExamSeatingPage() {
     <div style={{ padding: "30px 36px 40px", flex: 1, minWidth: 0 }}>
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, marginBottom: 24 }}>
         <div><div style={{ fontSize: 12, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 1.2, fontWeight: 600, marginBottom: 7 }}>Assessment operations · room allocation</div><h1 style={{ fontFamily: fonts.display, fontSize: 30, color: colors.ink, margin: 0 }}>Exam schedule & seating</h1><p style={{ fontSize: 15, color: colors.textMuted, margin: "5px 0 0" }}>Every candidate, room, bench, and invigilator in one view.</p></div>
-        <button type="button" onClick={regenerate} disabled={generating} style={{ border: `1px solid ${colors.border}`, borderRadius: 6, padding: "9px 13px", background: colors.card, color: colors.ink, fontWeight: 600, cursor: generating ? "wait" : "pointer" }}>{generating ? "Generating..." : "Regenerate layout"}</button>
+        {isAdmin ? <button type="button" onClick={regenerate} disabled={generating} style={{ border: `1px solid ${colors.border}`, borderRadius: 6, padding: "9px 13px", background: colors.card, color: colors.ink, fontWeight: 600, cursor: generating ? "wait" : "pointer" }}>{generating ? "Generating..." : "Regenerate layout"}</button> : <button type="button" onClick={onLogin} style={{ border: `1px solid ${colors.border}`, borderRadius: 6, padding: "9px 13px", background: colors.card, color: colors.ink, fontWeight: 600, cursor: "pointer" }}>Admin login to regenerate</button>}
       </header>
       {error && <div style={{ marginBottom: 18, padding: 13, background: "#FDF2F2", border: "1px solid #F87171", borderRadius: 8, color: "#991B1B", fontSize: 13 }}>{error}</div>}
       {loading ? <p style={{ color: colors.textMuted }}>Loading exam allocation...</p> : !schedule.length ? <section style={panelStyle}><p style={{ color: colors.textMuted, margin: 0 }}>No generated exams are available.</p></section> : <>

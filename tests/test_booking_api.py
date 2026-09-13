@@ -9,7 +9,15 @@ from sqlalchemy.orm import sessionmaker
 from backend.api import get_db
 from backend.database import Base
 from backend.main import app
-from backend.models import Classroom, TimetableEntry
+from backend.auth import hash_password
+from backend.models import Classroom, TimetableEntry, User
+
+
+def admin_headers(client, db):
+	db.add(User(username="admin", email="admin@example.com", password_hash=hash_password("secret"), role="ADMIN"))
+	db.commit()
+	response = client.post("/auth/login", data={"username": "admin", "password": "secret"})
+	return {"Authorization": f"Bearer {response.json()['access_token']}"}
 
 
 def test_booking_availability_and_conflicts(tmp_path):
@@ -38,18 +46,20 @@ def test_booking_availability_and_conflicts(tmp_path):
 	app.dependency_overrides[get_db] = override_db
 	try:
 		client = TestClient(app)
+		with Session() as db:
+			headers = admin_headers(client, db)
 		availability = client.get("/bookings/availability?day=mon&start_time=09:30&end_time=10:30")
 		assert availability.status_code == 200
 		by_id = {item["id"]: item for item in availability.json()}
 		assert by_id[occupied_room.id]["available"] is False
 		assert by_id[available_room.id]["available"] is True
 
-		booking = client.post("/bookings", json={
+		booking = client.post("/bookings", headers=headers, json={
 			"classroom_id": available_room.id, "day": "MON", "start_time": "09:30",
 			"end_time": "10:30", "booked_by": "Library Team", "purpose": "Study group",
 		})
 		assert booking.status_code == 201
-		conflict = client.post("/bookings", json={
+		conflict = client.post("/bookings", headers=headers, json={
 			"classroom_id": available_room.id, "day": "MON", "start_time": "10:00",
 			"end_time": "11:00", "booked_by": "Another Team", "purpose": "Workshop",
 		})
@@ -83,7 +93,9 @@ def test_same_room_number_in_different_blocks_remains_distinct(tmp_path):
 	app.dependency_overrides[get_db] = override_db
 	try:
 		client = TestClient(app)
-		booking = client.post("/bookings", json={
+		with Session() as db:
+			headers = admin_headers(client, db)
+		booking = client.post("/bookings", headers=headers, json={
 			"classroom_id": rooms[0].id,
 			"day": "MON",
 			"start_time": "09:00",

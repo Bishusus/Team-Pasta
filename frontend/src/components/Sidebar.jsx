@@ -4,14 +4,14 @@ import { colors, fonts } from "../theme";
 // The primary sections of the app. To add a new page, add an entry here
 // and a matching case in App.jsx.
 export const NAV_ITEMS = [
-  { key: "dashboard", label: "Dashboard" },
-  { key: "risk", label: "Risk Analysis" },
-  { key: "timetable", label: "Timetable" },
-  { key: "booking", label: "Classroom Booking" },
-  { key: "seating", label: "Exam Seating" },
+  { key: "dashboard", label: "Dashboard", roles: ["ADMIN", "TEACHER", "STUDENT"] },
+  { key: "risk", label: "Risk Analysis", roles: ["ADMIN", "TEACHER", "STUDENT"] },
+  { key: "timetable", label: "Timetable", roles: ["ADMIN", "TEACHER", "STUDENT"] },
+  { key: "booking", label: "Classroom Booking", roles: ["ADMIN", "STUDENT"] },
+  { key: "seating", label: "Exam Seating", roles: ["ADMIN", "TEACHER", "STUDENT"] },
 ];
 
-export default function Sidebar({ active, onSelect }) {
+export default function Sidebar({ active, role, onSelect, onLogout }) {
   return (
     <aside
       style={{
@@ -34,7 +34,7 @@ export default function Sidebar({ active, onSelect }) {
       </div>
 
       <nav style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-        {NAV_ITEMS.map((item) => {
+        {NAV_ITEMS.filter((item) => item.roles.includes(role)).map((item) => {
           const isActive = item.key === active;
           return (
             <button
@@ -60,6 +60,9 @@ export default function Sidebar({ active, onSelect }) {
           );
         })}
       </nav>
+      <div style={{ marginTop: "auto", padding: "14px 8px 0", borderTop: "1px solid #26304F" }}>
+        <button type="button" onClick={onLogout} style={{ width: "100%", border: 0, background: "transparent", color: "#C9CEDD", padding: "9px 4px", textAlign: "left", cursor: "pointer" }}>Sign out ({role.toLowerCase()})</button>
+      </div>
     </aside>
   );
 }

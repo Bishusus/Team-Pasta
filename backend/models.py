@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import Date, Float, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy import Boolean, Date, Float, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .database import Base
@@ -24,6 +24,19 @@ class Student(Base):
 	seat_assignments: Mapped[list["SeatAssignment"]] = relationship(
 		back_populates="student"
 	)
+
+
+class User(Base):
+	__tablename__ = "users"
+
+	id: Mapped[int] = mapped_column(Integer, primary_key=True)
+	username: Mapped[str] = mapped_column(String(100), unique=True, index=True)
+	email: Mapped[str] = mapped_column(String(200), unique=True, index=True)
+	password_hash: Mapped[str] = mapped_column(String(300))
+	role: Mapped[str] = mapped_column(String(20), index=True)
+	identity: Mapped[str | None] = mapped_column(String(200), nullable=True, index=True)
+	section_cohort: Mapped[str | None] = mapped_column(String(200), nullable=True)
+	is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 
 
 class Exam(Base):
@@ -139,6 +152,10 @@ class ClassroomBooking(Base):
 	end_time: Mapped[str] = mapped_column(String(5))
 	booked_by: Mapped[str] = mapped_column(String(200))
 	purpose: Mapped[str] = mapped_column(String(300))
+	status: Mapped[str] = mapped_column(String(20), default="PENDING", index=True)
+	requested_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True, index=True)
+	approved_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True, index=True)
+	rejection_reason: Mapped[str | None] = mapped_column(String(300), nullable=True)
 
 	classroom: Mapped[Classroom] = relationship()
 

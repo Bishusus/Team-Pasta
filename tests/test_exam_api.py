@@ -11,7 +11,8 @@ from backend.api import get_db
 from backend.database import Base
 from backend.exam_engine import generate_exam_schedule
 from backend.main import app
-from backend.models import Classroom, ExamSchedule, Student
+from backend.auth import hash_password
+from backend.models import Classroom, ExamSchedule, Student, User
 
 
 def test_exam_schedule_and_layout_endpoints(tmp_path):
@@ -42,17 +43,22 @@ def test_exam_schedule_and_layout_endpoints(tmp_path):
 	app.dependency_overrides[get_db] = override_db
 	try:
 		client = TestClient(app)
-		schedule = client.get("/exam-schedule")
+		with Session() as db:
+			db.add(User(username="admin", email="admin@example.com", password_hash=hash_password("secret"), role="ADMIN"))
+			db.commit()
+		login = client.post("/auth/login", data={"username": "admin", "password": "secret"})
+		headers = {"Authorization": f"Bearer {login.json()['access_token']}"}
+		schedule = client.get("/exam-schedule", headers=headers)
 		assert schedule.status_code == 200
 		exam = schedule.json()[0]
 		assert exam["student_count"] == 1
 		assert exam["invigilator"] == "Unassigned" or exam["invigilator"]
 
-		layout = client.get(f"/exam-schedule/{exam['id']}/layout")
+		layout = client.get(f"/exam-schedule/{exam['id']}/layout", headers=headers)
 		assert layout.status_code == 200
 		assert layout.json()["rooms"][0]["assignments"][0]["student_id"] == "STU-001"
 
-		assert client.get("/exam-schedule/9999/layout").status_code == 404
+		assert client.get("/exam-schedule/9999/layout", headers=headers).status_code == 404
 	finally:
 		app.dependency_overrides.clear()
 		engine.dispose()

@@ -13,10 +13,12 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from backend.api import get_db
+from backend.auth import get_current_user
 from backend.csv_loader import load_students_from_csv
 from backend.database import Base
 from backend.main import app
 from backend.models import Student
+from backend.models import User
 
 
 @pytest.fixture
@@ -123,6 +125,7 @@ def test_student_endpoints(database):
         db.commit()
 
     app.dependency_overrides[get_db] = override_db
+    app.dependency_overrides[get_current_user] = lambda: User(role="ADMIN", username="test-admin")
     try:
         client = TestClient(app)
         response = client.get("/students")

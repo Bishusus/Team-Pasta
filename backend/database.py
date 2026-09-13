@@ -2,7 +2,7 @@ import os
 from collections.abc import Generator
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 
@@ -35,6 +35,29 @@ def init_db() -> None:
 	from . import models  # noqa: F401
 
 	Base.metadata.create_all(bind=engine)
+	_existing_schema_updates()
+
+
+def _existing_schema_updates() -> None:
+	updates = {
+		"users": {
+			"identity": "VARCHAR(200)",
+			"section_cohort": "VARCHAR(200)",
+		},
+		"classroom_bookings": {
+			"status": "VARCHAR(20) DEFAULT 'APPROVED'",
+			"requested_by_user_id": "INTEGER",
+			"approved_by_user_id": "INTEGER",
+			"rejection_reason": "VARCHAR(300)",
+		},
+	}
+	with engine.begin() as connection:
+		inspector = inspect(connection)
+		for table_name, columns in updates.items():
+			existing = {column["name"] for column in inspector.get_columns(table_name)}
+			for column_name, column_type in columns.items():
+				if column_name not in existing:
+					connection.execute(text(f'ALTER TABLE "{table_name}" ADD COLUMN "{column_name}" {column_type}'))
 
 
 def get_db() -> Generator[Session, None, None]:

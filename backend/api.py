@@ -2,18 +2,37 @@ from datetime import datetime
 import re
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import BaseModel
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session, joinedload, selectinload
 
 from .database import get_db
+from .auth import authenticate_user, create_access_token, get_current_user, require_admin, require_roles
 from .exam_engine import generate_exam_schedule
-from .models import Classroom, ClassroomBooking, Exam, ExamRoom, ExamSchedule, ExamSeatAssignment, SeatAssignment, Student, TimetableEntry
+from .models import Classroom, ClassroomBooking, Exam, ExamRoom, ExamSchedule, ExamSeatAssignment, SeatAssignment, Student, TimetableEntry, User
 from .risk_engine import calculate_risk
 from .seating_engine import calculate_room_grid, generate_seating_plan
 
 
 router = APIRouter()
+
+
+@router.post("/auth/login")
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)) -> dict:
+	user = authenticate_user(form_data.username, form_data.password, db)
+	if user is None or user.role not in {"ADMIN", "TEACHER", "STUDENT"}:
+		raise HTTPException(status_code=401, detail="Invalid username or password")
+	return {
+		"access_token": create_access_token(user),
+		"token_type": "bearer",
+		"user": {"username": user.username, "email": user.email, "role": user.role, "identity": user.identity, "section_cohort": user.section_cohort},
+	}
+
+
+@router.get("/auth/me")
+def get_me(user: User = Depends(get_current_user)) -> dict:
+	return {"username": user.username, "email": user.email, "role": user.role, "identity": user.identity, "section_cohort": user.section_cohort}
 
 
 class BookingCreate(BaseModel):
@@ -78,7 +97,62 @@ def _booking_response(booking: ClassroomBooking, classroom: Classroom) -> dict:
 		"end_time": booking.end_time,
 		"booked_by": booking.booked_by,
 		"purpose": booking.purpose,
+		"status": booking.status,
+		"rejection_reason": booking.rejection_reason,
 	}
+
+
+def _module_matches(left: str | None, right: str | None) -> bool:
+	stop_words = {"and", "the", "of", "for", "with"}
+	def normalize(value: str | None) -> set[str]:
+		tokens = set(re.findall(r"[a-z0-9]+", (value or "").casefold())) - stop_words
+		return {token[:-1] if token.endswith("s") and len(token) > 3 else token for token in tokens}
+
+	left_tokens = normalize(left)
+	right_tokens = normalize(right)
+	if not left_tokens or not right_tokens:
+		return False
+	if left_tokens <= right_tokens or right_tokens <= left_tokens:
+		return True
+	shared = left_tokens & right_tokens
+	return len(shared) >= 2 and len(shared) / min(len(left_tokens), len(right_tokens)) >= 0.5
+
+
+def _teacher_module_names(user: User, db: Session) -> set[str]:
+	if user.role != "TEACHER" or not user.identity:
+		return set()
+	entries = db.scalars(select(TimetableEntry).where(TimetableEntry.lecturer == user.identity)).all()
+	return {entry.module_title for entry in entries}
+
+
+def _visible_students(user: User, db: Session) -> list[Student]:
+	students = db.scalars(select(Student).order_by(Student.student_id)).all()
+	if user.role == "ADMIN":
+		return students
+	if user.role == "STUDENT":
+		return [student for student in students if student.student_id == user.identity]
+	modules = _teacher_module_names(user, db)
+	return [student for student in students if any(_module_matches(student.module_name, module) for module in modules)]
+
+
+def _visible_exam_schedules(user: User, db: Session) -> list[ExamSchedule]:
+	exams = db.scalars(select(ExamSchedule).order_by(ExamSchedule.exam_date, ExamSchedule.start_time)).all()
+	if user.role == "ADMIN":
+		return exams
+	if user.role == "TEACHER":
+		modules = _teacher_module_names(user, db)
+		return [
+			exam
+			for exam in exams
+			if exam.invigilator == user.identity
+			or any(_module_matches(exam.module_name, module) for module in modules)
+		]
+	student = db.scalar(select(Student).where(Student.student_id == user.identity))
+	if student is None:
+		return []
+	assignments = db.scalars(select(ExamSeatAssignment).where(ExamSeatAssignment.student_id == student.id)).all()
+	allowed_ids = {assignment.exam_id for assignment in assignments}
+	return [exam for exam in exams if exam.id in allowed_ids]
 
 
 def _exam_response(exam: ExamSchedule) -> dict:
@@ -126,17 +200,20 @@ def _student_response(student: Student) -> dict:
 
 
 @router.get("/students")
-def get_students(db: Session = Depends(get_db)) -> list[dict]:
-	students = db.scalars(select(Student).order_by(Student.student_id)).all()
+def get_students(
+	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
+) -> list[dict]:
+	students = _visible_students(user, db)
 	return [_student_response(student) for student in students]
 
 
 @router.get("/students/{student_id}")
 def get_student(
-	student_id: str, db: Session = Depends(get_db)
+	student_id: str, db: Session = Depends(get_db), user: User = Depends(get_current_user)
 ) -> dict:
 	student = db.scalar(select(Student).where(Student.student_id == student_id))
-	if student is None:
+	if student is None or student not in _visible_students(user, db):
 		raise HTTPException(status_code=404, detail="Student not found")
 	return _student_response(student)
 
@@ -157,14 +234,14 @@ def _risk_response(student: Student) -> dict:
 
 
 @router.get("/risk")
-def get_risks(db: Session = Depends(get_db)) -> list[dict]:
-	students = db.scalars(select(Student).order_by(Student.student_id)).all()
+def get_risks(db: Session = Depends(get_db), user: User = Depends(get_current_user)) -> list[dict]:
+	students = _visible_students(user, db)
 	return [_risk_response(student) for student in students]
 
 
 @router.get("/risk-summary")
-def get_risk_summary(db: Session = Depends(get_db)) -> dict[str, int]:
-	students = db.scalars(select(Student).order_by(Student.student_id)).all()
+def get_risk_summary(db: Session = Depends(get_db), user: User = Depends(get_current_user)) -> dict[str, int]:
+	students = _visible_students(user, db)
 	risks = [_risk_response(student) for student in students]
 	return {
 		"total_students": len(risks),
@@ -176,10 +253,10 @@ def get_risk_summary(db: Session = Depends(get_db)) -> dict[str, int]:
 
 @router.get("/risk/{student_id}")
 def get_student_risk(
-	student_id: str, db: Session = Depends(get_db)
+	student_id: str, db: Session = Depends(get_db), user: User = Depends(get_current_user)
 ) -> dict:
 	student = db.scalar(select(Student).where(Student.student_id == student_id))
-	if student is None:
+	if student is None or student not in _visible_students(user, db):
 		raise HTTPException(status_code=404, detail="Student not found")
 	return _risk_response(student)
 
@@ -190,6 +267,7 @@ def get_timetable(
 	module_code: str | None = None,
 	room: str | None = None,
 	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
 ) -> list[dict]:
 	query = select(TimetableEntry).order_by(
 		TimetableEntry.day,
@@ -202,17 +280,36 @@ def get_timetable(
 		query = query.where(TimetableEntry.module_code == module_code.strip())
 	if room:
 		query = query.where(TimetableEntry.room == room.strip())
+	if user.role == "TEACHER":
+		query = query.where(TimetableEntry.lecturer == user.identity)
+	elif user.role == "STUDENT":
+		student = db.scalar(select(Student).where(Student.student_id == user.identity))
+		if student is None:
+			return []
+		entries = db.scalars(query).all()
+		return [
+			_timetable_response(entry)
+			for entry in entries
+			if _module_matches(student.module_name, entry.module_title)
+			and (not user.section_cohort or user.section_cohort.casefold() in entry.section_cohort.casefold())
+		]
 	entries = db.scalars(query).all()
 	return [_timetable_response(entry) for entry in entries]
 
 
 @router.get("/timetable/{entry_id}")
 def get_timetable_entry(
-	entry_id: int, db: Session = Depends(get_db)
+	entry_id: int, db: Session = Depends(get_db), user: User = Depends(get_current_user)
 ) -> dict:
 	entry = db.get(TimetableEntry, entry_id)
 	if entry is None:
 		raise HTTPException(status_code=404, detail="Timetable entry not found")
+	if user.role == "TEACHER" and entry.lecturer != user.identity:
+		raise HTTPException(status_code=404, detail="Timetable entry not found")
+	if user.role == "STUDENT":
+		student = db.scalar(select(Student).where(Student.student_id == user.identity))
+		if student is None or not _module_matches(student.module_name, entry.module_title) or (user.section_cohort and user.section_cohort.casefold() not in entry.section_cohort.casefold()):
+			raise HTTPException(status_code=404, detail="Timetable entry not found")
 	return _timetable_response(entry)
 
 
@@ -280,16 +377,26 @@ def get_booking_availability(day: str, start_time: str, end_time: str, db: Sessi
 
 
 @router.get("/bookings")
-def get_bookings(day: str | None = None, db: Session = Depends(get_db)) -> list[dict]:
+def get_bookings(
+	day: str | None = None,
+	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
+) -> list[dict]:
 	query = select(ClassroomBooking).order_by(ClassroomBooking.day, ClassroomBooking.start_time)
 	if day:
 		query = query.where(ClassroomBooking.day == day.strip().upper())
+	if user.role == "STUDENT":
+		query = query.where(ClassroomBooking.requested_by_user_id == user.id)
 	bookings = db.scalars(query.options(joinedload(ClassroomBooking.classroom))).all()
 	return [_booking_response(booking, booking.classroom) for booking in bookings]
 
 
 @router.post("/bookings", status_code=201)
-def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dict:
+def create_booking(
+	payload: BookingCreate,
+	db: Session = Depends(get_db),
+	user: User = Depends(require_roles("ADMIN", "STUDENT")),
+) -> dict:
 	day, start, end = _validate_booking_window(payload.day, payload.start_time, payload.end_time)
 	classroom = db.get(Classroom, payload.classroom_id)
 	if classroom is None:
@@ -313,8 +420,11 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dic
 		day=day,
 		start_time=start.strftime("%H:%M"),
 		end_time=end.strftime("%H:%M"),
-		booked_by=payload.booked_by.strip(),
+		booked_by=user.username if user.role == "STUDENT" else payload.booked_by.strip(),
 		purpose=payload.purpose.strip(),
+		status="APPROVED" if user.role == "ADMIN" else "PENDING",
+		requested_by_user_id=user.id,
+		approved_by_user_id=user.id if user.role == "ADMIN" else None,
 	)
 	db.add(booking)
 	db.commit()
@@ -322,19 +432,66 @@ def create_booking(payload: BookingCreate, db: Session = Depends(get_db)) -> dic
 	return _booking_response(booking, classroom)
 
 
+@router.post("/bookings/{booking_id}/approve")
+def approve_booking(
+	booking_id: int,
+	db: Session = Depends(get_db),
+	admin: User = Depends(require_admin),
+) -> dict:
+	booking = db.scalar(select(ClassroomBooking).options(joinedload(ClassroomBooking.classroom)).where(ClassroomBooking.id == booking_id))
+	if booking is None:
+		raise HTTPException(status_code=404, detail="Booking not found")
+	if booking.status != "PENDING":
+		raise HTTPException(status_code=409, detail="Booking is not pending")
+	booking.status = "APPROVED"
+	booking.approved_by_user_id = admin.id
+	db.commit()
+	db.refresh(booking)
+	return _booking_response(booking, booking.classroom)
+
+
+@router.post("/bookings/{booking_id}/reject")
+def reject_booking(
+	booking_id: int,
+	payload: dict[str, str] | None = None,
+	db: Session = Depends(get_db),
+	_admin: User = Depends(require_admin),
+) -> dict:
+	booking = db.scalar(select(ClassroomBooking).options(joinedload(ClassroomBooking.classroom)).where(ClassroomBooking.id == booking_id))
+	if booking is None:
+		raise HTTPException(status_code=404, detail="Booking not found")
+	if booking.status != "PENDING":
+		raise HTTPException(status_code=409, detail="Booking is not pending")
+	booking.status = "REJECTED"
+	booking.rejection_reason = (payload or {}).get("reason")
+	db.commit()
+	db.refresh(booking)
+	return _booking_response(booking, booking.classroom)
+
+
 @router.post("/exam-schedule/generate")
-def generate_schedule(db: Session = Depends(get_db)) -> dict:
+def generate_schedule(
+	db: Session = Depends(get_db),
+	_admin: User = Depends(require_admin),
+) -> dict:
 	return {"generated_exams": generate_exam_schedule(db)}
 
 
 @router.get("/exam-schedule")
-def get_exam_schedule(db: Session = Depends(get_db)) -> list[dict]:
-	exams = db.scalars(select(ExamSchedule).order_by(ExamSchedule.exam_date, ExamSchedule.start_time)).all()
+def get_exam_schedule(
+	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
+) -> list[dict]:
+	exams = _visible_exam_schedules(user, db)
 	return [_exam_response(exam) for exam in exams]
 
 
 @router.get("/exam-schedule/{exam_id}/layout")
-def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
+def get_exam_layout(
+	exam_id: int,
+	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
+) -> dict:
 	exam = db.get(ExamSchedule, exam_id)
 	if exam is None:
 		raise HTTPException(status_code=404, detail="Generated exam not found")
@@ -344,6 +501,13 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 		.where(ExamSeatAssignment.exam_id == exam_id)
 		.order_by(ExamSeatAssignment.room_id, ExamSeatAssignment.row, ExamSeatAssignment.column)
 	).all()
+	if user.role == "TEACHER" and exam.invigilator != user.identity:
+		raise HTTPException(status_code=404, detail="Generated exam not found")
+	if user.role == "STUDENT":
+		student = db.scalar(select(Student).where(Student.student_id == user.identity))
+		if student is None:
+			raise HTTPException(status_code=404, detail="Generated exam not found")
+		assignments = [assignment for assignment in assignments if assignment.student_id == student.id]
 	assignments_by_room: dict[int, list[ExamSeatAssignment]] = {}
 	for assignment in assignments:
 		assignments_by_room.setdefault(assignment.room_id, []).append(assignment)
@@ -375,13 +539,19 @@ def get_exam_layout(exam_id: int, db: Session = Depends(get_db)) -> dict:
 
 
 @router.post("/seating/generate")
-def generate_seating(db: Session = Depends(get_db)) -> dict:
+def generate_seating(
+	db: Session = Depends(get_db),
+	_admin: User = Depends(require_admin),
+) -> dict:
 	results = generate_seating_plan(db)
 	return {"status": "success", "generated_plans": results}
 
 
 @router.get("/seating")
-def get_seating_plans(db: Session = Depends(get_db)) -> list[dict]:
+def get_seating_plans(
+	db: Session = Depends(get_db),
+	user: User = Depends(get_current_user),
+) -> list[dict]:
 	exams = db.scalars(
 		select(Exam)
 		.options(joinedload(Exam.classroom), selectinload(Exam.seat_assignments))
@@ -389,6 +559,12 @@ def get_seating_plans(db: Session = Depends(get_db)) -> list[dict]:
 	).all()
 	results = []
 	for exam in exams:
+		if user.role == "TEACHER" and exam.invigilator != user.identity:
+			continue
+		if user.role == "STUDENT":
+			student = db.scalar(select(Student).where(Student.student_id == user.identity))
+			if student is None or not any(assignment.student_id == student.id for assignment in exam.seat_assignments):
+				continue
 		classroom = exam.classroom
 		assignments = exam.seat_assignments
 		capacity = classroom.capacity if classroom else 0
@@ -416,10 +592,12 @@ def get_seating_plans(db: Session = Depends(get_db)) -> list[dict]:
 
 @router.get("/seating/exam/{exam_id}")
 def get_seating_plan_for_exam(
-	exam_id: int, db: Session = Depends(get_db)
+	exam_id: int, db: Session = Depends(get_db), user: User = Depends(get_current_user)
 ) -> dict:
 	exam = db.get(Exam, exam_id)
 	if exam is None:
+		raise HTTPException(status_code=404, detail="Exam seating plan not found")
+	if user.role == "TEACHER" and exam.invigilator != user.identity:
 		raise HTTPException(status_code=404, detail="Exam seating plan not found")
 
 	classroom = exam.classroom
@@ -432,6 +610,11 @@ def get_seating_plan_for_exam(
 		.where(SeatAssignment.exam_id == exam_id)
 		.order_by(SeatAssignment.row, SeatAssignment.column)
 	).all()
+	if user.role == "STUDENT":
+		student = db.scalar(select(Student).where(Student.student_id == user.identity))
+		if student is None:
+			raise HTTPException(status_code=404, detail="Exam seating plan not found")
+		assignments = [assignment for assignment in assignments if assignment.student_id == student.id]
 
 	return {
 		"id": exam.id,

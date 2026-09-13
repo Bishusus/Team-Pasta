@@ -32,8 +32,11 @@ function normalizeStudent(student) {
 
 async function getJsonRequest(path) {
   let response;
+  const token = localStorage.getItem("access_token");
   try {
-    response = await fetch(`${API_BASE_URL}${path}`);
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
   } catch (cause) {
     throw new ApiError("Unable to reach the FastAPI server.", { path, cause });
   }
@@ -75,8 +78,13 @@ function getJson(path) {
 
 async function sendJson(path, options, errorMessage) {
   let response;
+  const token = localStorage.getItem("access_token");
+  const headers = {
+    ...(options.headers || {}),
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
   try {
-    response = await fetch(`${API_BASE_URL}${path}`, options);
+    response = await fetch(`${API_BASE_URL}${path}`, { ...options, headers });
   } catch (cause) {
     throw new ApiError("Unable to reach the FastAPI server.", { path, cause });
   }
@@ -86,6 +94,25 @@ async function sendJson(path, options, errorMessage) {
     throw new ApiError(`${errorMessage} (${response.status}): ${detail}`, { status: response.status, path });
   }
   return response.json();
+}
+
+export async function login(username, password) {
+  const body = new URLSearchParams({ username, password });
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body,
+  });
+  const data = await response.json();
+  if (!response.ok) throw new ApiError(data.detail || "Admin login failed.", { status: response.status, path: "/auth/login" });
+  localStorage.setItem("access_token", data.access_token);
+  localStorage.setItem("current_user", JSON.stringify(data.user));
+  return data.user;
+}
+
+export function logout() {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("current_user");
 }
 
 /**
@@ -172,6 +199,14 @@ export async function fetchBookings(day) {
 
 export async function createBooking(booking) {
   return sendJson("/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(booking) }, "Booking failed");
+}
+
+export async function approveBooking(bookingId) {
+  return sendJson(`/bookings/${encodeURIComponent(bookingId)}/approve`, { method: "POST" }, "Approval failed");
+}
+
+export async function rejectBooking(bookingId, reason = "") {
+  return sendJson(`/bookings/${encodeURIComponent(bookingId)}/reject`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason }) }, "Rejection failed");
 }
 
 /** Fetches the generated exam schedule. */

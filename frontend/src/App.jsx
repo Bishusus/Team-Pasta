@@ -6,7 +6,8 @@ import RiskAnalysisPage from "./pages/RiskAnalysisPage";
 import TimetablePage from "./pages/TimetablePage";
 import ExamSeatingPage from "./pages/ExamSeatingPage";
 import BookingPage from "./pages/BookingPage";
-import { fetchHealth, fetchRiskResults } from "./services/api";
+import LoginPage from "./pages/LoginPage";
+import { fetchHealth, fetchRiskResults, logout } from "./services/api";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -19,8 +20,13 @@ export default function App() {
   const [summaryError, setSummaryError] = useState(null);
   const [health, setHealth] = useState(null);
   const [healthLoading, setHealthLoading] = useState(true);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("current_user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const loadData = async () => {
+    if (!user) return;
     setLoading(true);
     setError(null);
     setSummaryLoading(true);
@@ -60,7 +66,7 @@ export default function App() {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [user]);
 
   const handleSelectStudent = (id) => {
     setSelectedStudentId(id);
@@ -70,9 +76,13 @@ export default function App() {
     setSelectedStudentId(null);
   };
 
+  if (!user) return <LoginPage onLogin={setUser} />;
+
+  const isAdmin = user.role === "ADMIN";
+
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#F4F5F8" }}>
-      <Sidebar active={activeTab} onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }} />
+      <Sidebar active={activeTab} role={user.role} onLogout={() => { logout(); setUser(null); }} onSelect={(key) => { setActiveTab(key); setSelectedStudentId(null); }} />
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
         {selectedStudentId ? (
@@ -108,9 +118,9 @@ export default function App() {
         ) : activeTab === "timetable" ? (
           <TimetablePage />
         ) : activeTab === "booking" ? (
-          <BookingPage />
+          <BookingPage role={user.role} />
         ) : (
-          <ExamSeatingPage />
+          <ExamSeatingPage isAdmin={isAdmin} role={user.role} identity={user.identity} />
         )}
       </main>
     </div>

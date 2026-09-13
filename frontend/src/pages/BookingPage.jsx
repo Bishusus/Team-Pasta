@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { colors, fonts } from "../theme";
-import { createBooking, fetchBookingAvailability, fetchBookings } from "../services/api";
+import { approveBooking, createBooking, fetchBookingAvailability, fetchBookings, rejectBooking } from "../services/api";
 
 const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI"];
 const panelStyle = {
@@ -10,7 +10,8 @@ const panelStyle = {
   padding: 22,
 };
 
-export default function BookingPage() {
+export default function BookingPage({ role }) {
+  const isAdmin = role === "ADMIN";
   const [form, setForm] = useState({ day: "MON", startTime: "12:00", endTime: "13:00", classroomId: "", bookedBy: "", purpose: "" });
   const [classrooms, setClassrooms] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -64,6 +65,16 @@ export default function BookingPage() {
     }
   };
 
+  const updateBooking = async (bookingId, approved) => {
+    try {
+      if (approved) await approveBooking(bookingId);
+      else await rejectBooking(bookingId);
+      await loadAvailability();
+    } catch (reason) {
+      setNotice(reason.message || "Booking status could not be updated.");
+    }
+  };
+
   const inputStyle = { width: "100%", padding: "10px 11px", border: `1px solid ${colors.border}`, borderRadius: 6, color: colors.textBody, background: colors.card, fontSize: 13 };
   const availableLabel = loading ? "Checking routine..." : `${classrooms.length} classroom${classrooms.length === 1 ? "" : "s"} available`;
 
@@ -95,7 +106,7 @@ export default function BookingPage() {
           <form onSubmit={submit} style={{ display: "grid", gap: 12 }}>
             <label style={{ color: colors.textMuted, fontSize: 12 }}>Booked by<input required value={form.bookedBy} onChange={(event) => update("bookedBy", event.target.value)} placeholder="Your name or team" style={inputStyle} /></label>
             <label style={{ color: colors.textMuted, fontSize: 12 }}>Purpose<input required value={form.purpose} onChange={(event) => update("purpose", event.target.value)} placeholder="Meeting, workshop, study group" style={inputStyle} /></label>
-            <button type="submit" disabled={!form.classroomId || loading} style={{ marginTop: 4, border: 0, borderRadius: 6, padding: "11px 14px", background: form.classroomId && !loading ? colors.ink : colors.border, color: "#FFF", fontWeight: 700, cursor: form.classroomId && !loading ? "pointer" : "not-allowed" }}>Book selected classroom</button>
+            <button type="submit" disabled={!form.classroomId || loading} style={{ marginTop: 4, border: 0, borderRadius: 6, padding: "11px 14px", background: form.classroomId && !loading ? colors.ink : colors.border, color: "#FFF", fontWeight: 700, cursor: form.classroomId && !loading ? "pointer" : "not-allowed" }}>{isAdmin ? "Book selected classroom" : "Request classroom booking"}</button>
           </form>
           {notice && <p style={{ margin: "14px 0 0", color: notice.includes("successfully") ? colors.low.text : colors.high.text, fontSize: 13 }}>{notice}</p>}
         </section>
@@ -104,7 +115,7 @@ export default function BookingPage() {
       <section style={{ ...panelStyle, marginTop: 18 }}>
         <h2 style={{ color: colors.ink, fontSize: 17, margin: "0 0 4px" }}>Bookings for {form.day}</h2>
         <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 14px" }}>Existing reservations are included in the availability check.</p>
-        {bookings.length === 0 ? <p style={{ color: colors.textMuted, fontSize: 13, margin: 0 }}>No bookings recorded for this day.</p> : <div style={{ display: "grid", gap: 0 }}>{bookings.map((booking) => <div key={booking.id} style={{ display: "flex", justifyContent: "space-between", gap: 16, padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, fontSize: 13 }}><span style={{ color: colors.ink, fontWeight: 600 }}>{booking.room}</span><span style={{ color: colors.textMuted }}>{booking.start_time} - {booking.end_time} · {booking.purpose} ({booking.booked_by})</span></div>)}</div>}
+        {bookings.length === 0 ? <p style={{ color: colors.textMuted, fontSize: 13, margin: 0 }}>No bookings recorded for this day.</p> : <div style={{ display: "grid", gap: 0 }}>{bookings.map((booking) => <div key={booking.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, padding: "11px 0", borderTop: `1px solid ${colors.borderLight}`, fontSize: 13 }}><span style={{ color: colors.ink, fontWeight: 600 }}>{booking.room}</span><span style={{ color: colors.textMuted }}>{booking.start_time} - {booking.end_time} · {booking.purpose} ({booking.booked_by}) · <strong>{booking.status}</strong></span>{isAdmin && booking.status === "PENDING" && <span style={{ display: "flex", gap: 6 }}><button type="button" onClick={() => updateBooking(booking.id, true)} style={{ border: 0, borderRadius: 5, padding: "5px 8px", background: colors.low.bg, color: colors.low.text, cursor: "pointer" }}>Approve</button><button type="button" onClick={() => updateBooking(booking.id, false)} style={{ border: 0, borderRadius: 5, padding: "5px 8px", background: colors.high.bg, color: colors.high.text, cursor: "pointer" }}>Reject</button></span>}</div>)}</div>}
       </section>
     </div>
   );
